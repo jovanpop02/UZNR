@@ -4,12 +4,13 @@
 demo. Poređano po prioritetu: bez prve sekcije administracija se ne može
 koristiti za stvarni rad.
 
-Sajt čine dvije odvojene instalacije:
+Sve je u jednom repozitorijumu, ali se objavljuje na dva mjesta — svaka usluga
+gleda samo svoj direktorijum:
 
-| Dio | Repozitorijum | Server | Objavljuje se |
+| Dio | Direktorijum | Server | Podešavanje |
 | --- | --- | --- | --- |
-| Frontend (Vue) | `uznr-frontend` | Netlify — https://uznr.netlify.app | `push` na `master` |
-| Backend (Django) | `uznr-backend` | Render (besplatni plan) | `push` na `master` |
+| Frontend (Vue) | `frontend/` | Netlify — https://uznr.netlify.app | `netlify.toml` (`base`) |
+| Backend (Django) | `backend/` | Render (besplatni plan) | `render.yaml` (`rootDir`) |
 
 ---
 
@@ -17,7 +18,7 @@ Sajt čine dvije odvojene instalacije:
 
 ### Prava baza podataka
 
-Besplatni Render plan daje privremeni disk, pa se **`db.sqlite3` briše pri
+Besplatni Render plan daje privremeni disk, pa se **`backend/db.sqlite3` briše pri
 svakoj novoj objavi**. Sve što se unese u administraciju na sajtu nestaje čim se
 backend ponovo objavi. Zbog toga je `ADMIN_READONLY` postavljen na `"True"` u
 `render.yaml`: nalog može da gleda, ali ne i da čuva, kako niko ne bi izgubio
@@ -28,9 +29,9 @@ Postupak:
 
 1. Dodati Postgres bazu (Render ima svoju, može i bilo koji drugi provajder).
 2. Usmjeriti `DATABASES` na nju — obično preko `DATABASE_URL` i biblioteke
-   `dj-database-url`. Trenutno je u `config/settings.py` zakucan SQLite, a
-   `dj-database-url` **nije** u `requirements.txt`, pa ga treba dodati.
-3. Pokrenuti migracije, pa jednom `python manage.py import_seed` da se učita
+   `dj-database-url`. Trenutno je u `backend/config/settings.py` zakucan SQLite, a
+   `dj-database-url` **nije** u `backend/requirements.txt`, pa ga treba dodati.
+3. Pokrenuti migracije, pa jednom `python manage.py import_seed` (iz `backend/`) da se učita
    početni sadržaj.
 4. Tek tada postaviti `ADMIN_READONLY=False`.
 
@@ -39,7 +40,7 @@ blokirati — nego će se tiho gubiti.
 
 ### Podaci za prijavu na administraciju
 
-`ensure_admin_user.py` podrazumijevano pravi nalog **`admin` / `123`**, a ta
+`backend/content/management/commands/ensure_admin_user.py` podrazumijevano pravi nalog **`admin` / `123`**, a ta
 lozinka se nalazi u javnom repozitorijumu. To je bio svjestan ustupak — besplatni
 Render plan nema konzolu, pa bez podrazumijevanih vrijednosti administracija na
 sajtu ne bi imala nijedan nalog, a nalog i tako može samo da gleda.
@@ -53,7 +54,7 @@ sajtu ne bi imala nijedan nalog, a nalog i tako može samo da gleda.
 
 ### Slanje mejlova sa kontakt forme
 
-Ako `EMAIL_HOST` nije postavljen, `settings.py` namjerno koristi Django konzolni
+Ako `EMAIL_HOST` nije postavljen, `backend/config/settings.py` namjerno koristi Django konzolni
 način rada: mejl se **ispisuje, a ne šalje**. Poruke se i dalje čuvaju i vide u
 dijelu *Sanduče*, ali:
 
@@ -116,7 +117,7 @@ otkupi.
 
 ### Instagram
 
-`scripts/fetch-instagram.mjs` se izvršava pri izradi sajta i traži važeći token.
+`frontend/scripts/fetch-instagram.mjs` se izvršava pri izradi sajta i traži važeći token.
 Instagram tokeni traju oko 60 dana; obnoviti ih komandom
 `npm run refresh-instagram-token` prije isteka, inače Instagram sekcija ostaje
 zastarjela.
@@ -131,7 +132,8 @@ zastarjela.
   objavljenoj verziji ga nema — provjereno: ni komponenta, ni njeni stilovi, ni
   spisak uređaja ne postoje u objavljenim datotekama. Ako se nikada više neće
   koristiti, mogu se obrisati i sami fajlovi:
-  `src/components/DevicePreviewSwitch.vue`, `src/devicePreview.js` i njihovi
+  `frontend/src/components/DevicePreviewSwitch.vue`,
+  `frontend/src/devicePreview.js` i njihovi
   prevodi pod `devicePreview` u oba jezika.
 - **Prvo učitavanje je sporo.** Besplatni Render plan gasi backend nakon oko 15
   minuta neaktivnosti, pa prvi sljedeći zahtjev može trajati do minut. Frontend

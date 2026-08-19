@@ -1,0 +1,22 @@
+# Python
+__pycache__/
+*.py[cod]
+venv/
+venv_linux/
+*.sqlite3
+
+# Node
+node_modules/
+dist/
+
+# Logs
+*.log
+
+# Local tooling state
+.claude/settings.local.json
+.netlify
+
+# Editor
+.vscode/*
+!.vscode/extensions.json
+.idea/

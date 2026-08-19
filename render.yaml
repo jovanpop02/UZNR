@@ -1,8 +1,12 @@
+# Render reads this from the repository root. `rootDir` is what points it at the
+# Django project inside this monorepo: build and start commands run there, and
+# paths in them are relative to it.
 services:
   - type: web
     name: uznr-backend
     runtime: python
     plan: free
+    rootDir: backend
     buildCommand: "pip install -r requirements.txt && python manage.py collectstatic --noinput"
     # import_projekti_biblioteka is idempotent — it matches blocks by heading and
     # documents by address — so it fills a fresh database and is a no-op on every

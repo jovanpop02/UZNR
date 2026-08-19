@@ -1,0 +1,15 @@
+# Netlify builds the frontend out of this monorepo.
+#
+# `base` is what makes that work: Netlify changes into frontend/ before running
+# the build, so `command` and `publish` are both relative to that directory, and
+# a change confined to backend/ does not rebuild the site.
+[build]
+  base = "frontend"
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "22"
+
+# SPA routing is handled by public/_redirects, which Vite copies into dist/.
+# Redirects declared here would override that file, so keep them in one place.

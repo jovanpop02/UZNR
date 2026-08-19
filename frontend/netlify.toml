@@ -1,9 +1,0 @@
-[build]
-  command = "npm run build"
-  publish = "dist"
-
-[build.environment]
-  NODE_VERSION = "22"
-
-# SPA routing is handled by public/_redirects, which Vite copies into dist/.
-# Redirects declared here would override that file, so keep them in one place.
