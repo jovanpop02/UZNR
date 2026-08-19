@@ -2,7 +2,7 @@
 import { ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 import FeatureGrid from '../components/FeatureGrid.vue'
-import SafetyIllustration from '../components/SafetyIllustration.vue'
+import safetyWorkersIllustration from '../assets/illustrations/safety-workers.svg'
 import { isIOS } from '../platform'
 
 const { t } = useI18n()
@@ -61,7 +61,12 @@ function formatSize(sizeKb) {
           {{ t('about.intro') }}
         </p>
       </div>
-      <SafetyIllustration variant="mission" class="onama-intro__illustration" />
+      <img
+        class="onama-intro__illustration"
+        :src="safetyWorkersIllustration"
+        alt=""
+        aria-hidden="true"
+      />
     </div>
   </section>
 
@@ -234,7 +239,8 @@ function formatSize(sizeKb) {
 }
 
 .onama-intro__illustration {
-  width: 260px;
+  width: 300px;
+  height: auto;
   flex-shrink: 0;
 }
 

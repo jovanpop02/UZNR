@@ -184,8 +184,9 @@ class Command(BaseCommand):
             return
         items = json.loads(path.read_text(encoding='utf-8'))
         created = 0
+        logos = 0
         for item in items:
-            ImportantLink.objects.update_or_create(
+            link, _ = ImportantLink.objects.update_or_create(
                 title=item['title'],
                 defaults={
                     'title_en': item.get('title_en', ''),
@@ -194,4 +195,23 @@ class Command(BaseCommand):
                 },
             )
             created += 1
-        self.stdout.write(self.style.SUCCESS(f'Imported {created} important links'))
+
+            # Institution logos ship with the seed data rather than being
+            # fetched from the old site: they were uploaded by hand in the
+            # admin, so there is no remote address to re-download them from.
+            # Without this the logos existed only in whichever database
+            # happened to receive the uploads, and every deploy that rebuilds
+            # the database lost them.
+            name = item.get('logo')
+            if not name or link.logo:
+                continue
+            source = DATA_DIR / 'logos' / name
+            if not source.exists():
+                self.stderr.write(self.style.WARNING(f'Logo not found: {name}'))
+                continue
+            link.logo.save(name, ContentFile(source.read_bytes()), save=True)
+            logos += 1
+
+        self.stdout.write(
+            self.style.SUCCESS(f'Imported {created} important links ({logos} logos)')
+        )
