@@ -1,0 +1,22 @@
+Poštovani/a {{ message.name }},
+
+hvala vam na poruci. Vaše obraćanje je stiglo do Udruženja zaštite na radu
+Crne Gore i odgovorićemo najkasnije u roku od dva radna dana.
+
+Ovo je automatska potvrda — na nju nije potrebno odgovarati.
+
+--------------------------------------------------------------------
+Kopija vaše poruke
+
+Naslov: {{ message.subject }}
+Poslato: {{ message.created_at|date:"d.m.Y. H:i" }}
+
+{{ message.message }}
+--------------------------------------------------------------------
+
+Ako je pitanje hitno, dostupni smo i telefonom.
+
+Udruženje zaštite na radu Crne Gore
+4. jul 109/3, 81000 Podgorica
+{{ office_email }} · {{ office_phone }}
+{{ site_url }}

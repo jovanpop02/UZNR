@@ -1,0 +1,1874 @@
+/* UZNR admin theme.
+ *
+ * The palette, radii and shadows below are the ones the public site uses
+ * (frontend/src/style.css), so the admin reads as the same product: a white
+ * shell, bright green accents, soft rounded cards, system-ui type.
+ *
+ * Everything is expressed through the --uznr-* tokens declared once at the top
+ * and re-declared for dark mode, so the admin's own light/dark toggle keeps
+ * working even though the public site itself is light-only.
+ */
+
+:root {
+  --uznr-primary: #42b758;
+  --uznr-primary-dark: #2f8f45;
+  --uznr-primary-darker: #256e37;
+  --uznr-primary-light: #e9f7ec;
+
+  --uznr-ink: #17211c;
+  --uznr-text: #45524c;
+  --uznr-muted: #6b7a72;
+
+  --uznr-surface: #ffffff;
+  --uznr-surface-alt: #f6f8f6;
+  --uznr-border: #e1e7e2;
+
+  --uznr-danger: #c33a30;
+  --uznr-danger-light: #fdeceb;
+
+  --uznr-radius-sm: 8px;
+  --uznr-radius-md: 14px;
+  --uznr-shadow-sm: 0 1px 2px rgba(23, 33, 28, 0.06), 0 1px 3px rgba(23, 33, 28, 0.08);
+  --uznr-shadow-md: 0 4px 10px rgba(23, 33, 28, 0.08), 0 2px 4px rgba(23, 33, 28, 0.06);
+}
+
+@media (prefers-color-scheme: dark) {
+  html:not([data-theme="light"]) {
+    --uznr-ink: #eaf0ec;
+    --uznr-text: #c6d2cb;
+    --uznr-muted: #94a49b;
+    --uznr-surface: #1b2420;
+    --uznr-surface-alt: #232e29;
+    --uznr-border: #33413a;
+    --uznr-primary-light: #1f3527;
+    --uznr-danger-light: #3a231f;
+  }
+}
+
+html[data-theme="dark"] {
+  --uznr-ink: #eaf0ec;
+  --uznr-text: #c6d2cb;
+  --uznr-muted: #94a49b;
+  --uznr-surface: #1b2420;
+  --uznr-surface-alt: #232e29;
+  --uznr-border: #33413a;
+  --uznr-primary-light: #1f3527;
+  --uznr-danger-light: #3a231f;
+}
+
+/* Map Django's own admin variables onto the site palette, so stock admin
+   components pick the theme up without being restyled one by one. */
+:root,
+html[data-theme="light"],
+html[data-theme="dark"] {
+  --primary: var(--uznr-primary-dark);
+  --primary-fg: #ffffff;
+  --secondary: var(--uznr-primary-dark);
+
+  --header-bg: var(--uznr-surface);
+  --header-color: var(--uznr-ink);
+  --header-link-color: var(--uznr-ink);
+  --header-branding-color: var(--uznr-ink);
+
+  --breadcrumbs-bg: var(--uznr-surface-alt);
+  --breadcrumbs-fg: var(--uznr-muted);
+  --breadcrumbs-link-fg: var(--uznr-primary-dark);
+
+  --link-fg: var(--uznr-primary-dark);
+  --link-hover-color: var(--uznr-primary-darker);
+  --link-selected-fg: var(--uznr-primary-darker);
+
+  --button-bg: var(--uznr-primary-dark);
+  --button-hover-bg: var(--uznr-primary-darker);
+  --default-button-bg: var(--uznr-primary-dark);
+  --default-button-hover-bg: var(--uznr-primary-darker);
+
+  --object-tools-bg: var(--uznr-primary-dark);
+  --object-tools-hover-bg: var(--uznr-primary-darker);
+
+  --selected-row: var(--uznr-primary-light);
+  --hairline-color: var(--uznr-border);
+  --border-color: var(--uznr-border);
+}
+
+body {
+  font-family: system-ui, 'Segoe UI', Roboto, sans-serif;
+  color: var(--uznr-text);
+}
+
+/* ---------- Header ----------
+   The site's header is a white bar with the logo at the left, so the admin's
+   is too, rather than the block of dark green it used to be. */
+
+#header {
+  display: flex;
+  align-items: center;
+  padding: 14px 40px;
+  border-bottom: 1px solid var(--uznr-border);
+  box-shadow: var(--uznr-shadow-sm);
+}
+
+#branding h1 {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--uznr-ink);
+}
+
+#branding h1 a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--uznr-ink);
+}
+
+#branding h1 img {
+  height: 34px;
+  width: auto;
+  display: block;
+}
+
+#user-tools {
+  font-size: 0.78rem;
+  color: var(--uznr-muted);
+}
+
+#user-tools a {
+  color: var(--uznr-primary-dark);
+  border-bottom: none;
+}
+
+div.breadcrumbs {
+  background: var(--uznr-surface-alt);
+  border-bottom: 1px solid var(--uznr-border);
+  color: var(--uznr-muted);
+  font-size: 0.8rem;
+  padding: 10px 40px;
+}
+
+/* ---------- Cards ----------
+   Module headings become quiet labels on a tinted strip instead of solid green
+   bars, which is how the site's cards are built. */
+
+#content {
+  padding-top: 24px;
+}
+
+.module {
+  border: 1px solid var(--uznr-border);
+  border-radius: var(--uznr-radius-md);
+  overflow: hidden;
+  box-shadow: var(--uznr-shadow-sm);
+  margin-bottom: 20px;
+  background: var(--uznr-surface);
+}
+
+.module h2,
+.module caption,
+.inline-group h2 {
+  background: var(--uznr-surface-alt);
+  color: var(--uznr-ink);
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+  padding: 11px 16px;
+  border-bottom: 1px solid var(--uznr-border);
+}
+
+.module caption a.section,
+.inline-group h2 a {
+  color: var(--uznr-ink);
+}
+
+fieldset.module {
+  border: 1px solid var(--uznr-border);
+}
+
+fieldset.module h2 {
+  border-radius: 0;
+}
+
+.form-row {
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--uznr-border);
+}
+
+.form-row:last-child {
+  border-bottom: none;
+}
+
+.form-row label {
+  font-weight: 600;
+  font-size: 0.85rem;
+  color: var(--uznr-ink);
+}
+
+.help,
+p.help,
+.form-row div.help {
+  font-size: 0.78rem;
+  color: var(--uznr-muted);
+  margin-top: 4px;
+}
+
+input[type="text"],
+input[type="url"],
+input[type="email"],
+input[type="number"],
+input[type="password"],
+textarea,
+select {
+  border-radius: var(--uznr-radius-sm) !important;
+  border: 1px solid var(--uznr-border) !important;
+  padding: 8px 11px !important;
+  background: var(--uznr-surface);
+  color: var(--uznr-ink);
+}
+
+/* Selects size their own box from the font; the padding above overflows it and
+   clips the label, so give them room to sit in. */
+select {
+  min-height: 36px;
+  line-height: 1.2;
+  padding-top: 6px !important;
+  padding-bottom: 6px !important;
+}
+
+input[type="text"]:focus,
+input[type="url"]:focus,
+input[type="email"]:focus,
+input[type="number"]:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+  border-color: var(--uznr-primary) !important;
+  box-shadow: 0 0 0 3px var(--uznr-primary-light);
+}
+
+textarea {
+  line-height: 1.5;
+}
+
+/* ---------- Buttons ----------
+   Pill-shaped, like the site's "O nama" call to action. */
+
+.button,
+input[type="submit"],
+input[type="button"],
+.submit-row input,
+a.button {
+  border-radius: 999px;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+}
+
+.submit-row {
+  border: 1px solid var(--uznr-border);
+  border-radius: var(--uznr-radius-md);
+  box-shadow: var(--uznr-shadow-sm);
+  background: var(--uznr-surface);
+  padding: 14px 16px;
+}
+
+.submit-row input.default {
+  background: var(--uznr-primary-dark);
+}
+
+.submit-row input.default:hover {
+  background: var(--uznr-primary-darker);
+}
+
+.object-tools a {
+  border-radius: 999px;
+}
+
+.deletelink,
+.submit-row a.deletelink {
+  border-radius: 999px;
+  background: var(--uznr-danger);
+}
+
+/* ---------- Montenegrin next to English ----------
+ *
+ * A fieldset row that holds two fields (`('title', 'title_en')`) is Django's
+ * own way of putting them on one line; by default it lays them out inline and
+ * they end up ragged. Making the row a two-column grid puts each English field
+ * directly beside the Montenegrin it translates, so the pair reads across
+ * rather than being hunted for further down the form.
+ *
+ * The English half is tinted, which is the only cue needed to tell the two
+ * apart once they sit side by side.
+ */
+
+.form-row.field-title.field-title_en,
+.form-row.field-excerpt.field-excerpt_en,
+.form-row.field-content.field-content_en,
+.form-row.field-heading.field-heading_en,
+.form-row.field-body.field-body_en,
+.form-row.field-intro.field-intro_en,
+.form-row.field-description.field-description_en,
+.form-row.field-reference.field-reference_en,
+.form-row.field-link_label.field-link_label_en {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+  align-items: start;
+}
+
+/* Django wraps each field of a multi-field row in .fieldBox. */
+.form-row .fieldBox {
+  min-width: 0;
+}
+
+/* Django sizes inputs from a `cols`/`size` attribute and its own fixed widths
+   (.vLargeTextField is 610px), which overflows a half-width column. !important
+   is the blunt but reliable way past attribute-driven sizing here. */
+.form-row.form-multiline .fieldBox input[type="text"],
+.form-row.form-multiline .fieldBox input[type="url"],
+.form-row.form-multiline .fieldBox textarea {
+  width: 100% !important;
+  min-width: 0 !important;
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+/* Only the Montenegrin half carries help text, and Django prints it between the
+   label and the widget — which pushed that input 30px below its English twin
+   and broke the very alignment the pairing is for. Laying each box out as a
+   column and sending the help to the bottom puts both inputs on one line. */
+.form-row.form-multiline .fieldBox {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-row.form-multiline .fieldBox > label {
+  order: 0;
+}
+
+.form-row.form-multiline .fieldBox > * {
+  order: 1;
+}
+
+.form-row.form-multiline .fieldBox .help,
+.form-row.form-multiline .fieldBox div.help {
+  order: 2;
+  margin-top: 6px;
+}
+
+/* The English half: same size, quieter ground, so it never competes with the
+   original for attention. */
+.form-row .fieldBox[class*="_en"] input[type="text"],
+.form-row .fieldBox[class*="_en"] textarea {
+  background: var(--uznr-surface-alt);
+}
+
+.form-row .fieldBox[class*="_en"] label {
+  color: var(--uznr-muted);
+}
+
+@media (max-width: 900px) {
+  .form-row.field-title.field-title_en,
+  .form-row.field-excerpt.field-excerpt_en,
+  .form-row.field-content.field-content_en,
+  .form-row.field-heading.field-heading_en,
+  .form-row.field-body.field-body_en,
+  .form-row.field-intro.field-intro_en,
+  .form-row.field-description.field-description_en,
+  .form-row.field-reference.field-reference_en,
+  .form-row.field-link_label.field-link_label_en {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+}
+
+/* ---------- Nested tables must fit ----------
+ *
+ * Adding the English column pushed these tables wider than the window, so the
+ * page itself scrolled sideways and the first columns — the names — went out of
+ * view. The table now fills its container and the inputs share the space
+ * instead of each demanding a fixed width from its `size` attribute.
+ */
+
+.inline-group .tabular table {
+  width: 100%;
+  table-layout: fixed;
+}
+
+.inline-group .tabular td input[type="text"],
+.inline-group .tabular td input[type="url"],
+.inline-group .tabular td textarea,
+.inline-group .tabular td select {
+  width: 100% !important;
+  min-width: 0 !important;
+  box-sizing: border-box !important;
+}
+
+/* File inputs cannot shrink below their button, so give that column its own
+   share and let long file names ellipsis rather than push the table out. */
+.inline-group .tabular td.field-file,
+.inline-group .tabular td.field-image {
+  max-width: 190px;
+  overflow: hidden;
+}
+
+.inline-group .tabular td.field-file input[type="file"],
+.inline-group .tabular td.field-image input[type="file"] {
+  max-width: 100%;
+  font-size: 0.72rem;
+}
+
+.inline-group .tabular td p.file-upload {
+  margin: 0 0 4px;
+  font-size: 0.72rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* ---------- Deleting ----------
+ *
+ * Two different moments, so two different treatments:
+ *
+ *   * In a list, "Obriši" is a link straight to the confirmation page. It is
+ *     quiet until you point at it, so a column of red never shouts at someone
+ *     who came to read the list.
+ *   * In a nested table the tick does nothing until the form is saved, so the
+ *     row is struck through and tinted meanwhile — the pending removals are
+ *     visible as a set before Sačuvaj commits them.
+ */
+
+.site-link {
+  display: inline-block;
+  padding: 3px 10px;
+  border: 1px solid var(--uznr-border);
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--uznr-primary-dark) !important;
+  text-decoration: none !important;
+  white-space: nowrap;
+}
+
+.site-link:hover {
+  background: var(--uznr-primary-light);
+  border-color: var(--uznr-primary);
+}
+
+#result_list td.field-site_link {
+  width: 1%;
+  text-align: right;
+  white-space: nowrap;
+}
+
+/* Waiting messages, counted on the home page. */
+.model-badge {
+  display: inline-block;
+  margin-left: 8px;
+  padding: 1px 9px;
+  border-radius: 999px;
+  background: #b26a00;
+  color: #ffffff;
+  font-size: 0.72rem;
+  font-weight: 700;
+  vertical-align: middle;
+}
+
+.row-delete {
+  display: inline-block;
+  padding: 3px 10px;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--uznr-muted) !important;
+  text-decoration: none !important;
+  white-space: nowrap;
+  transition: color 0.12s ease, background 0.12s ease, border-color 0.12s ease;
+}
+
+.row-delete:hover,
+.row-delete:focus {
+  color: var(--uznr-danger) !important;
+  background: var(--uznr-danger-light);
+  border-color: var(--uznr-danger);
+}
+
+#result_list td.field-delete_link {
+  width: 1%;
+  text-align: right;
+  white-space: nowrap;
+}
+
+/* Listed ahead of the drag-hover rule and matched at least as specifically,
+   because a row marked for removal must stay red even while the pointer is
+   over it — the hover tint would otherwise say "fine" about a row that is
+   about to disappear. */
+tr.marked-for-delete > td,
+tr.marked-for-delete > th,
+.is-reorderable tbody tr.marked-for-delete > td,
+.is-reorderable tbody tr.marked-for-delete > th,
+.is-reorderable tbody tr.marked-for-delete:hover > td,
+.is-reorderable tbody tr.marked-for-delete:hover > th {
+  background: var(--uznr-danger-light) !important;
+  box-shadow: inset 3px 0 0 var(--uznr-danger) !important;
+}
+
+.is-reorderable tbody tr.marked-for-delete:hover > td:not(:first-child),
+.is-reorderable tbody tr.marked-for-delete:hover > th:not(:first-child),
+tr.marked-for-delete > td:not(:first-child),
+tr.marked-for-delete > th:not(:first-child) {
+  box-shadow: none !important;
+}
+
+tr.marked-for-delete input[type="text"],
+tr.marked-for-delete textarea,
+tr.marked-for-delete select {
+  text-decoration: line-through;
+  opacity: 0.6;
+}
+
+/* ---------- Explanations ---------- */
+
+.model-description {
+  display: block;
+  margin-top: 4px;
+  max-width: 62ch;
+  font-size: 0.78rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--uznr-muted);
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+.uznr-note,
+.uznr-guide {
+  border: 1px solid var(--uznr-border);
+  border-left: 3px solid var(--uznr-primary);
+  border-radius: var(--uznr-radius-md);
+  background: var(--uznr-surface);
+  color: var(--uznr-text);
+  box-shadow: var(--uznr-shadow-sm);
+}
+
+.uznr-note {
+  margin: 0 0 18px;
+  padding: 12px 16px;
+  max-width: 90ch;
+  font-size: 0.83rem;
+  line-height: 1.55;
+}
+
+.uznr-guide {
+  margin-bottom: 22px;
+  padding: 18px 22px;
+  max-width: 90ch;
+}
+
+/* In the dashboard's left rail the panel is the column, so the reading-width
+   cap that suits a full-width banner does not apply. */
+.dashboard .uznr-guide {
+  max-width: none;
+}
+
+.uznr-guide h2 {
+  margin: 0 0 8px;
+  padding: 0;
+  background: none;
+  border: none;
+  color: var(--uznr-ink);
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.uznr-guide p {
+  margin: 0 0 10px;
+  font-size: 0.84rem;
+  line-height: 1.6;
+}
+
+.uznr-guide ul {
+  margin: 0 0 4px;
+  padding-left: 18px;
+}
+
+.uznr-guide li {
+  margin-bottom: 5px;
+  font-size: 0.84rem;
+  line-height: 1.55;
+}
+
+.uznr-guide__foot {
+  margin: 10px 0 0 !important;
+  padding-top: 10px;
+  border-top: 1px solid var(--uznr-border);
+  color: var(--uznr-muted);
+}
+
+.uznr-pagelink {
+  margin: -8px 0 16px;
+  font-size: 0.82rem;
+}
+
+/* ---------- Status badges ---------- */
+
+.badge {
+  display: inline-block;
+  padding: 3px 11px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+  white-space: nowrap;
+  color: var(--badge-fg, var(--uznr-muted));
+  background: color-mix(in srgb, var(--badge-fg, currentColor) 14%, transparent);
+}
+
+.badge--open,
+.badge--done {
+  --badge-fg: #2f8f45;
+}
+
+.badge--new {
+  --badge-fg: #b26a00;
+}
+
+.badge--progress {
+  --badge-fg: #2f6f9f;
+}
+
+.badge--fail {
+  --badge-fg: #c3342b;
+}
+
+.badge--muted {
+  --badge-fg: #6b7a72;
+}
+
+@media (prefers-color-scheme: dark) {
+  html:not([data-theme="light"]) .badge--open,
+  html:not([data-theme="light"]) .badge--done {
+    --badge-fg: #6cc98a;
+  }
+
+  html:not([data-theme="light"]) .badge--new {
+    --badge-fg: #e0a458;
+  }
+
+  html:not([data-theme="light"]) .badge--progress {
+    --badge-fg: #7fb3d9;
+  }
+
+  html:not([data-theme="light"]) .badge--fail {
+    --badge-fg: #ef8079;
+  }
+
+  html:not([data-theme="light"]) .badge--muted {
+    --badge-fg: #9aa8a1;
+  }
+}
+
+html[data-theme="dark"] .badge--open,
+html[data-theme="dark"] .badge--done {
+  --badge-fg: #6cc98a;
+}
+
+html[data-theme="dark"] .badge--new {
+  --badge-fg: #e0a458;
+}
+
+html[data-theme="dark"] .badge--progress {
+  --badge-fg: #7fb3d9;
+}
+
+html[data-theme="dark"] .badge--fail {
+  --badge-fg: #ef8079;
+}
+
+html[data-theme="dark"] .badge--muted {
+  --badge-fg: #9aa8a1;
+}
+
+/* ---------- Drag to reorder ----------
+   The order number is gone from every table. Its input is still in the DOM so
+   the value posts with the form, but it is hidden and driven by dragging. */
+
+/* There is no handle: the whole row is the handle. Rows in a reorderable table
+   advertise that with a grab cursor and a green wash on hover.
+ *
+ * The colour is set on the cells as well as the row, because Django paints its
+ * striping on td/th and a background on the tr alone loses to it. */
+.is-reorderable tbody tr {
+  cursor: grab;
+}
+
+.is-reorderable tbody tr:hover > td,
+.is-reorderable tbody tr:hover > th,
+.is-reorderable tbody tr:hover {
+  background: var(--uznr-primary-light) !important;
+  box-shadow: inset 3px 0 0 var(--uznr-primary);
+}
+
+/* Only the leftmost cell should carry the edge bar, not every cell. */
+.is-reorderable tbody tr:hover > td:not(:first-child),
+.is-reorderable tbody tr:hover > th:not(:first-child) {
+  box-shadow: none;
+}
+
+/* The add-another template row is not a position and must not look draggable. */
+.is-reorderable tbody tr.empty-form,
+.is-reorderable tbody tr.add-row {
+  cursor: default;
+}
+
+.is-reorderable tbody tr.empty-form:hover > td,
+.is-reorderable tbody tr.add-row:hover > td {
+  background: inherit !important;
+  box-shadow: none;
+}
+
+/* While a row is being dragged, stop the pointer from selecting text in the
+   cells it passes over. */
+body.is-reordering {
+  user-select: none;
+  cursor: grabbing;
+}
+
+/* The row being carried: lifted off the page, so it reads as picked up rather
+   than merely highlighted. */
+tr.is-dragging {
+  background: var(--uznr-primary-light) !important;
+  box-shadow: var(--uznr-shadow-md);
+  outline: 2px solid var(--uznr-primary);
+  outline-offset: -2px;
+  position: relative;
+  z-index: 2;
+  animation: grab-lift 140ms ease-out;
+}
+
+@keyframes grab-lift {
+  from {
+    transform: scale(1);
+    box-shadow: var(--uznr-shadow-sm);
+  }
+  to {
+    transform: scale(1.012);
+    box-shadow: var(--uznr-shadow-md);
+  }
+}
+
+/* Where it landed, fading out so a long list does not lose the row you moved. */
+tr.just-dropped {
+  animation: drop-settle 700ms ease-out;
+}
+
+@keyframes drop-settle {
+  from {
+    background-color: var(--uznr-primary-light);
+  }
+  to {
+    background-color: transparent;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  tr.is-dragging,
+  tr.just-dropped {
+    animation: none;
+  }
+}
+
+.reorder-disabled tbody tr {
+  cursor: default;
+}
+
+.reorder-note {
+  margin: 0 0 10px;
+  font-size: 0.8rem;
+  color: var(--uznr-muted);
+}
+
+.reorder-note.is-busy {
+  color: var(--uznr-primary-dark);
+}
+
+.reorder-note.is-saved {
+  color: var(--uznr-primary-dark);
+  font-weight: 600;
+}
+
+.reorder-note.is-error {
+  color: var(--uznr-danger);
+  font-weight: 600;
+}
+
+.reorder-note--off {
+  color: var(--uznr-muted);
+  font-style: italic;
+}
+
+/* The order input stays for non-JS use but is out of the way. */
+.reorderable .field-order,
+.reorderable .column-order,
+.reorderable th.column-order {
+  display: none !important;
+}
+
+/* Django absolutely-positions the row's str() over the row in tabular inlines,
+   which is what made the sections table overlap its own buttons. */
+.reorderable td.original,
+.reorderable th.original {
+  display: none !important;
+}
+
+/* ---------- Sections inline ---------- */
+
+.button--open {
+  display: inline-block;
+  padding: 5px 14px;
+  background: var(--uznr-primary-dark);
+  color: #ffffff !important;
+  font-size: 0.78rem;
+  white-space: nowrap;
+  text-decoration: none !important;
+  border-bottom: none !important;
+}
+
+.button--open:hover {
+  background: var(--uznr-primary-darker);
+}
+
+.inline-count {
+  display: block;
+  margin-top: 3px;
+  font-size: 0.74rem;
+  color: var(--uznr-muted);
+}
+
+.inline-hint {
+  font-size: 0.78rem;
+  color: var(--uznr-muted);
+  font-style: italic;
+}
+
+/* ---------- List view thumbnails ---------- */
+
+.list-thumb {
+  width: 44px;
+  height: 44px;
+  object-fit: cover;
+  border-radius: var(--uznr-radius-sm);
+  display: block;
+}
+
+.list-thumb--logo {
+  object-fit: contain;
+  background: #fff;
+  padding: 2px;
+  border: 1px solid var(--uznr-border);
+}
+
+/* ---------- Result tables ---------- */
+
+#result_list {
+  border-radius: var(--uznr-radius-sm);
+  overflow: hidden;
+}
+
+#result_list thead th {
+  background: var(--uznr-surface-alt);
+  font-size: 0.72rem;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+  color: var(--uznr-muted);
+}
+
+#result_list tbody tr:hover {
+  background: var(--uznr-primary-light);
+}
+
+#result_list tbody td,
+#result_list tbody th {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  vertical-align: middle;
+}
+
+#changelist-filter h2 {
+  border-radius: var(--uznr-radius-md) var(--uznr-radius-md) 0 0;
+}
+
+#content-main .module tbody th,
+#content-main .module tbody td {
+  padding-top: 11px;
+  padding-bottom: 11px;
+  vertical-align: top;
+}
+
+/* ---------- Sidebar toggle ----------
+   Django draws it as a full-height strip, so the chevron sits at the middle of
+   whatever the page happens to be — which means it lands somewhere different on
+   every screen. Pinning it near the top keeps it in one place. */
+
+#toggle-nav-sidebar {
+  position: sticky;
+  top: 96px;
+  align-self: flex-start;
+  height: 34px !important;
+  width: 24px;
+  margin-top: 12px;
+  border: 1px solid var(--uznr-border);
+  border-left: none;
+  border-radius: 0 var(--uznr-radius-sm) var(--uznr-radius-sm) 0;
+  background: var(--uznr-surface);
+  color: var(--uznr-muted);
+  line-height: 32px;
+  z-index: 5;
+}
+
+#toggle-nav-sidebar:hover {
+  background: var(--uznr-primary-light);
+  color: var(--uznr-primary-dark);
+}
+
+/* ---------- Photo gallery ----------
+ *
+ * A gallery shown as table rows is a list of file inputs with stamp-sized
+ * previews — you cannot tell which photo is which, which is the only thing you
+ * need when arranging photos. The rows become a grid of cards instead, each
+ * showing the photo at a size you can actually recognise, with its controls
+ * underneath.
+ *
+ * The table markup stays exactly as Django wrote it; only the display roles are
+ * reassigned, so the formset, the ordering inputs and the delete boxes all
+ * keep working.
+ */
+
+.news-gallery-inline table {
+  display: block;
+  border-collapse: separate;
+}
+
+.news-gallery-inline thead {
+  display: none;
+}
+
+.news-gallery-inline tbody {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+  gap: 14px;
+  padding: 16px;
+}
+
+.news-gallery-inline tbody tr {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 10px;
+  border: 1px solid var(--uznr-border);
+  border-radius: var(--uznr-radius-md);
+  background: var(--uznr-surface);
+  box-shadow: var(--uznr-shadow-sm);
+}
+
+.news-gallery-inline tbody tr:hover {
+  border-color: var(--uznr-primary);
+  box-shadow: var(--uznr-shadow-md);
+}
+
+.news-gallery-inline tbody td {
+  display: block;
+  border: none !important;
+  padding: 0 !important;
+  width: auto !important;
+  max-width: none !important;
+}
+
+/* The photo itself fills the card and keeps a consistent shape. */
+.news-gallery-inline td.field-preview {
+  width: auto !important;
+}
+
+.news-gallery-inline .gallery-thumb {
+  width: 100%;
+  height: 132px;
+  object-fit: cover;
+  border-radius: var(--uznr-radius-sm);
+  display: block;
+  background: var(--uznr-surface-alt);
+}
+
+/* An empty slot should still look like a card, not a collapsed row.
+   Keyed on "has no image" rather than :empty, because Django leaves whitespace
+   in the cell and :empty would never match. */
+.news-gallery-inline td.field-preview:not(:has(img))::before {
+  content: 'Nova fotografija';
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 132px;
+  border: 1px dashed var(--uznr-border);
+  border-radius: var(--uznr-radius-sm);
+  background: var(--uznr-surface-alt);
+  color: var(--uznr-muted);
+  font-size: 0.78rem;
+}
+
+.news-gallery-inline .field-image p.file-upload {
+  display: none; /* "Trenutno: news_gallery/IMG_9641…" — the photo says it better */
+}
+
+.news-gallery-inline .field-image input[type="file"] {
+  font-size: 0.7rem;
+  width: 100%;
+  max-width: 100%;
+}
+
+/* The delete box reads as a labelled control rather than a bare tick. */
+.news-gallery-inline td.delete {
+  display: flex !important;
+  align-items: center;
+  gap: 6px;
+  padding-top: 6px !important;
+  border-top: 1px solid var(--uznr-border) !important;
+  font-size: 0.76rem;
+  color: var(--uznr-muted);
+}
+
+.news-gallery-inline td.delete label {
+  cursor: pointer;
+}
+
+/* The column header carried the word "Brisanje?" and the header row is gone in
+   this layout, which left a checkbox meaning nothing. */
+.news-gallery-inline td.delete::after {
+  content: 'Ukloni';
+}
+
+.news-gallery-inline .add-row {
+  grid-column: 1 / -1;
+  border: 1px dashed var(--uznr-border);
+  border-radius: var(--uznr-radius-md);
+  padding: 10px !important;
+  text-align: center;
+}
+
+.news-gallery-inline tr.marked-for-delete {
+  border-color: var(--uznr-danger);
+}
+
+.news-gallery-inline tr.marked-for-delete .gallery-thumb {
+  opacity: 0.35;
+}
+
+/* ---------------------------------------------------------------------------
+ * Sign-in page
+ *
+ * Django's stock login is a bare box pinned under the site header, with the
+ * submit button floating inside its own bordered strip. The markup in
+ * templates/admin/uznr_login.html replaces that with one card; the rules below
+ * centre it in the viewport and hide the chrome the card makes redundant.
+ * ------------------------------------------------------------------------ */
+
+body.login #header,
+body.login #nav-breadcrumbs,
+body.login #footer {
+  display: none;
+}
+
+body.login {
+  background: var(--uznr-surface-alt);
+}
+
+/* The stock wrappers are sized for a narrow form column; let them fill the
+   screen so the card can centre against the whole viewport. */
+body.login #container,
+body.login #content,
+body.login #content-main {
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  padding: 0;
+  border: none;
+  background: none;
+  box-shadow: none;
+}
+
+.uznr-login {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  padding: 32px 16px;
+  box-sizing: border-box;
+}
+
+.uznr-login__card {
+  width: 100%;
+  max-width: 400px;
+  background: var(--uznr-surface);
+  border: 1px solid var(--uznr-border);
+  border-radius: var(--uznr-radius-md);
+  box-shadow: var(--uznr-shadow-md);
+  padding: 32px 28px 28px;
+  box-sizing: border-box;
+}
+
+.uznr-login__head {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.uznr-login__logo {
+  height: 44px;
+  width: auto;
+  margin-bottom: 14px;
+}
+
+.uznr-login__title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--uznr-ink);
+  margin: 0 0 6px;
+}
+
+.uznr-login__sub {
+  font-size: 0.86rem;
+  line-height: 1.45;
+  color: var(--uznr-muted);
+  margin: 0;
+}
+
+.uznr-login__error {
+  background: var(--uznr-danger-light);
+  border: 1px solid var(--uznr-danger);
+  color: var(--uznr-danger);
+  border-radius: var(--uznr-radius-sm);
+  padding: 10px 12px;
+  font-size: 0.85rem;
+  margin: 0 0 16px;
+}
+
+.uznr-login__form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.uznr-login__field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.uznr-login__field label {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--uznr-text);
+}
+
+/* Django renders the inputs itself, so they are targeted by id. */
+.uznr-login__field input[type="text"],
+.uznr-login__field input[type="password"] {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 11px 13px;
+  font: inherit;
+  font-size: 0.92rem;
+  color: var(--uznr-ink);
+  background: var(--uznr-surface);
+  border: 1px solid var(--uznr-border);
+  border-radius: var(--uznr-radius-sm);
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.uznr-login__field input[type="text"]:focus,
+.uznr-login__field input[type="password"]:focus {
+  outline: none;
+  border-color: var(--uznr-primary);
+  box-shadow: 0 0 0 3px var(--uznr-primary-light);
+}
+
+.uznr-login__field .errorlist {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  color: var(--uznr-danger);
+  font-size: 0.8rem;
+}
+
+.uznr-login__submit {
+  width: 100%;
+  padding: 12px 16px;
+  font: inherit;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #fff;
+  background: var(--uznr-primary);
+  border: none;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+.uznr-login__submit:hover {
+  background: var(--uznr-primary-dark);
+}
+
+.uznr-login__submit:focus-visible {
+  outline: 3px solid var(--uznr-primary-light);
+  outline-offset: 2px;
+}
+
+.uznr-login__reset {
+  margin: -4px 0 0;
+  font-size: 0.82rem;
+}
+
+.uznr-login__reset a,
+.uznr-login__foot a {
+  color: var(--uznr-primary-dark);
+}
+
+.uznr-login__foot {
+  margin: 0;
+  font-size: 0.82rem;
+  color: var(--uznr-muted);
+}
+
+@media (max-width: 420px) {
+  .uznr-login__card {
+    padding: 26px 20px 22px;
+  }
+}
+
+/* ---------------------------------------------------------------------------
+ * Dashboard (admin home)
+ *
+ * Django's colMS layout floats the "recent actions" rail and leaves the whole
+ * dashboard in a ~680px column, so on a normal laptop more than half the screen
+ * was empty. These rules turn #content into an explicit two-track grid that
+ * fills the width, with the heading, shortcuts and guide spanning both tracks.
+ * ------------------------------------------------------------------------ */
+
+.dashboard #content.colMS {
+  width: 100%;
+  max-width: 1600px;
+  margin-inline: auto;
+  padding-inline: 24px;
+  box-sizing: border-box;
+  /* Three rails that start level with each other: the orientation panel on the
+     left, the content groups in the middle, recent activity on the right. The
+     shortcuts run across the top of all three. Django's own colMS floats the
+     right rail and leaves the rest in one narrow column, which is what left the
+     page looking lopsided. */
+  display: grid;
+  grid-template-columns: 300px minmax(0, 1fr) 300px;
+  gap: 0 28px;
+  align-items: start;
+}
+
+/* One item per column, so all three start on the same line. */
+.dashboard #content.colMS > .uznr-rail {
+  grid-column: 1;
+  grid-row: 1;
+  min-width: 0;
+}
+
+.dashboard #content.colMS > .uznr-rail .uznr-accounts {
+  margin-bottom: 22px;
+}
+
+.dashboard #content.colMS > .uznr-rail .uznr-guide {
+  margin-bottom: 0;
+}
+
+.dashboard #content.colMS > #content-main {
+  grid-column: 2;
+  grid-row: 1;
+  min-width: 0;
+  width: auto;
+  float: none;
+}
+
+.dashboard #content.colMS > #content-related {
+  grid-column: 3;
+  grid-row: 1;
+  width: auto;
+  margin: 0;
+  float: none;
+  /* The stock rail paints its own panel behind the module, which showed as an
+     empty grey block hanging below "Skorasnje akcije". The module inside is
+     already a card, so the wrapper needs no surface of its own. */
+  background: none;
+  border: none;
+  padding: 0;
+}
+
+.dashboard #content-related .module {
+  margin-bottom: 0;
+}
+
+/* The last group in the middle column should not add trailing space under a
+   layout whose whole point is that the three rails line up. */
+.dashboard #content-main .admin-group:last-child {
+  margin-bottom: 0;
+}
+
+/* Two rails: activity keeps the right, and the guide goes back to a full-width
+   band above the cards. Dropping it to the foot of the page instead would have
+   put the one thing written for first-time visitors where they never scroll. */
+@media (max-width: 1300px) {
+  .dashboard #content.colMS {
+    grid-template-columns: minmax(0, 1fr) 300px;
+  }
+
+  .dashboard #content.colMS > .uznr-rail {
+    grid-column: 1 / -1;
+    grid-row: 1;
+    margin-bottom: 24px;
+  }
+
+  .dashboard #content.colMS > #content-main {
+    grid-column: 1;
+    grid-row: 2;
+  }
+
+  .dashboard #content.colMS > #content-related {
+    grid-column: 2;
+    grid-row: 2;
+  }
+}
+
+/* One column. */
+@media (max-width: 900px) {
+  .dashboard #content.colMS {
+    grid-template-columns: minmax(0, 1fr);
+    padding-inline: 16px;
+  }
+
+  .dashboard #content.colMS > .uznr-rail,
+  .dashboard #content.colMS > #content-main,
+  .dashboard #content.colMS > #content-related {
+    grid-column: 1;
+    grid-row: auto;
+    margin-top: 0;
+  }
+}
+
+/* Guide, now a <details> -------------------------------------------------- */
+
+.uznr-guide {
+  padding: 0;
+}
+
+.uznr-guide__summary {
+  cursor: pointer;
+  list-style: none;
+  padding: 13px 16px;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--uznr-ink);
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+
+.uznr-guide__summary::-webkit-details-marker {
+  display: none;
+}
+
+/* Disclosure triangle, drawn so it can rotate on open. */
+.uznr-guide__summary::before {
+  content: '';
+  width: 0;
+  height: 0;
+  border-left: 6px solid var(--uznr-primary);
+  border-top: 4.5px solid transparent;
+  border-bottom: 4.5px solid transparent;
+  transition: transform 0.15s ease;
+}
+
+.uznr-guide[open] .uznr-guide__summary::before {
+  transform: rotate(90deg);
+}
+
+.uznr-guide__body {
+  padding: 0 16px 16px;
+}
+
+.uznr-guide__body p:first-child {
+  margin-top: 0;
+}
+
+/* ---------------------------------------------------------------------------
+ * Dashboard model cards
+ *
+ * The stock dashboard is one table listing every model at equal weight, which
+ * on this site meant eleven rows with no answer to "where do I go for X".
+ * content/admin.py buckets them into HOME_GROUPS and app_list.html renders each
+ * bucket as a row of cards; these rules give the cards a shape.
+ * ------------------------------------------------------------------------ */
+
+.admin-group {
+  margin-bottom: 52px;
+}
+
+.admin-group__head {
+  margin-bottom: 16px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--uznr-border);
+}
+
+.admin-group__title {
+  margin: 0;
+  padding: 0;
+  background: none;
+  border: none;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--uznr-muted);
+}
+
+.admin-group__blurb {
+  margin: 3px 0 0;
+  font-size: 0.83rem;
+  color: var(--uznr-muted);
+}
+
+.admin-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(268px, 1fr));
+  gap: 14px;
+}
+
+.admin-card {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 16px 18px;
+  background: var(--uznr-surface);
+  border: 1px solid var(--uznr-border);
+  border-radius: var(--uznr-radius-md);
+  box-shadow: var(--uznr-shadow-sm);
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.admin-card:hover {
+  border-color: var(--uznr-primary);
+  box-shadow: var(--uznr-shadow-md);
+}
+
+/* Waiting messages are the one time-sensitive thing on this page. */
+.admin-card--flagged {
+  border-left: 3px solid var(--uznr-primary);
+}
+
+.admin-card__title {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  background: none;
+  border: none;
+  font-size: 0.98rem;
+  font-weight: 700;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+#content .admin-card__title a {
+  color: var(--uznr-ink);
+  text-decoration: none;
+}
+
+#content .admin-card__title a:hover {
+  color: var(--uznr-primary-dark);
+}
+
+.admin-card__badge {
+  flex-shrink: 0;
+  padding: 2px 9px;
+  border-radius: 999px;
+  background: var(--uznr-primary);
+  color: #fff;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.admin-card__description {
+  margin: 0;
+  flex: 1;
+  font-size: 0.82rem;
+  line-height: 1.5;
+  color: var(--uznr-muted);
+}
+
+.admin-card__actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 2px;
+}
+
+#content .admin-card__action,
+#content .admin-card__action:link,
+#content .admin-card__action:visited {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 6px 13px;
+  border-radius: 999px;
+  border: 1px solid var(--uznr-border);
+  background: var(--uznr-surface);
+  color: var(--uznr-text);
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+}
+
+#content .admin-card__action:hover {
+  border-color: var(--uznr-primary);
+  background: var(--uznr-primary-light);
+  color: var(--uznr-ink);
+}
+
+#content .admin-card__action--add,
+#content .admin-card__action--add:link,
+#content .admin-card__action--add:visited {
+  background: var(--uznr-primary);
+  border-color: var(--uznr-primary);
+  color: #fff;
+}
+
+#content .admin-card__action--add:hover {
+  background: var(--uznr-primary-dark);
+  border-color: var(--uznr-primary-dark);
+  color: #fff;
+}
+
+/* The page heading was smaller than the module captions under it. */
+.dashboard #content > h1 {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--uznr-ink);
+  margin: 0 0 16px;
+}
+
+/* ---------------------------------------------------------------------------
+ * Recent actions
+ *
+ * Django tags each entry in this list with addlink/changelink/deletelink -- the
+ * same class names it uses for buttons. The theme styles .deletelink as a red
+ * danger button, so every deleted item in the history rendered as a red pill
+ * with its own label printed on top of it. These rules put the list back to
+ * being a list, with the action shown as a small coloured dot instead.
+ * ------------------------------------------------------------------------ */
+
+#recent-actions-module ul.actionlist {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+#recent-actions-module .actionlist li {
+  position: relative;
+  margin: 0;
+  padding: 8px 0 8px 18px;
+  background: none !important;
+  border: none;
+  border-radius: 0;
+  color: var(--uznr-text);
+  font-size: 0.83rem;
+  line-height: 1.45;
+}
+
+#recent-actions-module .actionlist li + li {
+  border-top: 1px solid var(--uznr-border);
+}
+
+/* The dot carries what the icon/colour used to say. */
+#recent-actions-module .actionlist li::before {
+  content: '';
+  position: absolute;
+  left: 2px;
+  top: 15px;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--uznr-muted);
+}
+
+#recent-actions-module .actionlist li.addlink::before {
+  background: var(--uznr-primary);
+}
+
+#recent-actions-module .actionlist li.changelink::before {
+  background: #c08a37;
+}
+
+#recent-actions-module .actionlist li.deletelink::before {
+  background: var(--uznr-danger);
+}
+
+#recent-actions-module .actionlist li a {
+  color: var(--uznr-ink);
+}
+
+#recent-actions-module .actionlist .mini.quiet {
+  display: block;
+  color: var(--uznr-muted);
+  font-size: 0.75rem;
+}
+
+/* Row count per model card. Sits between the name and the description as a
+   quiet fact, not a headline -- it tells you how much is in there before you
+   click, without competing with the title. */
+.admin-card__count {
+  margin: -2px 0 0;
+  font-size: 1.35rem;
+  font-weight: 700;
+  line-height: 1.1;
+  color: var(--uznr-primary-dark);
+}
+
+@media (prefers-color-scheme: dark) {
+  html:not([data-theme="light"]) .admin-card__count {
+    color: var(--uznr-primary);
+  }
+}
+
+html[data-theme="dark"] .admin-card__count {
+  color: var(--uznr-primary);
+}
+
+/* ---------------------------------------------------------------------------
+ * Header user tools
+ *
+ * Replaces the stock "WELCOME, ADMIN. VIEW SITE / CHANGE PASSWORD / LOG OUT"
+ * run of small-caps links joined by slashes. Same actions, given shapes.
+ * ------------------------------------------------------------------------ */
+
+#user-tools.uznr-usertools {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.82rem;
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+.uznr-usertools__who {
+  margin-right: 2px;
+  font-weight: 600;
+  color: var(--uznr-muted);
+  text-transform: none;
+}
+
+#user-tools .uznr-usertools__btn,
+#user-tools .uznr-usertools__btn:link,
+#user-tools .uznr-usertools__btn:visited {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 14px;
+  border-radius: 999px;
+  border: 1px solid var(--uznr-border);
+  background: var(--uznr-surface);
+  color: var(--uznr-text);
+  font: inherit;
+  font-size: 0.82rem;
+  font-weight: 600;
+  text-transform: none;
+  letter-spacing: 0;
+  text-decoration: none;
+  cursor: pointer;
+  transition: border-color 0.15s ease, background 0.15s ease, color 0.15s ease;
+}
+
+#user-tools .uznr-usertools__btn:hover {
+  border-color: var(--uznr-primary);
+  background: var(--uznr-primary-light);
+  color: var(--uznr-ink);
+}
+
+#user-tools .uznr-usertools__btn--primary,
+#user-tools .uznr-usertools__btn--primary:link,
+#user-tools .uznr-usertools__btn--primary:visited {
+  background: var(--uznr-primary);
+  border-color: var(--uznr-primary);
+  color: #fff;
+}
+
+#user-tools .uznr-usertools__btn--primary:hover {
+  background: var(--uznr-primary-dark);
+  border-color: var(--uznr-primary-dark);
+  color: #fff;
+}
+
+/* The stock stylesheet floats this form; inside the flex row it just sits. */
+#user-tools #logout-form {
+  display: inline-flex;
+  margin: 0;
+  padding: 0;
+}
+
+/* Phones: let the row wrap rather than run off the edge. */
+@media (max-width: 767px) {
+  #user-tools.uznr-usertools {
+    flex-wrap: wrap;
+    gap: 6px;
+    padding-top: 6px;
+  }
+}
+
+/* ---------------------------------------------------------------------------
+ * Save row
+ *
+ * Django uppercases only the primary submit ("SAČUVAJ") and leaves the others
+ * in sentence case, so the row read as three different kinds of button. The
+ * delete button also keeps Django's own red rather than the theme's danger
+ * colour. Both are normalised here.
+ * ------------------------------------------------------------------------ */
+
+/* forms.css is loaded after this file on change forms, so `.submit-row
+   input.default` there beats an equally specific selector here. The attribute
+   selector adds the weight needed to win without reaching for !important. */
+.submit-row input,
+.submit-row input[type="submit"].default,
+.submit-row button,
+.submit-row a {
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+.submit-row a.deletelink,
+.submit-row a.deletelink:link,
+.submit-row a.deletelink:visited {
+  background: var(--uznr-danger);
+  color: #fff;
+}
+
+.submit-row a.deletelink:hover {
+  background: #a52f26;
+  color: #fff;
+}
+
+/* The add button above each list. Django sets it in small caps; the label is a
+   plain-language phrase now, so it should read like one. */
+.object-tools a.addlink {
+  text-transform: none;
+  letter-spacing: 0;
+  font-size: 0.82rem;
+}
+
+/* ---------------------------------------------------------------------------
+ * Featured cards
+ *
+ * Vijesti and oglasi share a section with the page content but are edited far
+ * more often, so they carry more weight: a tinted surface, a green edge and a
+ * larger count. Same shape, louder voice.
+ * ------------------------------------------------------------------------ */
+
+.admin-card--featured {
+  background: var(--uznr-primary-light);
+  border-color: var(--uznr-primary);
+  border-left-width: 3px;
+}
+
+.admin-card--featured .admin-card__title {
+  font-size: 1.05rem;
+}
+
+.admin-card--featured .admin-card__count {
+  font-size: 1.7rem;
+}
+
+#content .admin-card--featured .admin-card__action:not(.admin-card__action--add) {
+  background: var(--uznr-surface);
+}
+
+/* ---------------------------------------------------------------------------
+ * Accounts block (dashboard left rail)
+ *
+ * Django's auth app as two plain links. Accounts are not site content, so they
+ * do not get a content card.
+ * ------------------------------------------------------------------------ */
+
+.uznr-accounts {
+  padding-bottom: 18px;
+  border-bottom: 1px solid var(--uznr-border);
+}
+
+.uznr-accounts__title {
+  margin: 0;
+  padding: 0;
+  background: none;
+  border: none;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--uznr-muted);
+}
+
+.uznr-accounts__blurb {
+  margin: 3px 0 10px;
+  font-size: 0.83rem;
+  color: var(--uznr-muted);
+}
+
+#content a.uznr-accounts__link,
+#content a.uznr-accounts__link:link,
+#content a.uznr-accounts__link:visited {
+  display: block;
+  padding: 6px 0;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--uznr-ink);
+  text-decoration: none;
+}
+
+#content a.uznr-accounts__link:hover {
+  color: var(--uznr-primary-dark);
+}
+
+/* ---------------------------------------------------------------------------
+ * Inbox button in the header
+ * ------------------------------------------------------------------------ */
+
+#user-tools .uznr-inbox {
+  gap: 7px;
+}
+
+#user-tools .uznr-inbox--waiting,
+#user-tools .uznr-inbox--waiting:link,
+#user-tools .uznr-inbox--waiting:visited {
+  border-color: var(--uznr-primary);
+  background: var(--uznr-primary-light);
+  color: var(--uznr-primary-darker);
+}
+
+.uznr-inbox__count {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 19px;
+  height: 19px;
+  padding: 0 5px;
+  border-radius: 999px;
+  background: var(--uznr-primary);
+  color: #fff;
+  font-size: 0.7rem;
+  font-weight: 700;
+}

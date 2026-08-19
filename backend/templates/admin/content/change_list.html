@@ -1,0 +1,49 @@
+{% extends "admin/change_list.html" %}
+{% load admin_urls %}
+{% comment %}
+Applies to every list in the `content` app.
+
+Two changes from stock Django:
+
+  * The heading. Django writes "Odaberi objekat klase Oglas za izmenu", which
+    names a database concept and an operation on it. The name of the thing is
+    enough — the list underneath already shows it is a list.
+  * The ModelAdmin's `description` is printed above the table, so the sentence
+    explaining what this is and where it appears on the site stays on screen
+    after you leave the home page.
+  * The add button. Django labels it "Dodaj objekat klase Oglas" -- again the
+    database wording. "Novi oglas" says the same thing in the language the rest
+    of this admin uses.
+{% endcomment %}
+
+{% block title %}{{ cl.opts.verbose_name_plural|capfirst }} | {{ site_title|default:_('Django site admin') }}{% endblock %}
+
+{% block content_title %}
+  <h1>{{ cl.opts.verbose_name_plural|capfirst }}</h1>
+{% endblock %}
+
+{% block object-tools-items %}
+  {% if has_add_permission %}
+    <li>
+      <a href="{% url cl.opts|admin_urlname:'add' %}{% if is_popup %}?{{ is_popup_var }}=1{% endif %}" class="addlink">
+        Novo: {{ cl.opts.verbose_name }}
+      </a>
+    </li>
+  {% endif %}
+{% endblock %}
+
+{% block content %}
+  {% if cl.model_admin.description %}
+    <p class="uznr-note">{{ cl.model_admin.description }}</p>
+  {% endif %}
+  {% if cl.model_admin.page_label %}
+    <p class="uznr-pagelink">
+      <a href="{% url 'admin:content_page_changelist' %}">Naslov i uvodni tekst ove stranice →</a>
+    </p>
+  {% endif %}
+  {% if cl.model_admin.reorder_field %}
+    {# Tells reorder.js that this list's rows can be dragged. #}
+    <div id="uznr-reorder-list" hidden></div>
+  {% endif %}
+  {{ block.super }}
+{% endblock %}

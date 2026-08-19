@@ -1,0 +1,48 @@
+[
+ {
+  "title": "Spisak koordinatora za zaštitu i zdravlje na radu",
+  "title_en": "List of occupational safety and health coordinators",
+  "order": 0
+ },
+ {
+  "title": "Spisak ovlašćenih organizacija za poslove zaštite i zdravlja na radu",
+  "title_en": "List of organisations licensed for occupational safety and health work",
+  "order": 1
+ },
+ {
+  "title": "Ministarstvo rada i socijalnog dijaloga",
+  "title_en": "Ministry of Labour and Social Dialogue",
+  "order": 2,
+  "url": "https://www.gov.me/mrzs"
+ },
+ {
+  "title": "EU-OSHA – Evropska agencija za bezbjednost i zdravlje na radu",
+  "title_en": "EU-OSHA – European Agency for Safety and Health at Work",
+  "order": 3,
+  "url": "https://osha.europa.eu/en"
+ },
+ {
+  "title": "Međunarodna organizacija rada (ILO)",
+  "title_en": "International Labour Organization (ILO)",
+  "order": 4,
+  "url": "https://www.ilo.org/"
+ },
+ {
+  "title": "Ministarstvo ekonomskog razvoja",
+  "title_en": "Ministry of Economic Development",
+  "order": 5,
+  "url": "https://www.gov.me/mek"
+ },
+ {
+  "title": "ENETOSH",
+  "title_en": "ENETOSH",
+  "order": 6,
+  "url": "https://www.enetosh.net/"
+ },
+ {
+  "title": "IOSH",
+  "title_en": "IOSH",
+  "order": 7,
+  "url": "https://iosh.com/"
+ }
+]

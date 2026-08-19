@@ -1,0 +1,21 @@
+{% extends "admin/change_form.html" %}
+{% load i18n %}
+{% comment %}
+Stock Django titles this page "Izmeni objekat klase Sekcija", both in the
+heading and in the browser tab. Everyone editing this site knows what they
+clicked; what they need is the name of the thing in front of them, not the
+class it belongs to.
+{% endcomment %}
+
+{% block title %}{% if original %}{{ original }}{% else %}Novo: {{ opts.verbose_name }}{% endif %} | {{ site_title|default:_('Django site admin') }}{% endblock %}
+
+{% block content_title %}
+  <h1>{% if original %}{{ original }}{% else %}Novo: {{ opts.verbose_name }}{% endif %}</h1>
+{% endblock %}
+
+{% comment %}
+Django 6 prints its own subtitle under the heading, which on this form is the
+same object name again -- the page opened with the title written twice, one
+line under the other. The heading above already says it.
+{% endcomment %}
+{% block content_subtitle %}{% endblock %}

@@ -1,0 +1,6 @@
+django==6.1
+djangorestframework==3.18.0
+django-cors-headers==4.9.0
+pillow==12.3.0
+gunicorn==23.0.0
+whitenoise==6.11.0

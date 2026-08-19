@@ -1,0 +1,46 @@
+{% extends "email/base_email.html" %}
+
+{% block lang %}en{% endblock %}
+{% block title %}We have received your message{% endblock %}
+{% block org %}Occupational Safety and Health Association of Montenegro{% endblock %}
+{% block footer_org %}Occupational Safety and Health Association of Montenegro{% endblock %}
+
+{% block content %}
+<h1 style="margin:0 0 16px; font-size:20px; line-height:1.3; color:#17211c;">We have received your message</h1>
+
+<p style="margin:0 0 14px; font-size:15px; line-height:1.6;">
+  Dear {{ message.name }},
+</p>
+<p style="margin:0 0 14px; font-size:15px; line-height:1.6;">
+  thank you for getting in touch. Your message has reached the Occupational Safety and Health
+  Association of Montenegro and we will reply within <strong>two working days</strong> at the latest.
+</p>
+<p style="margin:0 0 24px; font-size:15px; line-height:1.6; color:#6b7a72;">
+  This is an automatic confirmation — there is no need to reply to it.
+</p>
+
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background:#f6f8f6; border:1px solid #e1e7e2; border-radius:10px;">
+  <tr>
+    <td style="padding:18px 20px;">
+      <p style="margin:0 0 12px; font-size:12px; font-weight:700; letter-spacing:0.6px; text-transform:uppercase; color:#2f8f45;">
+        A copy of your message
+      </p>
+      <table role="presentation" cellpadding="0" cellspacing="0" border="0" style="font-size:14px; line-height:1.6;">
+        <tr>
+          <td style="padding:2px 12px 2px 0; color:#6b7a72; white-space:nowrap;">Subject</td>
+          <td style="padding:2px 0; color:#17211c;">{{ message.subject }}</td>
+        </tr>
+        <tr>
+          <td style="padding:2px 12px 2px 0; color:#6b7a72; white-space:nowrap;">Sent</td>
+          <td style="padding:2px 0; color:#17211c;">{{ message.created_at|date:"d.m.Y. H:i" }}</td>
+        </tr>
+      </table>
+      <p style="margin:14px 0 0; padding-top:14px; border-top:1px solid #e1e7e2; font-size:14px; line-height:1.7; color:#45524c; white-space:pre-line;">{{ message.message }}</p>
+    </td>
+  </tr>
+</table>
+
+<p style="margin:24px 0 0; font-size:14px; line-height:1.6; color:#6b7a72;">
+  If your enquiry is urgent, you can also reach us by phone at {{ office_phone }}.
+</p>
+{% endblock %}

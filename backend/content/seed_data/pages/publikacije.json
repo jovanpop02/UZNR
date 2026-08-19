@@ -1,0 +1,95 @@
+{
+  "slug": "publikacije",
+  "title": "Publikacije",
+  "title_en": "Publications",
+  "sections": [
+    {
+      "kind": "documents",
+      "heading": "Publikacije",
+      "heading_en": "Publications",
+      "order": 0,
+      "items": [
+        {
+          "title": "Vodič za inspektore rada za oblast zaštite i zdravlja na radu na gradilištima",
+          "reference": "",
+          "url": "",
+          "file": "/documents/publikacije/vodic-za-inspektore-rada.pdf",
+          "pages": null,
+          "size_kb": 6582,
+          "date_label": "",
+          "order": 0
+        },
+        {
+          "title": "Studija sprovođenja zaštite i zdravlja na radu u Crnoj Gori",
+          "reference": "",
+          "url": "",
+          "file": "/documents/publikacije/studija-sprovodjenja-zznr-u-cg.pdf",
+          "pages": null,
+          "size_kb": 1356,
+          "date_label": "",
+          "order": 1
+        },
+        {
+          "title": "Priručnik za zaposlene i poslodavce „Pravilima sigurnosti do zdrave budućnosti“",
+          "reference": "",
+          "url": "",
+          "file": "/documents/publikacije/prirucnik-za-zaposlene-i-poslodavce.pdf",
+          "pages": null,
+          "size_kb": 9881,
+          "date_label": "",
+          "order": 2
+        },
+        {
+          "title": "Andragogija zaštite na radu – Rančić",
+          "reference": "",
+          "url": "",
+          "file": "/documents/publikacije/andragogija-zastite-na-radu-rancic.pdf",
+          "pages": null,
+          "size_kb": 17478,
+          "date_label": "",
+          "order": 3
+        },
+        {
+          "title": "Izvještaj o procjeni organizacionih i institucionalnih kapaciteta Nacionalnih savjeta za zaštitu i zdravlje na radu u IPA zemljama",
+          "reference": "",
+          "url": "",
+          "file": "/documents/publikacije/izvjestaj-nacionalni-savjeti-ipa.pdf",
+          "pages": null,
+          "size_kb": 528,
+          "date_label": "",
+          "order": 4
+        },
+        {
+          "title": "Priručnik za mlade: Šta mladi treba da znaju o zaštiti i zdravlju na radu",
+          "reference": "",
+          "url": "",
+          "file": "/documents/publikacije/prirucnik-za-mlade.pdf",
+          "pages": null,
+          "size_kb": 2359,
+          "date_label": "",
+          "order": 5
+        },
+        {
+          "title": "Studija – Zaštita i zdravlje na radu zaposlenih u medijima",
+          "reference": "",
+          "url": "",
+          "file": "/documents/publikacije/studija-zznr-zaposlenih-u-medijima.pdf",
+          "pages": null,
+          "size_kb": 435,
+          "date_label": "Maj 2025.",
+          "order": 6
+        },
+        {
+          "title": "Nacionalni profil zaštite i zdravlja na radu za Crnu Goru",
+          "reference": "",
+          "url": "",
+          "file": "/documents/publikacije/nacionalni-profil-zznr-cg.pdf",
+          "pages": null,
+          "size_kb": 1737,
+          "date_label": "Maj 2025.",
+          "order": 7
+        }
+      ]
+    }
+  ]
+}

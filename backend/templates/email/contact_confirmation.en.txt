@@ -1,0 +1,23 @@
+Dear {{ message.name }},
+
+thank you for your message. Your enquiry has reached the Occupational Safety
+and Health Association of Montenegro, and we will reply within two working
+days at the latest.
+
+This is an automatic confirmation — there is no need to reply to it.
+
+--------------------------------------------------------------------
+A copy of your message
+
+Subject: {{ message.subject }}
+Sent: {{ message.created_at|date:"d.m.Y. H:i" }}
+
+{{ message.message }}
+--------------------------------------------------------------------
+
+If your enquiry is urgent, you can also reach us by phone.
+
+Occupational Safety and Health Association of Montenegro
+4. jul 109/3, 81000 Podgorica
+{{ office_email }} · {{ office_phone }}
+{{ site_url }}

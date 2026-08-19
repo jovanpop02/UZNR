@@ -1,0 +1,41 @@
+{% comment %}
+Layout for transactional mail. Table-based with inline styles on purpose:
+Outlook and Gmail strip <style> blocks and ignore most modern CSS, so anything
+that must survive has to be an attribute or an inline style on the element.
+{% endcomment %}<!doctype html>
+<html lang="{% block lang %}sr-Latn-ME{% endblock %}">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{% block title %}UZNR{% endblock %}</title>
+  </head>
+  <body style="margin:0; padding:0; background:#f6f8f6;">
+    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background:#f6f8f6; padding:24px 12px;">
+      <tr>
+        <td align="center">
+          <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="max-width:560px; background:#ffffff; border:1px solid #e1e7e2; border-radius:14px; overflow:hidden; font-family:'Segoe UI',Roboto,Helvetica,Arial,sans-serif; color:#45524c;">
+            <tr>
+              <td style="background:#42b758; padding:20px 28px; color:#ffffff; font-size:15px; font-weight:700; letter-spacing:0.4px;">
+                UZNR &mdash; {% block org %}Udruženje zaštite na radu Crne Gore{% endblock %}
+              </td>
+            </tr>
+            <tr>
+              <td style="padding:28px;">
+                {% block content %}{% endblock %}
+              </td>
+            </tr>
+            <tr>
+              <td style="border-top:1px solid #e1e7e2; padding:20px 28px; font-size:12px; line-height:1.7; color:#6b7a72;">
+                {% block footer_org %}Udruženje zaštite na radu Crne Gore{% endblock %}<br />
+                4. jul 109/3, 81000 Podgorica<br />
+                <a href="mailto:{{ office_email }}" style="color:#2f8f45; text-decoration:none;">{{ office_email }}</a>
+                &middot; {{ office_phone }}<br />
+                <a href="{{ site_url }}" style="color:#2f8f45; text-decoration:none;">{{ site_url }}</a>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
+  </body>
+</html>

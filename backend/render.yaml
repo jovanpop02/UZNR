@@ -1,0 +1,64 @@
+services:
+  - type: web
+    name: uznr-backend
+    runtime: python
+    plan: free
+    buildCommand: "pip install -r requirements.txt && python manage.py collectstatic --noinput"
+    # import_projekti_biblioteka is idempotent — it matches blocks by heading and
+    # documents by address — so it fills a fresh database and is a no-op on every
+    # later restart, leaving anything edited in the admin untouched.
+    # The seeding steps use `;` and `|| true` rather than `&&`: this database is
+    # rebuilt from nothing on every deploy, and a seed that fails must cost its
+    # own content, never the boot. gunicorn has to start either way.
+    startCommand: "python manage.py migrate && python manage.py import_pages; python manage.py import_projekti_biblioteka --apply || true; python manage.py ensure_admin_user || true; (python manage.py import_seed &) ; gunicorn config.wsgi --log-file -"
+    envVars:
+      - key: SECRET_KEY
+        generateValue: true
+      - key: DEBUG
+        value: "False"
+      - key: ALLOWED_HOSTS
+        value: ".onrender.com"
+      - key: CORS_ALLOWED_ORIGINS
+        value: "https://uznr.netlify.app"
+      - key: PYTHON_VERSION
+        value: "3.13.0"
+
+      # Contact form e-mail. Without EMAIL_HOST the backend prints mail to the
+      # log instead of sending it, so the form keeps working (messages are still
+      # saved and visible in the admin) but nobody is notified.
+      # Set the credentials in the Render dashboard, not here.
+      - key: EMAIL_HOST
+        sync: false
+      - key: EMAIL_PORT
+        value: "587"
+      - key: EMAIL_HOST_USER
+        sync: false
+      - key: EMAIL_HOST_PASSWORD
+        sync: false
+      - key: EMAIL_USE_TLS
+        value: "True"
+      # Must be an address the SMTP account may send as, or mail is rejected.
+      - key: DEFAULT_FROM_EMAIL
+        value: "UZNR <info@uznr.me>"
+      - key: CONTACT_NOTIFY_EMAILS
+        value: "info@uznr.me"
+      - key: SITE_URL
+        value: "https://uznr.netlify.app"
+      - key: BACKEND_URL
+        sync: false
+
+      # Admin account, created at boot because the free plan has no shell.
+      # Without these it falls back to admin/123, the same login as local
+      # development. That password is in a public repository, which is part of
+      # why the account is view-only; set ADMIN_PASSWORD here to override it.
+      - key: ADMIN_USERNAME
+        sync: false
+      - key: ADMIN_PASSWORD
+        sync: false
+      - key: ADMIN_EMAIL
+        sync: false
+      # "True" = the account can look but not save. This database is wiped on
+      # every deploy, so nothing typed into the live admin would survive; set
+      # this to False only once the site has a real database.
+      - key: ADMIN_READONLY
+        value: "True"

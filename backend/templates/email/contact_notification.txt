@@ -1,0 +1,14 @@
+Nova poruka sa sajta uznr.me
+
+Ime i prezime: {{ message.name }}
+E-mail:        {{ message.email }}
+Naslov:        {{ message.subject }}
+Jezik sajta:   {{ message.language }}
+Primljeno:     {{ message.created_at|date:"d.m.Y. H:i" }}
+
+Poruka:
+{{ message.message }}
+
+--
+Odgovor na ovaj mejl ide direktno pošiljaocu ({{ message.email }}).
+Poruka je sačuvana i u administraciji: {{ admin_url }}

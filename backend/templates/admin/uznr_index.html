@@ -1,0 +1,69 @@
+{% extends "admin/index.html" %}
+{% comment %}
+The admin home page.
+
+Named uznr_index rather than index so that the extends above still resolves to
+Django's own template instead of recursing into this one. Wired up in
+config/urls.py via admin.site.index_template.
+
+The page is three rails that start level with each other: account links and the
+orientation panel on the left, the content cards in the middle, recent activity
+on the right (see custom_admin.css).
+
+The orientation panel is a <details> so people who have read it once can fold it
+away; guide.js remembers that choice. It ships open, because the audience is the
+Association's staff rather than developers.
+
+There is no row of shortcut buttons: every card carries its own "Dodaj", so a
+separate "Nova vijest" button was a second route to the same form. The inbox is
+not here either -- it sits in the header, on every page.
+{% endcomment %}
+
+{% comment %}
+The header bar already says "UZNR administracija", and the page underneath is
+plainly the content it manages. "Upravljanje sadrzajem" on top of that was a
+label for something nobody needed labelled, costing a line of the fold.
+{% endcomment %}
+{% block content_title %}{% endblock %}
+
+{% block content %}
+  {% comment %}
+  The left rail is one element on purpose: as two grid items it shared its rows
+  with the full-height middle column, and the row track stretched to match it,
+  leaving a gap between the account links and the panel below them.
+  {% endcomment %}
+  <div class="uznr-rail">
+  {% comment %}
+  Django's auth app, rendered as two links rather than a card: accounts are not
+  content, and giving them the same shape as "Vijesti" overstated them. The
+  sidebar still lists them the usual way.
+  {% endcomment %}
+  <div class="uznr-accounts">
+    <h2 class="uznr-accounts__title">Nalozi</h2>
+    <p class="uznr-accounts__blurb">Ko ima pristup ovoj administraciji.</p>
+    <a class="uznr-accounts__link" href="{% url 'admin:auth_user_changelist' %}">Korisnici</a>
+    <a class="uznr-accounts__link" href="{% url 'admin:auth_user_add' %}">Novi korisnik</a>
+  </div>
+
+  <details class="uznr-guide" open>
+    <summary class="uznr-guide__summary">Kako se koristi</summary>
+    <div class="uznr-guide__body">
+      <p>
+        Ovdje se uređuje sadržaj sajta — tekstovi, vijesti, dokumenti i fotografije.
+        Izgled sajta se ne mijenja odavde; ovo je sadržaj koji sajt prikazuje.
+      </p>
+      <ul>
+        <li><strong>Izmjene su odmah vidljive.</strong> Kada sačuvate, dovoljno je osvježiti stranicu na sajtu.</li>
+        <li><strong>Uhvatite red i povucite ga</strong> gore ili dolje da promijenite kojim se redom stvari prikazuju na sajtu. U spiskovima se čuva odmah, a unutar stranice kada pritisnete „Sačuvaj“.</li>
+        <li><strong>Engleska verzija</strong> je sklonjena u dio „Engleska verzija“ na dnu forme. Ako je ostavite praznu, na engleskom sajtu se prikazuje crnogorski tekst.</li>
+        <li><strong>Dokumenti i fotografije</strong> se otpremaju direktno u formi — nije potreban poseban program.</li>
+        <li><strong>Brisanje je trajno.</strong> Da nešto privremeno sklonite sa sajta, koristite „Prikazano“ ili „Aktivan“ umjesto brisanja.</li>
+      </ul>
+      <p class="uznr-guide__foot">
+        Ispod je spisak svega što se može uređivati. Uz svaku stavku piše šta je i gdje se prikazuje na sajtu.
+      </p>
+    </div>
+  </details>
+  </div>
+  {{ block.super }}
+{% endblock %}
