@@ -134,13 +134,13 @@ function closeDetail() {
         {{ t('ads.preparationText') }}
       </p>
       <div class="oglasi__priprema-actions">
-        <a class="btn btn--primary" href="mailto:info@uznr.me">
+        <router-link class="btn btn--primary" to="/kontakt">
           <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
             <rect x="3" y="5" width="18" height="14" rx="2.5" />
             <path d="m4 7 8 6 8-6" stroke-linecap="round" stroke-linejoin="round" />
           </svg>
           {{ t('ads.sendInquiry') }}
-        </a>
+        </router-link>
         <a class="oglasi__priprema-phone" href="tel:+38267412900">067 412 900</a>
       </div>
     </div>
