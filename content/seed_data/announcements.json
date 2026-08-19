@@ -7,7 +7,9 @@
     "link": "",
     "link_label": "",
     "is_open": true,
-    "links": []
+    "links": [],
+    "title_en": "Job vacancy — Tehno-control d.o.o. Podgorica",
+    "excerpt_en": "A licensed occupational safety and health organisation with departments in Podgorica and Nikšić is hiring on a permanent basis due to an increased workload.\n\nOpen positions: mechanical engineer, civil engineer.\n\nRequirements: passed professional examination in occupational safety and health, at least 3 years of work experience, category B driving licence, computer literacy.\n\nHow to apply / contact: e-mail info@uznr.me and tehno-control@t-com.me, tel. 069/484-031, 069/068-312.\n\nNote: Interested candidates may send an application together with a short CV; shortlisted candidates will be contacted."
   },
   {
     "title": "Udruženje zaštite na radu Crne Gore je otvorilo pozicije za sedam korisnika/ca Programa stručnog osposobljavanja lica sa stečenim visokim obrazovanjem",
@@ -17,7 +19,10 @@
     "link": "https://www.euprava.me/program-strucno-osposobljavanje",
     "link_label": "Prijava putem portala eUprava",
     "is_open": false,
-    "links": []
+    "links": [],
+    "title_en": "The Occupational Safety Association of Montenegro has opened seven positions under the Professional Training Programme for graduates",
+    "excerpt_en": "The Occupational Safety Association of Montenegro has opened seven positions under the Professional Training Programme for people with a completed higher education:\n\nOccupational safety (2), Public relations (1), Business English (1), English language and literature (1), Law (1), Marketing (1).\n\nWe invite you to join our team — you can follow the activities we run through our social media channels. For any further information, feel free to contact us by e-mail or on one of the phone numbers listed. The Association's address: Ulica 4. jula 109/3, the Zetagradnja building in Zabjelo. We look forward to meeting you. Welcome!\n\nApplications are open until 10 December 2022, through the eUprava portal.",
+    "link_label_en": "Apply through the eUprava portal"
   },
   {
     "title": "Poziv za angažovanje predavača u okviru projekta „Dostojanstven rad počinje dok si mlad“",
@@ -27,7 +32,9 @@
     "link": "",
     "link_label": "",
     "is_open": false,
-    "links": []
+    "links": [],
+    "title_en": "Call for lecturers under the project “Decent work starts while you are young”",
+    "excerpt_en": "UZNR CG invites experts in occupational safety and health (members of the Association) to lecture at educational workshops and training sessions to be held during October and November 2022, in secondary vocational schools in Podgorica, Bijelo Polje and Nikšić, as well as at the technical and technological faculties in Podgorica. Through the training, which will be tailored to its target groups, young people will learn about the challenges and problems in occupational safety and health that they will face when they enter the labour market after finishing their education.\n\nThis activity will be carried out under the project “Decent work starts while you are young”, financed by the European Commission and the Ministry of Public Administration, and implemented in cooperation with and with the support of the NGO Prima and the YouthHUB network of the Western Balkans and Türkiye.\n\nThe call is open until 16 July 2022."
   },
   {
     "title": "Udruženje zaštite na radu Crne Gore dodjeljuje nagrade za doprinos u oblasti zaštite i zdravlja na radu",
@@ -38,10 +45,21 @@
     "link_label": "",
     "is_open": false,
     "links": [
-      { "title": "Nagrada za doprinos u oblasti zaštite i zdravlja na radu", "file_url": "https://uznr.me/wp-content/uploads/2025/05/Nagrade-zadoprinosuoblastiZZNR2022.pdf" },
-      { "title": "Prijava za pravna lica", "file_url": "https://uznr.me/wp-content/uploads/2025/05/Prijava-zapravnalica2022.pdf" },
-      { "title": "Prijava za fizička lica", "file_url": "https://uznr.me/wp-content/uploads/2025/05/Prijava-zafizickalica2022.pdf" }
-    ]
+      {
+        "title": "Nagrada za doprinos u oblasti zaštite i zdravlja na radu",
+        "file_url": "https://uznr.me/wp-content/uploads/2025/05/Nagrade-zadoprinosuoblastiZZNR2022.pdf"
+      },
+      {
+        "title": "Prijava za pravna lica",
+        "file_url": "https://uznr.me/wp-content/uploads/2025/05/Prijava-zapravnalica2022.pdf"
+      },
+      {
+        "title": "Prijava za fizička lica",
+        "file_url": "https://uznr.me/wp-content/uploads/2025/05/Prijava-zafizickalica2022.pdf"
+      }
+    ],
+    "title_en": "The Occupational Safety Association of Montenegro is presenting awards for contribution to occupational safety and health",
+    "excerpt_en": "The call is open until 22 April 2022. Download the PDF document."
   },
   {
     "title": "Regionalni poziv za dodjelu grant sredstava za lokalne NVO",
@@ -52,10 +70,21 @@
     "link_label": "",
     "is_open": false,
     "links": [
-      { "title": "Guidelines 2022", "file_url": "https://uznr.me/wp-content/uploads/2025/05/Guidelines-1-2022-1.pdf" },
-      { "title": "Annex B 2022", "url": "https://project-balcanosh.net/2022/01/05/regional-call-for-grant-scheme/annex-b-2022-3/" },
-      { "title": "Annex C Budget 2022", "url": "https://project-balcanosh.net/2022/01/05/regional-call-for-grant-scheme/copy-of-copy-of-annex-c-budget-2022/" }
-    ]
+      {
+        "title": "Guidelines 2022",
+        "file_url": "https://uznr.me/wp-content/uploads/2025/05/Guidelines-1-2022-1.pdf"
+      },
+      {
+        "title": "Annex B 2022",
+        "url": "https://project-balcanosh.net/2022/01/05/regional-call-for-grant-scheme/annex-b-2022-3/"
+      },
+      {
+        "title": "Annex C Budget 2022",
+        "url": "https://project-balcanosh.net/2022/01/05/regional-call-for-grant-scheme/copy-of-copy-of-annex-c-budget-2022/"
+      }
+    ],
+    "title_en": "Regional call for grants for local NGOs",
+    "excerpt_en": "The Occupational Safety Association of Montenegro, in partnership with the Macedonian Occupational Safety and Health Association (MOSHA), Eko centar Serbia, the Kosovo Occupational Safety and Health Association (KOSHA) and the Albanian Occupational Safety and Health Association (AOSHC), under the project “Improving working conditions and occupational safety and health in support of the Western Balkan countries in the EU accession process” (contract number IPA/2019/413-810) and with the support of the European Commission, is publishing a regional call for a sub-granting scheme for local NGOs for projects in the field of occupational safety and health. The deadline for applications with the full application form is 23 February 2022 at 16:00.\n\nAn info session on the award of the grants will be held on 18 January at 11:00 via the ZOOM platform.\n\nThose interested should register their participation at the following e-mail address: kontakt@mzzpr.org.mk. All details of the call and the application documents are in the attachments."
   },
   {
     "title": "Poziv za medijske organizacije/novinare za učešće u regionalnoj medijskoj mreži u oblasti rada",
@@ -65,7 +94,10 @@
     "link": "https://project-balcanosh.net/2021/10/01/call-to-media-organizations-journalists-for-participation-in-the-regional-media-network-in-the-field-of-labor/",
     "link_label": "Prijavu ćete naći na ovom linku",
     "is_open": false,
-    "links": []
+    "links": [],
+    "title_en": "Call for media organisations and journalists to take part in the regional media network in the field of labour",
+    "excerpt_en": "Under the regional project “Improving working conditions and occupational safety and health in support of the Western Balkan countries in the EU accession process”, under a grant agreement supported and financed by the European Union, the BALcanOSH network invites all interested media organisations and journalists to join in forming a regional media network in the field of labour. The purpose of forming and running the regional network is the need to improve communication and cooperation between civil society organisations, media outlets and journalists in promoting issues relating to labour, working conditions and occupational safety and health in the Western Balkans. Beyond that, the network will aim to strengthen the stability of the countries and to accelerate their political, economic and social reform on the path of European integration.\n\nSpecific objectives:\n– Supporting the continuous improvement of journalistic independence and professionalism and strengthening the integrity of the media;\n– Raising public awareness of human rights, and in particular of workers' rights and of reducing the number of occupational injuries and diseases;\n– Establishing cooperation and close partnership between regional media organisations, civil society and the BALcanOSH network, all with the aim of improving working conditions and occupational safety and health in the countries of the Western Balkans.\n\nIn this way at least fifteen journalists from North Macedonia, Serbia, Kosovo, Albania and Montenegro will be involved. The journalists selected will have the opportunity to take part in the following activities:\n– A workshop on occupational safety and health and on standards of investigative journalism and reporting;\n– Becoming members of and working within an informal media network, preceded by the signing of a memorandum of cooperation;\n– Supporting the preparation of media stories and articles and their sharing and publication at regional level;\n– Taking part in occasional consultative meetings of the network of media organisations;\n– Taking part in the development of an innovative IT solution to serve as a support tool in the network's work;\n– Being involved in the project's promotional activities;\n– Having the opportunity to take part in the support scheme financed under this project.\n\nAn application nominating the person who will take part in the activities of the regional media network in the field of labour and occupational safety and health, together with a short CV, should be sent to kontakt@mzzpr.org.mk. Please nominate your representatives by 8 October 2021 at 17:00 at the latest.",
+    "link_label_en": "You will find the application form at this link"
   },
   {
     "title": "Poziv u okviru projekta „Gradi znanje – zaštiti sebe“",
@@ -75,6 +107,8 @@
     "link": "",
     "link_label": "",
     "is_open": false,
-    "links": []
+    "links": [],
+    "title_en": "Call under the project “Build knowledge – protect yourself”",
+    "excerpt_en": "A call for an occupational safety and health expert to produce a Guide for labour inspectors in the field of occupational safety and health. The guide will serve inspectors as guidance enabling proactive visits to construction sites, under the project “Build knowledge – protect yourself”, financed by the Ministry of Economic Development."
   }
 ]

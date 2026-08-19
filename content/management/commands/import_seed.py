@@ -59,9 +59,12 @@ class Command(BaseCommand):
                 slug=item['slug'],
                 defaults={
                     'title': item['title'],
+                    'title_en': item.get('title_en', ''),
                     'excerpt': item['excerpt'],
+                    'excerpt_en': item.get('excerpt_en', ''),
                     'date': item['date'],
                     'content': item.get('content'),
+                    'content_en': item.get('content_en', ''),
                 },
             )
             if item.get('thumbnail') and not obj.thumbnail:
@@ -118,10 +121,13 @@ class Command(BaseCommand):
             obj, _ = Announcement.objects.update_or_create(
                 title=item['title'],
                 defaults={
+                    'title_en': item.get('title_en', ''),
                     'excerpt': item['excerpt'],
+                    'excerpt_en': item.get('excerpt_en', ''),
                     'date': item.get('date'),
                     'link': item.get('link', ''),
                     'link_label': item.get('link_label', ''),
+                    'link_label_en': item.get('link_label_en', ''),
                     'is_open': item.get('is_open', True),
                     'order': item.get('order', index),
                 },
@@ -137,13 +143,17 @@ class Command(BaseCommand):
             if links and not obj.links.exists():
                 for order, link_spec in enumerate(links):
                     try:
+                        title_en = link_spec.get('title_en', '')
                         if link_spec.get('file_url'):
                             data = download(link_spec['file_url'])
-                            doc = AnnouncementLink(announcement=obj, title=link_spec['title'], order=order)
+                            doc = AnnouncementLink(
+                                announcement=obj, title=link_spec['title'], title_en=title_en, order=order
+                            )
                             doc.file.save(filename_from_url(link_spec['file_url']), ContentFile(data), save=True)
                         else:
                             AnnouncementLink.objects.create(
-                                announcement=obj, title=link_spec['title'], url=link_spec['url'], order=order
+                                announcement=obj, title=link_spec['title'], title_en=title_en,
+                                url=link_spec['url'], order=order,
                             )
                     except Exception as exc:
                         self.stderr.write(f"  link failed for {item['title']} ({link_spec.get('title')}): {exc}")
@@ -177,7 +187,11 @@ class Command(BaseCommand):
         for item in items:
             ImportantLink.objects.update_or_create(
                 title=item['title'],
-                defaults={'url': item.get('url', ''), 'order': item.get('order', 0)},
+                defaults={
+                    'title_en': item.get('title_en', ''),
+                    'url': item.get('url', ''),
+                    'order': item.get('order', 0),
+                },
             )
             created += 1
         self.stdout.write(self.style.SUCCESS(f'Imported {created} important links'))

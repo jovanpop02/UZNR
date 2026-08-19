@@ -14,77 +14,99 @@
           "description": "Zaštita i zdravlje na radu podrazumijeva obezbjeđivanje uslova na radu koji ne dovode do povreda na radu, profesionalnih bolesti i bolesti u vezi sa radom i koji stvaraju pretpostavke za punu fizičku i psihičku zaštitu zaposlenih.",
           "url": "",
           "file": "",
-          "order": 0
+          "order": 0,
+          "title_en": "What does occupational safety and health mean?",
+          "description_en": "Occupational safety and health means providing working conditions that do not lead to injuries at work, occupational diseases or work-related illnesses, and that create the conditions for the full physical and mental protection of employees."
         },
         {
           "title": "Kada i na koji način se obavlja osposobljavanje zaposlenih za bezbjedan rad?",
           "description": "Poslodavac je dužan da izvrši osposobljavanje zaposlenog kod zasnivanja radnog odnosa, raspoređivanja na drugo radno mjesto, uvođenja nove tehnologije, uvođenja novih ili zamjene sredstava za rad, promjene procesa rada i ponovnog raspoređivanja na rad poslije odsustvovanja koje je trajalo duže od godinu dana.",
           "url": "",
           "file": "",
-          "order": 1
+          "order": 1,
+          "title_en": "When and how are employees trained to work safely?",
+          "description_en": "The employer is obliged to train an employee when the employment relationship begins, when the employee is assigned to another job, when new technology is introduced, when new work equipment is introduced or replaced, when the work process changes, and when the employee returns to work after an absence lasting longer than one year."
         },
         {
           "title": "Koja su prava i obaveze zaposlenih?",
           "description": "Zaposleni ima pravo i obavezu da se prije početka rada upozna sa mjerama zaštite i zdravlja na radu na poslovima radnog mjesta na koje je raspoređen, kao i da se osposobljava za njihovo sprovođenje. Zaposleni ima pravo i obavezu da poslodavcu daje predloge, primjedbe i obavještenja o pitanjima zaštite i zdravlja na radu. Zaposleni ima pravo i obavezu da obavi zdravstveni pregled koji odgovara riziku za zaštitu i zdravlje na radnom mjestu, na koji ga upućuje poslodavac, u skladu sa propisima o zaštiti i zdravlju na radu i propisima iz oblasti zdravstvene zaštite.",
           "url": "",
           "file": "",
-          "order": 2
+          "order": 2,
+          "title_en": "What are the rights and obligations of employees?",
+          "description_en": "An employee has the right and the obligation to be familiarised, before starting work, with the occupational safety and health measures applying to the job they have been assigned to, and to be trained to carry them out. An employee has the right and the obligation to give the employer proposals, comments and information on occupational safety and health matters. An employee has the right and the obligation to undergo the medical examination corresponding to the risk to safety and health at their workplace, to which the employer refers them, in accordance with occupational safety and health regulations and health care regulations."
         },
         {
           "title": "Koje su obaveze poslodavca?",
           "description": "Poslodavac je dužan da obezbijedi mjere zaštite i zdravlja na radu sprječavanjem, uklanjanjem i kontrolom rizika na radu, obavještavanjem i osposobljavanjem zaposlenih za bezbjedan i zdrav rad, uz odgovarajuću organizaciju i potrebna sredstva. Poslodavac je, takođe, dužan da se prilikom planiranja i uvođenja novih tehnologija konsultuje sa zaposlenima ili njihovim predstavnicima za zaštitu i zdravlje na radu o pitanjima izbora sredstava za rad, uslova rada, radne sredine i njihovih posljedica za zaštitu i zdravlje na radu.",
           "url": "",
           "file": "",
-          "order": 3
+          "order": 3,
+          "title_en": "What are the employer's obligations?",
+          "description_en": "The employer is obliged to provide occupational safety and health measures by preventing, removing and controlling risks at work and by informing and training employees for safe and healthy work, with appropriate organisation and the necessary resources. The employer is also obliged, when planning and introducing new technologies, to consult employees or their occupational safety and health representatives on the choice of work equipment, working conditions, the working environment and their consequences for safety and health at work."
         },
         {
           "title": "Ko vrši informisanje zaposlenih o riziku i mjerama zaštite i na koji način?",
           "description": "Poslodavac je dužan da zaposlenog ili predstavnika zaposlenih informiše pisanim putem u vezi sa:\n\n- rizicima po zaštitu i zdravlje na radu, prevenciji, mjerama zaštite i zdravlja na radu i aktivnostima u odnosu na svaku vrstu radnog mjesta i/ili posla;\n- načinom organizovanja i pružanja prve pomoći, zaštite od požara, postupku evakuacije zaposlenih pri pojavi ozbiljnih i neposrednih opasnosti i o licima koja su zadužena za sprovođenje ovih mjera.",
           "url": "",
           "file": "",
-          "order": 4
+          "order": 4,
+          "title_en": "Who informs employees about risks and protective measures, and how?",
+          "description_en": "The employer is obliged to inform the employee or the employees' representative in writing about:\n\n- risks to safety and health at work, prevention, occupational safety and health measures and activities in relation to each type of workplace and/or job;\n- the way first aid and fire protection are organised and provided, the procedure for evacuating employees when serious and immediate dangers arise, and the persons responsible for carrying out these measures."
         },
         {
           "title": "Šta treba uraditi u slučaju povrede na radu?",
           "description": "U slučajevima nastanka povrede na radu, zaposleni koji se zatekne na mjestu nastanka povrede, svjedok događaja, dužan je da povrijeđenom ukaže pomoć i da obavijesti prvog pretpostavljenog povrijeđenom. Ukoliko je povrijeđeni sam i svjestan, dužan je da o povredi obavijesti pretpostavljenog. Pretpostavljeni povrijeđenom je dužan da o povredi obavijesti dežurnu službu preduzeća. Dežurna služba angažuje vozača sanitetskog vozila koji preuzima medicinskog tehničara iz ambulante i ide na mjesto dešavanja povrede, radi blagovremene stručne pomoći u cilju zbrinjavanja povrijeđenog.",
           "url": "",
           "file": "",
-          "order": 5
+          "order": 5,
+          "title_en": "What should be done in the event of an injury at work?",
+          "description_en": "When an injury occurs at work, an employee who is present at the scene of the injury, as a witness to the event, is obliged to give assistance to the injured person and to notify that person's immediate superior. If the injured person is alone and conscious, they are obliged to report the injury to their superior. The injured person's superior is obliged to report the injury to the company's duty service. The duty service calls out the ambulance driver, who collects a medical technician from the clinic and travels to the scene of the injury so that expert help can be given in good time and the injured person cared for."
         },
         {
           "title": "Kome i kada poslodavac prijavljuje povredu na radu?",
           "description": "Poslodavac je dužan da odmah, a najkasnije u roku od 24 sata od nastanka, pisano prijavi Inspekciji rada svaku smrtnu, kolektivnu, tešku i drugu povredu na radu, koja uzrokuje odsustvo zaposlenog sa rada duže od tri radna dana, kao i opasnu pojavu koja bi mogla da ugrozi zaštitu i zdravlje zaposlenih.",
           "url": "",
           "file": "",
-          "order": 6
+          "order": 6,
+          "title_en": "To whom and when does the employer report an injury at work?",
+          "description_en": "The employer is obliged to report in writing to the Labour Inspectorate, immediately and no later than 24 hours after it occurs, every fatal, collective, serious or other injury at work that causes the employee to be absent from work for more than three working days, as well as any dangerous occurrence that could endanger the safety and health of employees."
         },
         {
           "title": "Ko vrši nadzor nad sprovođenjem zaštite i zdravlja na radu?",
           "description": "Inspekcijski nadzor nad sprovođenjem Zakona o zaštiti i zdravlju na radu, propisa donijetih na osnovu njega i tehničkim i drugim mjerama koje se odnose na zaštitu i zdravlje na radu vrši Inspekcija rada, preko inspektora rada za oblast zaštite i zdravlja na radu.",
           "url": "",
           "file": "",
-          "order": 7
+          "order": 7,
+          "title_en": "Who supervises the implementation of occupational safety and health?",
+          "description_en": "Inspection supervision over the implementation of the Law on Occupational Safety and Health, the regulations adopted on the basis of it and the technical and other measures relating to safety and health at work is carried out by the Labour Inspectorate, through labour inspectors for the field of occupational safety and health."
         },
         {
           "title": "Da li i kada zaposleni ima pravo da odbije rad?",
           "description": "Zaposleni ima pravo da odbije da radi, ako:\n\n- prethodno nije upoznat sa svim opasnostima ili štetnostima, odnosno rizicima na radu ili ako mu poslodavac nije obezbijedio propisani zdravstveni pregled;\n- prijeti neposredna opasnost po život i zdravlje zbog toga što nijesu sprovedene propisane mjere zaštite i zdravlja na radu, sve dok se te mjere ne obezbijede;\n- na sredstvu za rad nijesu obezbijeđene propisane mjere zaštite i zdravlja na radu i time mu je neposredno ugrožen život i zdravlje.",
           "url": "",
           "file": "",
-          "order": 8
+          "order": 8,
+          "title_en": "Does an employee have the right to refuse to work, and when?",
+          "description_en": "An employee has the right to refuse to work if:\n\n- they have not first been informed of all the dangers or harmful effects, that is, the risks at work, or if the employer has not provided them with the prescribed medical examination;\n- there is an immediate danger to life and health because the prescribed occupational safety and health measures have not been carried out — until those measures are put in place;\n- the prescribed occupational safety and health measures have not been provided on the work equipment and their life and health are thereby directly endangered."
         },
         {
           "title": "Šta je akt o procjeni rizika?",
           "description": "Akt o procjeni rizika je akt koji sadrži opis procesa rada sa procjenom (ocjenom) rizika od povreda na radu, profesionalnih bolesti i bolesti u vezi sa radom i kojim se utvrđuju mjere zaštite i zdravlja na radu u cilju poboljšanja zaštite i zdravlja na radu.\n\nU aktu o procjeni rizika poslodavac određuje radna mjesta sa povećanim rizikom, odnosno posebnim uslovima rada, zdravstvene zahtjeve za određeni rad koje moraju da ispunjavaju zaposleni u radnom procesu ili za korišćenje pojedinih sredstava za rad na osnovu stručne ocjene ovlašćene ustanove za zdravstvenu zaštitu zaposlenih.\n\nAktom iz stava 1 ovog člana utvrđuje se:\n\n- identifikacija, odnosno otkrivanje opasnosti;\n- koja radna mjesta su izložena identifikovanim opasnostima;\n- vjerovatnoća nastanka povrede na radu, profesionalne bolesti, odnosno bolesti u vezi sa radom;\n- da li je rizik prihvatljiv;\n- uvođenje mjera za smanjenje neprihvatljivog rizika.",
           "url": "",
           "file": "",
-          "order": 9
+          "order": 9,
+          "title_en": "What is a risk assessment act?",
+          "description_en": "A risk assessment act is a document containing a description of the work process together with an assessment of the risk of injuries at work, occupational diseases and work-related illnesses, and establishing occupational safety and health measures with the aim of improving safety and health at work.\n\nIn the risk assessment act the employer determines the workplaces with increased risk, that is, with special working conditions, and the health requirements for particular work that employees must meet in the work process or in order to use particular work equipment, on the basis of an expert assessment by an authorised institution for the health care of employees.\n\nThe act referred to in paragraph 1 of this article establishes:\n\n- the identification, that is, the detection of dangers;\n- which workplaces are exposed to the identified dangers;\n- the likelihood of an injury at work, an occupational disease or a work-related illness occurring;\n- whether the risk is acceptable;\n- the introduction of measures to reduce unacceptable risk."
         },
         {
           "title": "Šta su radna mjesta sa posebnim uslovima rada?",
           "description": "Radna mjesta sa posebnim uslovima rada su radna mjesta na koja mogu biti raspoređeni i obavljati poslove tih radnih mjesta samo zaposleni koji, pored opštih uslova za zasnivanje radnog odnosa, ispunjavaju i posebne uslove u pogledu pola, godina života, školske spreme, stručne osposobljenosti, zdravstvenog stanja i psihičkih sposobnosti.\n\nPoslodavac ne može rasporediti zaposlenog da radi na radnom mjestu sa posebnim uslovima rada, ukoliko prethodno nije utvrdio da zaposleni ispunjava propisane posebne uslove.",
           "url": "",
           "file": "",
-          "order": 10
+          "order": 10,
+          "title_en": "What are workplaces with special working conditions?",
+          "description_en": "Workplaces with special working conditions are workplaces to which only those employees may be assigned, and whose jobs only they may perform, who — in addition to the general conditions for entering into an employment relationship — also meet special conditions as regards sex, age, education, professional qualifications, state of health and mental capacity.\n\nAn employer may not assign an employee to work at a workplace with special working conditions unless it has first been established that the employee meets the prescribed special conditions."
         }
       ]
     }

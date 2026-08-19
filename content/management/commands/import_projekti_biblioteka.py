@@ -107,7 +107,9 @@ class Command(BaseCommand):
                     section = PageSection.objects.create(
                         page=page,
                         heading=heading,
+                        heading_en=block.get('heading_en', ''),
                         body=block.get('body', ''),
+                        body_en=block.get('body_en', ''),
                         kind=PageSection.Kind.DOCUMENTS,
                         order=order,
                     )

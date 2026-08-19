@@ -17,7 +17,8 @@
           "pages": 23,
           "size_kb": 294,
           "date_label": "",
-          "order": 0
+          "order": 0,
+          "reference_en": "“Official Gazette of Montenegro”, no. 051/26"
         },
         {
           "title": "Strategija za unapređenje zaštite i zdravlja na radu u Crnoj Gori 2022–2027",
@@ -27,14 +28,15 @@
           "pages": 83,
           "size_kb": 3566,
           "date_label": "",
-          "order": 1
+          "order": 1,
+          "reference_en": "Strategic document of the Government of Montenegro"
         }
       ]
     },
     {
       "kind": "documents",
       "heading": "Opšti propisi i procedure",
-      "heading_en": "",
+      "heading_en": "General regulations and procedures",
       "order": 1,
       "items": [
         {
@@ -45,7 +47,8 @@
           "pages": 15,
           "size_kb": 346,
           "date_label": "",
-          "order": 0
+          "order": 0,
+          "reference_en": "“Official Gazette of Montenegro”, no. 069/23, 075/23"
         },
         {
           "title": "Pravilnik o uslovima, programu i načinu polaganja stručnog ispita za koordinatore za zaštitu i zdravlje na radu",
@@ -55,7 +58,8 @@
           "pages": 10,
           "size_kb": 3055,
           "date_label": "",
-          "order": 1
+          "order": 1,
+          "reference_en": "“Official Gazette of Montenegro”, no. 67/18"
         },
         {
           "title": "Pravilnik o planu mjera zaštite i zdravlja na radu",
@@ -65,7 +69,8 @@
           "pages": 3,
           "size_kb": 93,
           "date_label": "",
-          "order": 2
+          "order": 2,
+          "reference_en": "“Official Gazette of Montenegro”, no. 38/19"
         },
         {
           "title": "Pravilnik o načinu i postupku procjene rizika na radnom mjestu",
@@ -75,7 +80,8 @@
           "pages": 13,
           "size_kb": 128,
           "date_label": "",
-          "order": 3
+          "order": 3,
+          "reference_en": "“Official Gazette of the Republic of Montenegro”, no. 43/07"
         },
         {
           "title": "Pravilnik o načinu i postupku osposobljavanja zaposlenih za bezbjedan rad",
@@ -85,7 +91,8 @@
           "pages": 2,
           "size_kb": 105,
           "date_label": "",
-          "order": 4
+          "order": 4,
+          "reference_en": "“Official Gazette of the Republic of Montenegro”, no. 57/06"
         },
         {
           "title": "Pravilnik o postupku i rokovima za vršenje periodičnih pregleda i ispitivanja sredstava za rad i opreme lične zaštite",
@@ -95,7 +102,8 @@
           "pages": 13,
           "size_kb": 76,
           "date_label": "",
-          "order": 5
+          "order": 5,
+          "reference_en": "“Official Gazette of the Republic of Montenegro”, no. 71/05"
         },
         {
           "title": "Pravilnik o uslovima koje mora da ispunjava lice za obavljanje stručnih poslova iz zaštite na radu",
@@ -105,7 +113,8 @@
           "pages": 6,
           "size_kb": 52,
           "date_label": "",
-          "order": 6
+          "order": 6,
+          "reference_en": "“Official Gazette of the Republic of Montenegro”, no. 67/05"
         },
         {
           "title": "Pravilnik o vođenju evidencija iz oblasti zaštite na radu",
@@ -115,7 +124,8 @@
           "pages": 18,
           "size_kb": 97,
           "date_label": "",
-          "order": 7
+          "order": 7,
+          "reference_en": "“Official Gazette of the Republic of Montenegro”, no. 67/05"
         },
         {
           "title": "Pravilnik o pitanjima iz zaštite na radu koja treba urediti ugovorom o radu",
@@ -125,7 +135,8 @@
           "pages": 2,
           "size_kb": 29,
           "date_label": "",
-          "order": 8
+          "order": 8,
+          "reference_en": "“Official Gazette of the Republic of Montenegro”, no. 67/05"
         },
         {
           "title": "Pravilnik o sadržini i načinu izdavanja izvještaja o povredi na radu",
@@ -135,7 +146,8 @@
           "pages": 4,
           "size_kb": 40,
           "date_label": "",
-          "order": 9
+          "order": 9,
+          "reference_en": "“Official Gazette of the Republic of Montenegro”, no. 18/93"
         },
         {
           "title": "Pravilnik o načinu upisa i brisanja iz registra ovlašćenih organizacija za obavljanje poslova zaštite i zdravlja na radu",
@@ -145,14 +157,15 @@
           "pages": 4,
           "size_kb": 398,
           "date_label": "",
-          "order": 10
+          "order": 10,
+          "reference_en": "“Official Gazette of Montenegro”, no. 070/15"
         }
       ]
     },
     {
       "kind": "documents",
       "heading": "Lična zaštitna oprema i sredstva za rad",
-      "heading_en": "",
+      "heading_en": "Personal protective equipment and work equipment",
       "order": 2,
       "items": [
         {
@@ -163,7 +176,8 @@
           "pages": 15,
           "size_kb": 611,
           "date_label": "",
-          "order": 0
+          "order": 0,
+          "reference_en": "“Official Gazette of Montenegro”, no. 135/21"
         },
         {
           "title": "Pravilnik o mjerama zaštite prilikom upotrebe sredstava za rad",
@@ -173,7 +187,8 @@
           "pages": 24,
           "size_kb": 366,
           "date_label": "",
-          "order": 1
+          "order": 1,
+          "reference_en": "“Official Gazette of Montenegro”, no. 27/15"
         },
         {
           "title": "Pravilnik o mjerama zaštite prilikom ručnog prenošenja tereta",
@@ -183,7 +198,8 @@
           "pages": 3,
           "size_kb": 87,
           "date_label": "",
-          "order": 2
+          "order": 2,
+          "reference_en": "“Official Gazette of Montenegro”, no. 29/15"
         },
         {
           "title": "Pravilnik o znakovima za zaštitu i zdravlje na radu",
@@ -193,14 +209,15 @@
           "pages": 20,
           "size_kb": 996,
           "date_label": "",
-          "order": 3
+          "order": 3,
+          "reference_en": "“Official Gazette of Montenegro”, no. 24/15"
         }
       ]
     },
     {
       "kind": "documents",
       "heading": "Hemijski, biološki i fizički rizici",
-      "heading_en": "",
+      "heading_en": "Chemical, biological and physical risks",
       "order": 3,
       "items": [
         {
@@ -211,7 +228,8 @@
           "pages": 8,
           "size_kb": 675,
           "date_label": "",
-          "order": 0
+          "order": 0,
+          "reference_en": "“Official Gazette of Montenegro”, no. 081/16, 030/17, 040/18, 077/21, 093/25"
         },
         {
           "title": "Pravilnik o mjerama zaštite i zdravlja na radu od rizika izloženosti biološkim materijama",
@@ -221,7 +239,8 @@
           "pages": 23,
           "size_kb": 551,
           "date_label": "",
-          "order": 1
+          "order": 1,
+          "reference_en": "“Official Gazette of Montenegro”, no. 117/21"
         },
         {
           "title": "Pravilnik o mjerama zaštite i zdravlja na radu od rizika izloženosti kancerogenim ili mutagenim materijama",
@@ -231,7 +250,8 @@
           "pages": 7,
           "size_kb": 341,
           "date_label": "",
-          "order": 2
+          "order": 2,
+          "reference_en": "“Official Gazette of Montenegro”, no. 021/20"
         },
         {
           "title": "Pravilnik o mjerama zaštite i zdravlja na radu od rizika izloženosti buci",
@@ -241,7 +261,8 @@
           "pages": 3,
           "size_kb": 273,
           "date_label": "",
-          "order": 3
+          "order": 3,
+          "reference_en": "“Official Gazette of Montenegro”, no. 37/16"
         },
         {
           "title": "Pravilnik o mjerama zaštite i zdravlja na radu od rizika izloženosti vibracijama",
@@ -251,7 +272,8 @@
           "pages": 3,
           "size_kb": 147,
           "date_label": "",
-          "order": 4
+          "order": 4,
+          "reference_en": "“Official Gazette of Montenegro”, no. 24/16"
         },
         {
           "title": "Pravilnik o mjerama zaštite i zdravlja na radu pri korišćenju opreme sa ekranima",
@@ -261,7 +283,8 @@
           "pages": 3,
           "size_kb": 145,
           "date_label": "",
-          "order": 5
+          "order": 5,
+          "reference_en": "“Official Gazette of Montenegro”, no. 16/16"
         },
         {
           "title": "Pravilnik o posebnim mjerama zaštite na radu pri termičkom obrađivanju legura lakih metala u kupatilima sa nitratnim solima",
@@ -271,7 +294,8 @@
           "pages": 3,
           "size_kb": 193,
           "date_label": "",
-          "order": 6
+          "order": 6,
+          "reference_en": "“Official Gazette of the SFRY”, no. 48/65"
         },
         {
           "title": "Pravilnik o tehničkim i zdravstveno-tehničkim zaštitnim mjerama na radovima pri hemijsko-tehnološkim procesima",
@@ -281,14 +305,15 @@
           "pages": 50,
           "size_kb": 270,
           "date_label": "",
-          "order": 7
+          "order": 7,
+          "reference_en": "“Official Gazette of the FPRY”, no. 55/50"
         }
       ]
     },
     {
       "kind": "documents",
       "heading": "Radna sredina i gradilišta",
-      "heading_en": "",
+      "heading_en": "Working environment and construction sites",
       "order": 4,
       "items": [
         {
@@ -299,7 +324,8 @@
           "pages": 2,
           "size_kb": 210,
           "date_label": "",
-          "order": 0
+          "order": 0,
+          "reference_en": "“Official Gazette of Montenegro”, no. 018/21"
         },
         {
           "title": "Pravilnik o mjerama zaštite i zdravlja na radu u radnoj sredini i radnoj okolini",
@@ -309,7 +335,8 @@
           "pages": 10,
           "size_kb": 349,
           "date_label": "",
-          "order": 1
+          "order": 1,
+          "reference_en": "“Official Gazette of Montenegro”, no. 104/20"
         },
         {
           "title": "Pravilnik o mjerama zaštite na radu na privremenim i pokretnim gradilištima",
@@ -319,7 +346,8 @@
           "pages": 51,
           "size_kb": 460,
           "date_label": "",
-          "order": 2
+          "order": 2,
+          "reference_en": "“Official Gazette of Montenegro”, no. 20/19"
         },
         {
           "title": "Pravilnik o opštim mjerama zaštite na radu od opasnog dejstva električne struje",
@@ -329,7 +357,8 @@
           "pages": 37,
           "size_kb": 204,
           "date_label": "",
-          "order": 3
+          "order": 3,
+          "reference_en": "“Official Gazette of the Socialist Republic of Montenegro”, no. 6/86"
         },
         {
           "title": "Pravilnik o obezbjeđenju smještaja, ishrane i prevoza radnika do mjesta rada",
@@ -339,7 +368,8 @@
           "pages": 6,
           "size_kb": 52,
           "date_label": "",
-          "order": 4
+          "order": 4,
+          "reference_en": "“Official Gazette of the Socialist Republic of Montenegro”, no. 5/86"
         },
         {
           "title": "Pravilnik o opremi i postupku za pružanje prve pomoći i organizovanju službe spasavanja",
@@ -349,14 +379,15 @@
           "pages": 14,
           "size_kb": 94,
           "date_label": "",
-          "order": 5
+          "order": 5,
+          "reference_en": "“Official Gazette of the SFRY”, no. 21/71"
         }
       ]
     },
     {
       "kind": "documents",
       "heading": "Zdravstvena zaštita zaposlenih",
-      "heading_en": "",
+      "heading_en": "Health care for employees",
       "order": 5,
       "items": [
         {
@@ -367,7 +398,8 @@
           "pages": 18,
           "size_kb": 393,
           "date_label": "",
-          "order": 0
+          "order": 0,
+          "reference_en": "“Official Gazette of Montenegro”, no. 43/17"
         },
         {
           "title": "Pravilnik o poslovima sa posebnim uslovima rada i uslovima koje treba da ispuni zaposleni za rad na tim poslovima",
@@ -377,7 +409,8 @@
           "pages": 3,
           "size_kb": 132,
           "date_label": "",
-          "order": 1
+          "order": 1,
+          "reference_en": "“Official Gazette of Montenegro”, no. 70/16"
         },
         {
           "title": "Pravilnik o bližim uslovima koje treba da ispunjava pravno lice za obavljanje zdravstvene zaštite zaposlenih",
@@ -387,14 +420,15 @@
           "pages": 2,
           "size_kb": 77,
           "date_label": "",
-          "order": 2
+          "order": 2,
+          "reference_en": "“Official Gazette of Montenegro”, no. 60/16"
         }
       ]
     },
     {
       "kind": "documents",
       "heading": "Propisi po djelatnostima",
-      "heading_en": "",
+      "heading_en": "Regulations by sector",
       "order": 6,
       "items": [
         {
@@ -405,7 +439,8 @@
           "pages": 26,
           "size_kb": 179,
           "date_label": "",
-          "order": 0
+          "order": 0,
+          "reference_en": "“Official Gazette of the SFRY”, no. 18/91"
         },
         {
           "title": "Pravilnik o zaštiti na radu pri utovaru i istovaru tereta",
@@ -415,7 +450,8 @@
           "pages": 17,
           "size_kb": 115,
           "date_label": "",
-          "order": 1
+          "order": 1,
+          "reference_en": "“Official Gazette of the Socialist Republic of Montenegro”, no. 13/88"
         },
         {
           "title": "Pravilnik o posebnim mjerama zaštite na radu u željeznicama",
@@ -425,7 +461,8 @@
           "pages": 17,
           "size_kb": 123,
           "date_label": "",
-          "order": 2
+          "order": 2,
+          "reference_en": "“Official Gazette of the Socialist Republic of Montenegro”, no. 11/88"
         },
         {
           "title": "Pravilnik o posebnim mjerama zaštite na radu pri mehaničkoj preradi i obradi drveta",
@@ -435,7 +472,8 @@
           "pages": 8,
           "size_kb": 64,
           "date_label": "",
-          "order": 3
+          "order": 3,
+          "reference_en": "“Official Gazette of the Socialist Republic of Montenegro”, no. 9/88"
         },
         {
           "title": "Pravilnik o posebnim mjerama zaštite na radu u crnoj metalurgiji",
@@ -445,7 +483,8 @@
           "pages": 30,
           "size_kb": 185,
           "date_label": "",
-          "order": 4
+          "order": 4,
+          "reference_en": "“Official Gazette of the Socialist Republic of Montenegro”, no. 16/87"
         },
         {
           "title": "Pravilnik o posebnim mjerama zaštite na radu pri proizvodnji i preradi obojenih metala",
@@ -455,7 +494,8 @@
           "pages": 26,
           "size_kb": 150,
           "date_label": "",
-          "order": 5
+          "order": 5,
+          "reference_en": "“Official Gazette of the Socialist Republic of Montenegro”, no. 31/86"
         },
         {
           "title": "Pravilnik o posebnim mjerama zaštite na radu u šumarstvu",
@@ -465,7 +505,8 @@
           "pages": 18,
           "size_kb": 135,
           "date_label": "",
-          "order": 6
+          "order": 6,
+          "reference_en": "“Official Gazette of the Socialist Republic of Montenegro”, no. 16/86"
         },
         {
           "title": "Pravilnik o posebnim mjerama zaštite na radu pri preradi i obradi kože, krzna i otpadaka od kože",
@@ -475,7 +516,8 @@
           "pages": 11,
           "size_kb": 76,
           "date_label": "",
-          "order": 7
+          "order": 7,
+          "reference_en": "“Official Gazette of the SFRY”, no. 17/70"
         },
         {
           "title": "Pravilnik o posebnim mjerama zaštite na radu pri izradi eksploziva i baruta",
@@ -485,7 +527,8 @@
           "pages": 30,
           "size_kb": 181,
           "date_label": "",
-          "order": 8
+          "order": 8,
+          "reference_en": "“Official Gazette of the SFRY”, no. 55/69"
         },
         {
           "title": "Pravilnik o posebnim mjerama zaštite na radu u poljoprivredi",
@@ -495,7 +538,8 @@
           "pages": 24,
           "size_kb": 139,
           "date_label": "",
-          "order": 9
+          "order": 9,
+          "reference_en": "“Official Gazette of the SFRY”, no. 34/68"
         },
         {
           "title": "Naredba o zabrani upotrebe motornih benzina za odmašćivanje, pranje i čišćenje metalnih dijelova",
@@ -505,7 +549,8 @@
           "pages": 4,
           "size_kb": 125,
           "date_label": "",
-          "order": 10
+          "order": 10,
+          "reference_en": "“Official Gazette of the SFRY”, no. 23/67"
         },
         {
           "title": "Pravilnik o mjerama zaštite pri rukovanju eksplozivnim sredstvima i miniranju u rudarstvu",
@@ -515,7 +560,8 @@
           "pages": 20,
           "size_kb": 761,
           "date_label": "",
-          "order": 11
+          "order": 11,
+          "reference_en": "“Official Gazette of the SFRY”, no. 9/67, 35/67, 35/72"
         },
         {
           "title": "Pravilnik o tehničkim mjerama za razvijače acetilena i acetilenske stanice",
@@ -525,7 +571,8 @@
           "pages": 11,
           "size_kb": 710,
           "date_label": "",
-          "order": 12
+          "order": 12,
+          "reference_en": "“Official Gazette of the SFRY”, no. 6/67, 29/67, 27/69, 52/90"
         },
         {
           "title": "Pravilnik o higijenskim i tehničkim zaštitnim mjerama pri ronilačkim radovima",
@@ -535,7 +582,8 @@
           "pages": 20,
           "size_kb": 126,
           "date_label": "",
-          "order": 13
+          "order": 13,
+          "reference_en": "“Official Gazette of the FPRY”, no. 36/58"
         },
         {
           "title": "Pravilnik o higijenskim i tehničkim zaštitnim mjerama pri radu u kamenolomima i ciglanama",
@@ -545,7 +593,8 @@
           "pages": 12,
           "size_kb": 157,
           "date_label": "",
-          "order": 14
+          "order": 14,
+          "reference_en": "“Official Gazette of the FPRY”, no. 69/48"
         },
         {
           "title": "Opšti pravilnik o higijenskim i tehničkim zaštitnim mjerama pri radu",
@@ -555,7 +604,8 @@
           "pages": 15,
           "size_kb": 117,
           "date_label": "",
-          "order": 15
+          "order": 15,
+          "reference_en": "“Official Gazette of the FPRY”, no. 56/47"
         },
         {
           "title": "Pravilnik o higijenskim i tehničkim zaštitnim mjerama pri radu u grafičkim preduzećima",
@@ -565,7 +615,8 @@
           "pages": 9,
           "size_kb": 144,
           "date_label": "",
-          "order": 16
+          "order": 16,
+          "reference_en": "“Official Gazette of the FPRY”, no. 56/47"
         },
         {
           "title": "Pravilnik o higijenskim i tehničkim zaštitnim mjerama pri radu u kudeljarama",
@@ -575,7 +626,8 @@
           "pages": 7,
           "size_kb": 137,
           "date_label": "",
-          "order": 17
+          "order": 17,
+          "reference_en": "“Official Gazette of the FPRY”, no. 56/47, 36/50"
         }
       ]
     }

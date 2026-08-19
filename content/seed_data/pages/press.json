@@ -16,7 +16,8 @@
           "url": "https://rtcg.me/vijesti/drustvo/825728/eksplozija-u-montenegro-space-research-otvara-pitanje-propusta-i-zahtijeva-hitnu-istragu.html",
           "file": "",
           "image": "/press/experiments-chemical-laboratory-ex.jpg",
-          "order": 0
+          "order": 0,
+          "title_en": "Explosion at “Montenegro Space Research” raises the question of failures and calls for an urgent investigation"
         },
         {
           "title": "Završene regionalne obuke na temu „Zaštita i zdravlje na radu u sistemu obrazovanja i vaspitanja“",
@@ -25,7 +26,9 @@
           "url": "https://www.gov.me/clanak/zavrsene-regionalne-obuke-na-temu-zastita-i-zdravlje-na-radu-u-sistemu-obrazovanja-i-vaspitanja",
           "file": "",
           "image": "/press/1766058900ibhkiloaqovpgl90-i-747x498.jpg",
-          "order": 1
+          "order": 1,
+          "title_en": "Regional training sessions on “Occupational safety and health in the education system” completed",
+          "reference_en": "Government of Montenegro"
         },
         {
           "title": "Realizovane radionice na temu zaštite i zdravlja na radu u sistemu obrazovanja i vaspitanja namijenjene predstavnicima poslodavaca i instruktorima praktične nastave",
@@ -34,7 +37,9 @@
           "url": "https://www.gov.me/clanak/realizovana-obuka-na-temu-zastite-i-zdravlja-na-radu-u-sistemu-obrazovanja",
           "file": "",
           "image": "/press/1765196743jdtjumpfbuub5uey-i-747x498.jpg",
-          "order": 2
+          "order": 2,
+          "title_en": "Workshops held on occupational safety and health in the education system for employers' representatives and practical training instructors",
+          "reference_en": "Government of Montenegro"
         },
         {
           "title": "Jačanje bezbjednosti na radu u poljoprivredi: Održan diseminacioni seminar u okviru projekta SAGRI",
@@ -43,7 +48,8 @@
           "url": "https://bizniscg.me/jacanje-bezbjednosti-na-radu-u-poljoprivredi-odrzan-diseminacioni-seminar-u-okviru-projekta-sagri/",
           "file": "",
           "image": "/press/screenshot-20250718-084318-gmail-1.jpg",
-          "order": 3
+          "order": 3,
+          "title_en": "Strengthening safety at work in agriculture: dissemination seminar held under the SAGRI project"
         },
         {
           "title": "Održan seminar u okviru projekta SAGRI – predstavljene smjernice za unapređenje zaštite i zdravlja na radu u crnogorskoj poljoprivredi",
@@ -52,7 +58,8 @@
           "url": "https://borba.me/odrzan-seminar-u-okviru-projekta-sagri-predstavljene-smjernice-za-unapredjenje-zastite-i-zdravlja-na-radu-u-crnogorskoj-poljoprivredi/",
           "file": "",
           "image": "/press/screenshot-20250718-084318-gmail-1.jpg",
-          "order": 4
+          "order": 4,
+          "title_en": "Seminar held under the SAGRI project — guidelines presented for improving occupational safety and health in Montenegrin agriculture"
         },
         {
           "title": "Premalo inspektora za kontrolu diskoteka u Crnoj Gori",
@@ -61,7 +68,8 @@
           "url": "https://www.pobjeda.me/clanak/premalo-inspektora-za-kontrolu-diskoteka",
           "file": "",
           "image": "/press/pobjeda-676x423-1.jpg",
-          "order": 5
+          "order": 5,
+          "title_en": "Too few inspectors to check nightclubs in Montenegro"
         },
         {
           "title": "Premalo inspektora za kontrolu diskoteka u Crnoj Gori",
@@ -70,7 +78,8 @@
           "url": "https://www.standard.co.me/drustvo/premalo-inspektora-za-kontrolu-diskoteka-u-crnoj-gori",
           "file": "",
           "image": "/press/cdm-676x375-1.jpg",
-          "order": 6
+          "order": 6,
+          "title_en": "Too few inspectors to check nightclubs in Montenegro"
         },
         {
           "title": "Premalo inspektora za kontrolu diskoteka u Crnoj Gori",
@@ -79,7 +88,8 @@
           "url": "https://www.cdm.me/drustvo/premalo-inspektora-za-kontrolu-diskoteka-u-crnoj-gori/",
           "file": "",
           "image": "/press/cdm-676x375-1.jpg",
-          "order": 7
+          "order": 7,
+          "title_en": "Too few inspectors to check nightclubs in Montenegro"
         },
         {
           "title": "U Crnoj Gori premalo inspektora za kontrolu diskoteka",
@@ -88,7 +98,8 @@
           "url": "https://mondo.me/Info/Drustvo/a1295393/U-Crnoj-Gori-premalo-inspektora-za-kontrolu-diskoteka.html",
           "file": "",
           "image": "/press/mondo-676x449-1.jpg",
-          "order": 8
+          "order": 8,
+          "title_en": "Montenegro has too few inspectors to check nightclubs"
         },
         {
           "title": "Mnogi objekti za provod u Crnoj Gori ne ispunjavaju standarde zaštite posjetilaca",
@@ -97,7 +108,8 @@
           "url": "https://www.sjevercg.me/mnogi-objekti-za-provod-u-crnoj-gori-ne-ispunjavaju-standarde-zastite-posjetilaca/",
           "file": "",
           "image": "/press/sjever.webp",
-          "order": 9
+          "order": 9,
+          "title_en": "Many entertainment venues in Montenegro fail to meet standards for protecting visitors"
         },
         {
           "title": "Tokom ljeta noćni klubovi prenatrpani, mnogi objekti ne ispunjavaju standarde zaštite posjetilaca",
@@ -106,7 +118,8 @@
           "url": "https://rtnk.me/drustvo/tokom-ljeta-nocni-klubovi-prenatrpani-mnogi-objekti-ne-ispunjavaju-standarde-zastite-posjetilaca/",
           "file": "",
           "image": "/press/rtnk-676x349-1.jpg",
-          "order": 10
+          "order": 10,
+          "title_en": "Nightclubs overcrowded during the summer; many venues fail to meet standards for protecting visitors"
         },
         {
           "title": "U \"Linku\" o uslovima zaposlenih u Crnoj Gori",
@@ -115,7 +128,8 @@
           "url": "https://rtcg.me/radio/izdvajamo/525090/-u-linku-o-uslovima-zaposlenih-u-crnoj-gori-.html",
           "file": "",
           "image": "/press/linkkk-511x900.jpg",
-          "order": 11
+          "order": 11,
+          "title_en": "“Link” discusses working conditions in Montenegro"
         },
         {
           "title": "Organizacije Zapadnog Balkana traže da se radnička i socijalna prava uključe u Berlinski proces",
@@ -124,7 +138,8 @@
           "url": "https://www.vijesti.me/svijet/balkan/677212/organizacije-zapadnog-balkana-traze-da-se-radnicka-i-socijalna-prava-ukljuce-u-berlinski-proces?utm_campaign=vijesti_share_counter&utm_medium=app_ios&utm_source=vijesti_ios",
           "file": "",
           "image": "/press/5522622-manifesto-on-decent-work-d.jpg",
-          "order": 12
+          "order": 12,
+          "title_en": "Western Balkan organisations call for workers' and social rights to be included in the Berlin Process"
         },
         {
           "title": "Radnička i socijalna prava da budu imperativ",
@@ -133,7 +148,8 @@
           "url": "https://www.dan.co.me/vijesti/drustvo/radnicka-i-socijalna-prava-da-budu-imperativ-5202303",
           "file": "",
           "image": "/press/5522622-manifesto-on-decent-work-d.jpg",
-          "order": 13
+          "order": 13,
+          "title_en": "Workers' and social rights must be an imperative"
         },
         {
           "title": "Organizacije sa Zapadnog Balkana zahtijevaju da radnička i socijalna prava budu uključena u okvir Berlinskog procesa",
@@ -142,7 +158,8 @@
           "url": "https://www.cdm.me/ekonomija/organizacije-sa-zapadnog-balkana-zahtijevaju-da-radnicka-i-socijalna-prava-budu-ukljucena-u-okvir-berlinskog-procesa/",
           "file": "",
           "image": "/press/5522622-manifesto-on-decent-work-d.jpg",
-          "order": 14
+          "order": 14,
+          "title_en": "Western Balkan organisations demand that workers' and social rights be included in the framework of the Berlin Process"
         },
         {
           "title": "Radnička i socijalna prava da budu uključena u okvir Berlinskog procesa",
@@ -151,7 +168,8 @@
           "url": "https://rtnk.me/ekonomija/radnicka-i-socijalna-prava-da-budu-ukljucena-u-okvir-berlinskog-procesa/",
           "file": "",
           "image": "/press/5522622-manifesto-on-decent-work-d.jpg",
-          "order": 15
+          "order": 15,
+          "title_en": "Workers' and social rights should be included in the framework of the Berlin Process"
         },
         {
           "title": "Radnička i socijalna prava da budu uključena u okvir Berlinskog procesa",
@@ -160,7 +178,8 @@
           "url": "https://rtcg.me/vijesti/ekonomija/476776/radnicka-i-socijalna-prava-da-budu-ukljucena-u-okvir-berlinskog-procesa.html",
           "file": "",
           "image": "/press/5522622-manifesto-on-decent-work-d.jpg",
-          "order": 16
+          "order": 16,
+          "title_en": "Workers' and social rights should be included in the framework of the Berlin Process"
         },
         {
           "title": "Radnička i socijalna prava budu uključena u okvir Berlinskog procesa",
@@ -169,7 +188,8 @@
           "url": "https://mina.news/mina-business-ekonomske-vijesti-iz-crne-gore/radnicka-i-socijalna-prava-budu-ukljucena-u-okvir-berlinskog-procesa/",
           "file": "",
           "image": "/press/5522622-manifesto-on-decent-work-d.jpg",
-          "order": 17
+          "order": 17,
+          "title_en": "Workers' and social rights to be included in the framework of the Berlin Process"
         },
         {
           "title": "Manifest o dostojanstvenom radu potpisalo 20 ogranizacija sa Zapadnog Balkana",
@@ -178,7 +198,8 @@
           "url": "https://www.portalanalitika.me/clanak/manifest-o-dostojanstvenom-radu-potpisalo-20-ogranizacija-sa-zapadnog-balkana",
           "file": "",
           "image": "/press/5522622-manifesto-on-decent-work-d.jpg",
-          "order": 18
+          "order": 18,
+          "title_en": "Twenty Western Balkan organisations sign the Manifesto on Decent Work"
         },
         {
           "title": "Manifest o dostojanstvenom radu potpisalo dvadeset organizacija iz zemalja Zapadnog Balkana",
@@ -187,7 +208,8 @@
           "url": "https://www.masina.rs/manifest-o-dostojanstvenom-radu-potpisalo-dvadeset-organizacija-iz-zemalja-zapadnog-balkana/",
           "file": "",
           "image": "/press/5522622-manifesto-on-decent-work-d.jpg",
-          "order": 19
+          "order": 19,
+          "title_en": "Twenty organisations from the Western Balkan countries sign the Manifesto on Decent Work"
         },
         {
           "title": "Dostojanstven rad",
@@ -196,7 +218,8 @@
           "url": "https://fonet.rs/drustvo/36371121/dostojanstven-rad.html",
           "file": "",
           "image": "/press/5522622-manifesto-on-decent-work-d.jpg",
-          "order": 20
+          "order": 20,
+          "title_en": "Decent work"
         },
         {
           "title": "Manifest o dostojanstvenom radu",
@@ -205,7 +228,8 @@
           "url": "https://www.politika.rs/sr/articles/amp/575281",
           "file": "",
           "image": "/press/663z390-radnici-nm.jpg",
-          "order": 21
+          "order": 21,
+          "title_en": "The Manifesto on Decent Work"
         },
         {
           "title": "OSIGURANJE OD POVREDA NA RADNOM MJESTU NEDOVOLJNO REGULISANO U CRNOJ GORI: Život košta 6.200 eura",
@@ -214,7 +238,8 @@
           "url": "https://www.cin-cg.me/osiguranje-od-povreda-na-radnom-mjestu-nedovoljno-regulisano-u-crnoj-gori-zivot-kosta-6-200-eura/?fbclid=IwAR3cYAoDubULg5Tfr8zUP6pUfjM2N7A5wL0sQM0NsLGuNJRMYCaLM2qgtC8",
           "file": "",
           "image": "/press/untitled-11.jpg",
-          "order": 22
+          "order": 22,
+          "title_en": "INSURANCE AGAINST WORKPLACE INJURIES INSUFFICIENTLY REGULATED IN MONTENEGRO: a life costs 6,200 euros"
         },
         {
           "title": "SUDSKA PRAKSA NE IDE U PRILOG JAČANJU NIVOA ZAŠTITE I ZDRAVLJA NA RADU: Blage kazne ne podstiču oprez",
@@ -223,7 +248,8 @@
           "url": "https://www.cin-cg.me/sudska-praksa-ne-ide-u-prilog-jacanju-nivoa-zastite-i-zdravlja-na-radu-blage-kazne-ne-podsticu-oprez/?fbclid=IwAR0J-VzrKhg3ukls0HJ3-xEOKrkAstEoDAt6Wcvlf6SbjErBfPptcgCIoJA",
           "file": "",
           "image": "/press/untitled222-1.jpg",
-          "order": 23
+          "order": 23,
+          "title_en": "CASE LAW DOES NOTHING TO RAISE THE LEVEL OF OCCUPATIONAL SAFETY AND HEALTH: lenient penalties do not encourage caution"
         },
         {
           "title": "Svaki propust korak ka nesreći",
@@ -232,7 +258,8 @@
           "url": "https://www.vijesti.me/vijesti/drustvo/537499/svaki-propust-korak-ka-nesreci",
           "file": "",
           "image": "/press/untitled5547.jpg",
-          "order": 24
+          "order": 24,
+          "title_en": "Every lapse is a step towards an accident"
         },
         {
           "title": "U organizaciji MOR-a predstavljen Nacionalni profil zaštite i zdravlja na radu Crne Gore",
@@ -241,7 +268,8 @@
           "url": "https://mina.news/vijesti-iz-crne-gore/u-organizaciji-mor-a-predstavljen-nacionalni-profil-zastite-i-zdravlja-na-radu-crne-gore/",
           "file": "",
           "image": "/press/naslovna-fotografija.jpeg",
-          "order": 25
+          "order": 25,
+          "title_en": "Montenegro's National Occupational Safety and Health Profile presented at an ILO event"
         },
         {
           "title": "Nacionalni profil zaštite i zdravlja na radu Crne Gore",
@@ -250,7 +278,8 @@
           "url": "https://mina.news/mina-servisi/mina-foto-nacionalniprofil-zastite-i-zdravlja-na-radu-crne-gore/",
           "file": "",
           "image": "/press/ers-6500.jpeg",
-          "order": 26
+          "order": 26,
+          "title_en": "Montenegro's National Occupational Safety and Health Profile"
         },
         {
           "title": "Godišnje umre 80.000 radnika od kancera zbog uslova rada",
@@ -259,7 +288,8 @@
           "url": "https://www.vijesti.me/vijesti/ekonomija/16166/godisnje-umre-80-000-radnika-od-kancera-zbog-uslova-rada-65bb56dd",
           "file": "",
           "image": "/press/untitled-10.jpg",
-          "order": 27
+          "order": 27,
+          "title_en": "Every year 80,000 workers die of cancer caused by their working conditions"
         },
         {
           "title": "UZNRCG predstavljeno na biltenu Sajma bezbjednosti",
@@ -268,7 +298,8 @@
           "url": "https://uznr.me/wp-content/uploads/2025/06/UZNRCG-predstavljenonabiltenuSajmaBezbjednosti.docx.pdf",
           "file": "",
           "image": "/press/aaa-2.jpg",
-          "order": 28
+          "order": 28,
+          "title_en": "UZNRCG featured in the Safety Fair bulletin"
         }
       ]
     }

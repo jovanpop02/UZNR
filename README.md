@@ -83,6 +83,21 @@ sleeping backend never blanks out a page.
 `--replace <slug>` to reload one deliberately. The JSON is generated from the
 frontend by `node scripts/export-page-content.mjs` (run there, not here).
 
+## Translations
+
+The English text lives in the same seed files as the Montenegrin, in `*_en`
+keys, so a fresh database is bilingual the moment it is seeded. A database
+seeded *before* a translation was written stays Montenegrin-only, because the
+import commands only write English on rows they create. `python manage.py
+import_translations` fixes that: it re-reads the seed files and copies across
+nothing but the `*_en` fields, matching rows by their Montenegrin text. It is
+safe to re-run, and it leaves an English field that already has something in it
+alone — pass `--overwrite` to replace admin edits, or `--dry-run` to look first.
+
+Document titles are deliberately left in Montenegrin: laws, rulebooks and
+publications are cited by their official names. Their small print (the gazette
+reference) is translated, as are the headings of the groups they sit in.
+
 ## Contact form
 
 `POST /api/contact` with JSON:
