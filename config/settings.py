@@ -77,6 +77,9 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                # Feeds the unanswered-message count to the inbox button in the
+                # admin header. Costs a query only on staff requests.
+                'content.context_processors.admin_inbox',
             ],
         },
     },

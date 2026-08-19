@@ -47,6 +47,46 @@ from .models import (
     SectionItem,
 )
 
+# The home page groups the content models under plain-language headings rather
+# than listing all eleven in one run. The grouping answers "what am I here to
+# do" -- publish something, edit a page, change what shows on the home page,
+# read the inbox -- instead of making staff scan a flat list every visit.
+#
+# Each entry is (heading, blurb, [object names in display order]). Anything not
+# named here still renders, under HOME_GROUP_OTHER.
+HOME_GROUPS = [
+    (
+        'Sadržaj sajta',
+        'Tekst, dokumenti i objave koje sajt prikazuje.',
+        [
+            'NewsItem',
+            'Announcement',
+            'RegulativaPage',
+            'ProjektiPage',
+            'PublikacijePage',
+            'BibliotekaPage',
+            'PressPage',
+            'PitanjaPage',
+        ],
+    ),
+    (
+        'Početna strana',
+        'Ono što se prikazuje na naslovnoj strani sajta.',
+        ['ImportantLink', 'Member'],
+    ),
+]
+
+HOME_GROUP_OTHER = ('Ostalo', '', [])
+
+# Vijesti and oglasi are edited far more often than the page content they sit
+# beside, so they share the section but not the weight: app_list.html gives
+# these two a heavier card.
+HOME_FEATURED = {'NewsItem', 'Announcement'}
+
+# The inbox is reachable from the header on every page, so a card for it on the
+# home page would be a second door to the same room.
+HOME_HIDDEN = {'ContactMessage'}
+
 # The home page lists models in this order rather than alphabetically, so the
 # things edited daily come first and the inbox sits at the bottom. Anything not
 # named here falls to the end.
@@ -86,9 +126,12 @@ def _get_app_list(self, request, app_label=None):
         for entry in app['models']:
             model_admin = self._registry.get(entry.get('model'))
             entry['description'] = getattr(model_admin, 'description', '')
+            entry['count'] = _model_count(model_admin, request)
+            entry['featured'] = entry.get('object_name') in HOME_FEATURED
             # Unanswered messages are the one thing here with a clock on it.
             # Everything else waits patiently; a visitor who wrote in does not.
             entry['badge'] = ''
+            entry['urgent'] = False
             if entry.get('object_name') == 'ContactMessage':
                 waiting = ContactMessage.objects.filter(
                     status=ContactMessage.Status.NEW
@@ -97,6 +140,7 @@ def _get_app_list(self, request, app_label=None):
                     entry['badge'] = (
                         f'{waiting} novih' if waiting != 1 else '1 nova'
                     )
+                    entry['urgent'] = True
         app['models'].sort(
             key=lambda entry: (
                 HOME_ORDER.index(entry['object_name'])
@@ -105,7 +149,65 @@ def _get_app_list(self, request, app_label=None):
             )
         )
 
+        # Bucket the models for the dashboard's grouped card layout. The plain
+        # `models` list is left untouched: the collapsible sidebar renders from
+        # the same template and wants the flat version.
+        if app.get('app_label') == 'content':
+            app['groups'] = _grouped(app['models'])
+        else:
+            # Django's own apps (just auth, for "Korisnici") are not part of the
+            # site's content. The dashboard links to them from its left rail
+            # instead of giving them a card; `groups` stays empty so
+            # app_list.html skips the app there. The sidebar still lists them,
+            # because it renders from `models`.
+            app['groups'] = []
+
+    # Content first, Django's own auth app after it. "Korisnici" is account
+    # plumbing rather than something anyone comes here to edit, so it should
+    # not be the first thing on the page.
+    app_list.sort(key=lambda app: 0 if app.get('app_label') == 'content' else 1)
+
     return app_list
+
+
+def _model_count(model_admin, request):
+    """Row count for a model's card, or None when it cannot be determined.
+
+    Counts go through the ModelAdmin's own queryset rather than the bare
+    manager, so the proxy models that carve one table into several admin
+    entries (Regulativa, Projekti, Biblioteka...) each report their own slice
+    instead of the whole table.
+    """
+    if model_admin is None:
+        return None
+    try:
+        return model_admin.get_queryset(request).count()
+    except Exception:
+        # A card without a number is a smaller loss than a dashboard that
+        # will not render, so a misbehaving queryset is not fatal here.
+        return None
+
+
+def _grouped(models):
+    """Split a model list into the HOME_GROUPS buckets, dropping empty ones."""
+    models = [e for e in models if e['object_name'] not in HOME_HIDDEN]
+    by_name = {entry['object_name']: entry for entry in models}
+    used = set()
+    groups = []
+
+    for title, blurb, names in HOME_GROUPS:
+        picked = [by_name[name] for name in names if name in by_name]
+        if not picked:
+            continue
+        used.update(entry['object_name'] for entry in picked)
+        groups.append({'title': title, 'blurb': blurb, 'models': picked})
+
+    leftover = [e for e in models if e['object_name'] not in used]
+    if leftover:
+        title, blurb, _ = HOME_GROUP_OTHER
+        groups.append({'title': title, 'blurb': blurb, 'models': leftover})
+
+    return groups
 
 
 admin.AdminSite.get_app_list = _get_app_list

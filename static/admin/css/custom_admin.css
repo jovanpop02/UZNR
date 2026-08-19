@@ -568,6 +568,12 @@ tr.marked-for-delete select {
   max-width: 90ch;
 }
 
+/* In the dashboard's left rail the panel is the column, so the reading-width
+   cap that suits a full-width banner does not apply. */
+.dashboard .uznr-guide {
+  max-width: none;
+}
+
 .uznr-guide h2 {
   margin: 0 0 8px;
   padding: 0;
@@ -1057,4 +1063,812 @@ tr.just-dropped {
 
 .news-gallery-inline tr.marked-for-delete .gallery-thumb {
   opacity: 0.35;
+}
+
+/* ---------------------------------------------------------------------------
+ * Sign-in page
+ *
+ * Django's stock login is a bare box pinned under the site header, with the
+ * submit button floating inside its own bordered strip. The markup in
+ * templates/admin/uznr_login.html replaces that with one card; the rules below
+ * centre it in the viewport and hide the chrome the card makes redundant.
+ * ------------------------------------------------------------------------ */
+
+body.login #header,
+body.login #nav-breadcrumbs,
+body.login #footer {
+  display: none;
+}
+
+body.login {
+  background: var(--uznr-surface-alt);
+}
+
+/* The stock wrappers are sized for a narrow form column; let them fill the
+   screen so the card can centre against the whole viewport. */
+body.login #container,
+body.login #content,
+body.login #content-main {
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  padding: 0;
+  border: none;
+  background: none;
+  box-shadow: none;
+}
+
+.uznr-login {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  padding: 32px 16px;
+  box-sizing: border-box;
+}
+
+.uznr-login__card {
+  width: 100%;
+  max-width: 400px;
+  background: var(--uznr-surface);
+  border: 1px solid var(--uznr-border);
+  border-radius: var(--uznr-radius-md);
+  box-shadow: var(--uznr-shadow-md);
+  padding: 32px 28px 28px;
+  box-sizing: border-box;
+}
+
+.uznr-login__head {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.uznr-login__logo {
+  height: 44px;
+  width: auto;
+  margin-bottom: 14px;
+}
+
+.uznr-login__title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--uznr-ink);
+  margin: 0 0 6px;
+}
+
+.uznr-login__sub {
+  font-size: 0.86rem;
+  line-height: 1.45;
+  color: var(--uznr-muted);
+  margin: 0;
+}
+
+.uznr-login__error {
+  background: var(--uznr-danger-light);
+  border: 1px solid var(--uznr-danger);
+  color: var(--uznr-danger);
+  border-radius: var(--uznr-radius-sm);
+  padding: 10px 12px;
+  font-size: 0.85rem;
+  margin: 0 0 16px;
+}
+
+.uznr-login__form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.uznr-login__field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.uznr-login__field label {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--uznr-text);
+}
+
+/* Django renders the inputs itself, so they are targeted by id. */
+.uznr-login__field input[type="text"],
+.uznr-login__field input[type="password"] {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 11px 13px;
+  font: inherit;
+  font-size: 0.92rem;
+  color: var(--uznr-ink);
+  background: var(--uznr-surface);
+  border: 1px solid var(--uznr-border);
+  border-radius: var(--uznr-radius-sm);
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.uznr-login__field input[type="text"]:focus,
+.uznr-login__field input[type="password"]:focus {
+  outline: none;
+  border-color: var(--uznr-primary);
+  box-shadow: 0 0 0 3px var(--uznr-primary-light);
+}
+
+.uznr-login__field .errorlist {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  color: var(--uznr-danger);
+  font-size: 0.8rem;
+}
+
+.uznr-login__submit {
+  width: 100%;
+  padding: 12px 16px;
+  font: inherit;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #fff;
+  background: var(--uznr-primary);
+  border: none;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+.uznr-login__submit:hover {
+  background: var(--uznr-primary-dark);
+}
+
+.uznr-login__submit:focus-visible {
+  outline: 3px solid var(--uznr-primary-light);
+  outline-offset: 2px;
+}
+
+.uznr-login__reset {
+  margin: -4px 0 0;
+  font-size: 0.82rem;
+}
+
+.uznr-login__reset a,
+.uznr-login__foot a {
+  color: var(--uznr-primary-dark);
+}
+
+.uznr-login__foot {
+  margin: 0;
+  font-size: 0.82rem;
+  color: var(--uznr-muted);
+}
+
+@media (max-width: 420px) {
+  .uznr-login__card {
+    padding: 26px 20px 22px;
+  }
+}
+
+/* ---------------------------------------------------------------------------
+ * Dashboard (admin home)
+ *
+ * Django's colMS layout floats the "recent actions" rail and leaves the whole
+ * dashboard in a ~680px column, so on a normal laptop more than half the screen
+ * was empty. These rules turn #content into an explicit two-track grid that
+ * fills the width, with the heading, shortcuts and guide spanning both tracks.
+ * ------------------------------------------------------------------------ */
+
+.dashboard #content.colMS {
+  width: 100%;
+  max-width: 1600px;
+  margin-inline: auto;
+  padding-inline: 24px;
+  box-sizing: border-box;
+  /* Three rails that start level with each other: the orientation panel on the
+     left, the content groups in the middle, recent activity on the right. The
+     shortcuts run across the top of all three. Django's own colMS floats the
+     right rail and leaves the rest in one narrow column, which is what left the
+     page looking lopsided. */
+  display: grid;
+  grid-template-columns: 300px minmax(0, 1fr) 300px;
+  gap: 0 28px;
+  align-items: start;
+}
+
+/* One item per column, so all three start on the same line. */
+.dashboard #content.colMS > .uznr-rail {
+  grid-column: 1;
+  grid-row: 1;
+  min-width: 0;
+}
+
+.dashboard #content.colMS > .uznr-rail .uznr-accounts {
+  margin-bottom: 22px;
+}
+
+.dashboard #content.colMS > .uznr-rail .uznr-guide {
+  margin-bottom: 0;
+}
+
+.dashboard #content.colMS > #content-main {
+  grid-column: 2;
+  grid-row: 1;
+  min-width: 0;
+  width: auto;
+  float: none;
+}
+
+.dashboard #content.colMS > #content-related {
+  grid-column: 3;
+  grid-row: 1;
+  width: auto;
+  margin: 0;
+  float: none;
+  /* The stock rail paints its own panel behind the module, which showed as an
+     empty grey block hanging below "Skorasnje akcije". The module inside is
+     already a card, so the wrapper needs no surface of its own. */
+  background: none;
+  border: none;
+  padding: 0;
+}
+
+.dashboard #content-related .module {
+  margin-bottom: 0;
+}
+
+/* The last group in the middle column should not add trailing space under a
+   layout whose whole point is that the three rails line up. */
+.dashboard #content-main .admin-group:last-child {
+  margin-bottom: 0;
+}
+
+/* Two rails: activity keeps the right, and the guide goes back to a full-width
+   band above the cards. Dropping it to the foot of the page instead would have
+   put the one thing written for first-time visitors where they never scroll. */
+@media (max-width: 1300px) {
+  .dashboard #content.colMS {
+    grid-template-columns: minmax(0, 1fr) 300px;
+  }
+
+  .dashboard #content.colMS > .uznr-rail {
+    grid-column: 1 / -1;
+    grid-row: 1;
+    margin-bottom: 24px;
+  }
+
+  .dashboard #content.colMS > #content-main {
+    grid-column: 1;
+    grid-row: 2;
+  }
+
+  .dashboard #content.colMS > #content-related {
+    grid-column: 2;
+    grid-row: 2;
+  }
+}
+
+/* One column. */
+@media (max-width: 900px) {
+  .dashboard #content.colMS {
+    grid-template-columns: minmax(0, 1fr);
+    padding-inline: 16px;
+  }
+
+  .dashboard #content.colMS > .uznr-rail,
+  .dashboard #content.colMS > #content-main,
+  .dashboard #content.colMS > #content-related {
+    grid-column: 1;
+    grid-row: auto;
+    margin-top: 0;
+  }
+}
+
+/* Guide, now a <details> -------------------------------------------------- */
+
+.uznr-guide {
+  padding: 0;
+}
+
+.uznr-guide__summary {
+  cursor: pointer;
+  list-style: none;
+  padding: 13px 16px;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--uznr-ink);
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+
+.uznr-guide__summary::-webkit-details-marker {
+  display: none;
+}
+
+/* Disclosure triangle, drawn so it can rotate on open. */
+.uznr-guide__summary::before {
+  content: '';
+  width: 0;
+  height: 0;
+  border-left: 6px solid var(--uznr-primary);
+  border-top: 4.5px solid transparent;
+  border-bottom: 4.5px solid transparent;
+  transition: transform 0.15s ease;
+}
+
+.uznr-guide[open] .uznr-guide__summary::before {
+  transform: rotate(90deg);
+}
+
+.uznr-guide__body {
+  padding: 0 16px 16px;
+}
+
+.uznr-guide__body p:first-child {
+  margin-top: 0;
+}
+
+/* ---------------------------------------------------------------------------
+ * Dashboard model cards
+ *
+ * The stock dashboard is one table listing every model at equal weight, which
+ * on this site meant eleven rows with no answer to "where do I go for X".
+ * content/admin.py buckets them into HOME_GROUPS and app_list.html renders each
+ * bucket as a row of cards; these rules give the cards a shape.
+ * ------------------------------------------------------------------------ */
+
+.admin-group {
+  margin-bottom: 52px;
+}
+
+.admin-group__head {
+  margin-bottom: 16px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--uznr-border);
+}
+
+.admin-group__title {
+  margin: 0;
+  padding: 0;
+  background: none;
+  border: none;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--uznr-muted);
+}
+
+.admin-group__blurb {
+  margin: 3px 0 0;
+  font-size: 0.83rem;
+  color: var(--uznr-muted);
+}
+
+.admin-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(268px, 1fr));
+  gap: 14px;
+}
+
+.admin-card {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 16px 18px;
+  background: var(--uznr-surface);
+  border: 1px solid var(--uznr-border);
+  border-radius: var(--uznr-radius-md);
+  box-shadow: var(--uznr-shadow-sm);
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.admin-card:hover {
+  border-color: var(--uznr-primary);
+  box-shadow: var(--uznr-shadow-md);
+}
+
+/* Waiting messages are the one time-sensitive thing on this page. */
+.admin-card--flagged {
+  border-left: 3px solid var(--uznr-primary);
+}
+
+.admin-card__title {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  background: none;
+  border: none;
+  font-size: 0.98rem;
+  font-weight: 700;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+#content .admin-card__title a {
+  color: var(--uznr-ink);
+  text-decoration: none;
+}
+
+#content .admin-card__title a:hover {
+  color: var(--uznr-primary-dark);
+}
+
+.admin-card__badge {
+  flex-shrink: 0;
+  padding: 2px 9px;
+  border-radius: 999px;
+  background: var(--uznr-primary);
+  color: #fff;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.admin-card__description {
+  margin: 0;
+  flex: 1;
+  font-size: 0.82rem;
+  line-height: 1.5;
+  color: var(--uznr-muted);
+}
+
+.admin-card__actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 2px;
+}
+
+#content .admin-card__action,
+#content .admin-card__action:link,
+#content .admin-card__action:visited {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 6px 13px;
+  border-radius: 999px;
+  border: 1px solid var(--uznr-border);
+  background: var(--uznr-surface);
+  color: var(--uznr-text);
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+}
+
+#content .admin-card__action:hover {
+  border-color: var(--uznr-primary);
+  background: var(--uznr-primary-light);
+  color: var(--uznr-ink);
+}
+
+#content .admin-card__action--add,
+#content .admin-card__action--add:link,
+#content .admin-card__action--add:visited {
+  background: var(--uznr-primary);
+  border-color: var(--uznr-primary);
+  color: #fff;
+}
+
+#content .admin-card__action--add:hover {
+  background: var(--uznr-primary-dark);
+  border-color: var(--uznr-primary-dark);
+  color: #fff;
+}
+
+/* The page heading was smaller than the module captions under it. */
+.dashboard #content > h1 {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--uznr-ink);
+  margin: 0 0 16px;
+}
+
+/* ---------------------------------------------------------------------------
+ * Recent actions
+ *
+ * Django tags each entry in this list with addlink/changelink/deletelink -- the
+ * same class names it uses for buttons. The theme styles .deletelink as a red
+ * danger button, so every deleted item in the history rendered as a red pill
+ * with its own label printed on top of it. These rules put the list back to
+ * being a list, with the action shown as a small coloured dot instead.
+ * ------------------------------------------------------------------------ */
+
+#recent-actions-module ul.actionlist {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+#recent-actions-module .actionlist li {
+  position: relative;
+  margin: 0;
+  padding: 8px 0 8px 18px;
+  background: none !important;
+  border: none;
+  border-radius: 0;
+  color: var(--uznr-text);
+  font-size: 0.83rem;
+  line-height: 1.45;
+}
+
+#recent-actions-module .actionlist li + li {
+  border-top: 1px solid var(--uznr-border);
+}
+
+/* The dot carries what the icon/colour used to say. */
+#recent-actions-module .actionlist li::before {
+  content: '';
+  position: absolute;
+  left: 2px;
+  top: 15px;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--uznr-muted);
+}
+
+#recent-actions-module .actionlist li.addlink::before {
+  background: var(--uznr-primary);
+}
+
+#recent-actions-module .actionlist li.changelink::before {
+  background: #c08a37;
+}
+
+#recent-actions-module .actionlist li.deletelink::before {
+  background: var(--uznr-danger);
+}
+
+#recent-actions-module .actionlist li a {
+  color: var(--uznr-ink);
+}
+
+#recent-actions-module .actionlist .mini.quiet {
+  display: block;
+  color: var(--uznr-muted);
+  font-size: 0.75rem;
+}
+
+/* Row count per model card. Sits between the name and the description as a
+   quiet fact, not a headline -- it tells you how much is in there before you
+   click, without competing with the title. */
+.admin-card__count {
+  margin: -2px 0 0;
+  font-size: 1.35rem;
+  font-weight: 700;
+  line-height: 1.1;
+  color: var(--uznr-primary-dark);
+}
+
+@media (prefers-color-scheme: dark) {
+  html:not([data-theme="light"]) .admin-card__count {
+    color: var(--uznr-primary);
+  }
+}
+
+html[data-theme="dark"] .admin-card__count {
+  color: var(--uznr-primary);
+}
+
+/* ---------------------------------------------------------------------------
+ * Header user tools
+ *
+ * Replaces the stock "WELCOME, ADMIN. VIEW SITE / CHANGE PASSWORD / LOG OUT"
+ * run of small-caps links joined by slashes. Same actions, given shapes.
+ * ------------------------------------------------------------------------ */
+
+#user-tools.uznr-usertools {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.82rem;
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+.uznr-usertools__who {
+  margin-right: 2px;
+  font-weight: 600;
+  color: var(--uznr-muted);
+  text-transform: none;
+}
+
+#user-tools .uznr-usertools__btn,
+#user-tools .uznr-usertools__btn:link,
+#user-tools .uznr-usertools__btn:visited {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 14px;
+  border-radius: 999px;
+  border: 1px solid var(--uznr-border);
+  background: var(--uznr-surface);
+  color: var(--uznr-text);
+  font: inherit;
+  font-size: 0.82rem;
+  font-weight: 600;
+  text-transform: none;
+  letter-spacing: 0;
+  text-decoration: none;
+  cursor: pointer;
+  transition: border-color 0.15s ease, background 0.15s ease, color 0.15s ease;
+}
+
+#user-tools .uznr-usertools__btn:hover {
+  border-color: var(--uznr-primary);
+  background: var(--uznr-primary-light);
+  color: var(--uznr-ink);
+}
+
+#user-tools .uznr-usertools__btn--primary,
+#user-tools .uznr-usertools__btn--primary:link,
+#user-tools .uznr-usertools__btn--primary:visited {
+  background: var(--uznr-primary);
+  border-color: var(--uznr-primary);
+  color: #fff;
+}
+
+#user-tools .uznr-usertools__btn--primary:hover {
+  background: var(--uznr-primary-dark);
+  border-color: var(--uznr-primary-dark);
+  color: #fff;
+}
+
+/* The stock stylesheet floats this form; inside the flex row it just sits. */
+#user-tools #logout-form {
+  display: inline-flex;
+  margin: 0;
+  padding: 0;
+}
+
+/* Phones: let the row wrap rather than run off the edge. */
+@media (max-width: 767px) {
+  #user-tools.uznr-usertools {
+    flex-wrap: wrap;
+    gap: 6px;
+    padding-top: 6px;
+  }
+}
+
+/* ---------------------------------------------------------------------------
+ * Save row
+ *
+ * Django uppercases only the primary submit ("SAČUVAJ") and leaves the others
+ * in sentence case, so the row read as three different kinds of button. The
+ * delete button also keeps Django's own red rather than the theme's danger
+ * colour. Both are normalised here.
+ * ------------------------------------------------------------------------ */
+
+/* forms.css is loaded after this file on change forms, so `.submit-row
+   input.default` there beats an equally specific selector here. The attribute
+   selector adds the weight needed to win without reaching for !important. */
+.submit-row input,
+.submit-row input[type="submit"].default,
+.submit-row button,
+.submit-row a {
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+.submit-row a.deletelink,
+.submit-row a.deletelink:link,
+.submit-row a.deletelink:visited {
+  background: var(--uznr-danger);
+  color: #fff;
+}
+
+.submit-row a.deletelink:hover {
+  background: #a52f26;
+  color: #fff;
+}
+
+/* The add button above each list. Django sets it in small caps; the label is a
+   plain-language phrase now, so it should read like one. */
+.object-tools a.addlink {
+  text-transform: none;
+  letter-spacing: 0;
+  font-size: 0.82rem;
+}
+
+/* ---------------------------------------------------------------------------
+ * Featured cards
+ *
+ * Vijesti and oglasi share a section with the page content but are edited far
+ * more often, so they carry more weight: a tinted surface, a green edge and a
+ * larger count. Same shape, louder voice.
+ * ------------------------------------------------------------------------ */
+
+.admin-card--featured {
+  background: var(--uznr-primary-light);
+  border-color: var(--uznr-primary);
+  border-left-width: 3px;
+}
+
+.admin-card--featured .admin-card__title {
+  font-size: 1.05rem;
+}
+
+.admin-card--featured .admin-card__count {
+  font-size: 1.7rem;
+}
+
+#content .admin-card--featured .admin-card__action:not(.admin-card__action--add) {
+  background: var(--uznr-surface);
+}
+
+/* ---------------------------------------------------------------------------
+ * Accounts block (dashboard left rail)
+ *
+ * Django's auth app as two plain links. Accounts are not site content, so they
+ * do not get a content card.
+ * ------------------------------------------------------------------------ */
+
+.uznr-accounts {
+  padding-bottom: 18px;
+  border-bottom: 1px solid var(--uznr-border);
+}
+
+.uznr-accounts__title {
+  margin: 0;
+  padding: 0;
+  background: none;
+  border: none;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--uznr-muted);
+}
+
+.uznr-accounts__blurb {
+  margin: 3px 0 10px;
+  font-size: 0.83rem;
+  color: var(--uznr-muted);
+}
+
+#content a.uznr-accounts__link,
+#content a.uznr-accounts__link:link,
+#content a.uznr-accounts__link:visited {
+  display: block;
+  padding: 6px 0;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--uznr-ink);
+  text-decoration: none;
+}
+
+#content a.uznr-accounts__link:hover {
+  color: var(--uznr-primary-dark);
+}
+
+/* ---------------------------------------------------------------------------
+ * Inbox button in the header
+ * ------------------------------------------------------------------------ */
+
+#user-tools .uznr-inbox {
+  gap: 7px;
+}
+
+#user-tools .uznr-inbox--waiting,
+#user-tools .uznr-inbox--waiting:link,
+#user-tools .uznr-inbox--waiting:visited {
+  border-color: var(--uznr-primary);
+  background: var(--uznr-primary-light);
+  color: var(--uznr-primary-darker);
+}
+
+.uznr-inbox__count {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 19px;
+  height: 19px;
+  padding: 0 5px;
+  border-radius: 999px;
+  background: var(--uznr-primary);
+  color: #fff;
+  font-size: 0.7rem;
+  font-weight: 700;
 }

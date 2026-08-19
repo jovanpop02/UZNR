@@ -12,3 +12,10 @@ class it belongs to.
 {% block content_title %}
   <h1>{% if original %}{{ original }}{% else %}Novo: {{ opts.verbose_name }}{% endif %}</h1>
 {% endblock %}
+
+{% comment %}
+Django 6 prints its own subtitle under the heading, which on this form is the
+same object name again -- the page opened with the title written twice, one
+line under the other. The heading above already says it.
+{% endcomment %}
+{% block content_subtitle %}{% endblock %}

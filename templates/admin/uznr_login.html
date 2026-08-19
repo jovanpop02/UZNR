@@ -1,0 +1,76 @@
+{% extends "admin/login.html" %}
+{% load i18n static %}
+{% comment %}
+The admin sign-in page.
+
+Named uznr_login rather than login so that the extends above still resolves to
+Django's own template instead of recursing into this one. Wired up in
+config/urls.py via admin.site.login_template.
+
+Django's stock markup puts the form in a bare box under the site header, with
+the submit button floating in its own bordered strip. This replaces the content
+block with a single self-contained card: logo, a plain-language line about what
+the page is for, the two fields, and one full-width button. The stock header is
+hidden in CSS (body.login #header), since the card carries the branding itself.
+{% endcomment %}
+
+{% block content %}
+<div class="uznr-login">
+  <div class="uznr-login__card">
+    <div class="uznr-login__head">
+      <img class="uznr-login__logo" src="{% static 'admin/img/uznr-logo.png' %}" alt="UZNR">
+      <h1 class="uznr-login__title">UZNR administracija</h1>
+      <p class="uznr-login__sub">Prijavite se da biste uređivali sadržaj sajta.</p>
+    </div>
+
+    {% if form.errors and not form.non_field_errors %}
+      <p class="uznr-login__error">
+        {% blocktranslate count counter=form.errors.items|length %}Please correct the error below.{% plural %}Please correct the errors below.{% endblocktranslate %}
+      </p>
+    {% endif %}
+
+    {% for error in form.non_field_errors %}
+      <p class="uznr-login__error">{{ error }}</p>
+    {% endfor %}
+
+    {% if user.is_authenticated %}
+      <p class="uznr-login__error">
+        {% blocktranslate trimmed %}
+          You are authenticated as {{ username }}, but are not authorized to
+          access this page. Would you like to login to a different account?
+        {% endblocktranslate %}
+      </p>
+    {% endif %}
+
+    <form action="{{ app_path }}" method="post" id="login-form" class="uznr-login__form">
+      {% csrf_token %}
+
+      <div class="uznr-login__field">
+        {{ form.username.errors }}
+        <label for="{{ form.username.id_for_label }}">Korisničko ime</label>
+        {{ form.username }}
+      </div>
+
+      <div class="uznr-login__field">
+        {{ form.password.errors }}
+        <label for="{{ form.password.id_for_label }}">Lozinka</label>
+        {{ form.password }}
+        <input type="hidden" name="next" value="{{ next }}">
+      </div>
+
+      {% url 'admin_password_reset' as password_reset_url %}
+      {% if password_reset_url %}
+        <p class="uznr-login__reset">
+          <a href="{{ password_reset_url }}">{% translate 'Forgotten your login credentials?' %}</a>
+        </p>
+      {% endif %}
+
+      <button type="submit" class="uznr-login__submit">Prijava</button>
+    </form>
+  </div>
+
+  <p class="uznr-login__foot">
+    <a href="https://uznr.netlify.app" target="_blank" rel="noopener">Nazad na sajt uznr.me</a>
+  </p>
+</div>
+{% endblock %}

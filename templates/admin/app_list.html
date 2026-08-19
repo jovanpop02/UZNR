@@ -1,65 +1,122 @@
 {% load i18n %}
 {% comment %}
-Django's own app_list, with one addition: each model prints the one-line
-`description` from its ModelAdmin underneath its name, so the home page says
-what every entry is and where it shows up on the site.
+Django's app_list, in two shapes.
 
-The same template also renders the collapsible sidebar, where that text would be
-noise. The sidebar includes it with show_changelinks=False, so that flag is what
-tells the two apart.
+`show_changelinks` is what tells the two callers apart. The collapsible sidebar
+includes this template with show_changelinks=False and wants a plain list of
+links; the dashboard includes it with show_changelinks=True, and gets the
+grouped card layout below.
+
+The cards render from `app.groups`, built in content/admin.py. Each model prints
+its one-line `description` so the page says what every entry is and where it
+shows up on the site, plus the `badge` that flags waiting messages.
 {% endcomment %}
 
 {% if app_list %}
   {% for app in app_list %}
-    <div class="app-{{ app.app_label }} module{% if app.app_url in request.path|urlencode %} current-app{% endif %}">
-      <table>
-        <caption>
-          <a href="{{ app.app_url }}" class="section">{{ app.name }}</a>
-        </caption>
-        <thead class="visually-hidden">
-          <tr>
-            <th scope="col">{% translate 'Model name' %}</th>
-            <th scope="col">{% translate 'Add link' %}</th>
-            <th scope="col">{% translate 'Change or view list link' %}</th>
-          </tr>
-        </thead>
-        {% for model in app.models %}
-          {% with model_name=model.object_name|lower %}
-            <tr class="model-{{ model_name }}{% if model.admin_url in request.path|urlencode %} current-model{% endif %}">
-              <th scope="row" id="{{ app.app_label }}-{{ model_name }}">
-                {% if model.admin_url %}
-                  <a href="{{ model.admin_url }}"{% if model.admin_url in request.path|urlencode %} aria-current="page"{% endif %}>{{ model.name }}</a>
-                {% else %}
-                  {{ model.name }}
-                {% endif %}
-                {% if model.badge %}
-                  <span class="model-badge">{{ model.badge }}</span>
-                {% endif %}
-                {% if model.description and show_changelinks %}
-                  <span class="model-description">{{ model.description }}</span>
-                {% endif %}
-              </th>
+    {% if show_changelinks %}{% if app.groups %}
 
-              {% if model.add_url %}
-                <td><a href="{{ model.add_url }}" class="addlink" aria-describedby="{{ app.app_label }}-{{ model_name }}">{% translate 'Add' %}</a></td>
-              {% else %}
-                <td></td>
-              {% endif %}
+      {% for group in app.groups %}
+        <section class="admin-group">
+          <div class="admin-group__head">
+            <h2 class="admin-group__title">{{ group.title }}</h2>
+            {% if group.blurb %}<p class="admin-group__blurb">{{ group.blurb }}</p>{% endif %}
+          </div>
 
-              {% if model.admin_url and show_changelinks %}
-                {% if model.view_only %}
-                  <td><a href="{{ model.admin_url }}" class="viewlink" aria-describedby="{{ app.app_label }}-{{ model_name }}">{% translate 'View' %}</a></td>
-                {% else %}
-                  <td><a href="{{ model.admin_url }}" class="changelink" aria-describedby="{{ app.app_label }}-{{ model_name }}">{% translate 'Change' %}</a></td>
+          <div class="admin-cards">
+            {% for model in group.models %}
+              <article class="admin-card{% if model.featured %} admin-card--featured{% endif %}{% if model.badge %} admin-card--flagged{% endif %}">
+                <h3 class="admin-card__title">
+                  {% if model.admin_url %}
+                    <a href="{{ model.admin_url }}">{{ model.name }}</a>
+                  {% else %}
+                    {{ model.name }}
+                  {% endif %}
+                  {% if model.badge %}<span class="admin-card__badge">{{ model.badge }}</span>{% endif %}
+                </h3>
+
+                {% if model.count is not None %}
+                  <p class="admin-card__count">{{ model.count }}</p>
                 {% endif %}
-              {% elif show_changelinks %}
-                <td></td>
-              {% endif %}
+
+                {% if model.description %}
+                  <p class="admin-card__description">{{ model.description }}</p>
+                {% endif %}
+
+                <div class="admin-card__actions">
+                  {% if model.admin_url %}
+                    {% if model.view_only %}
+                      <a class="admin-card__action" href="{{ model.admin_url }}">{% translate 'View' %}</a>
+                    {% else %}
+                      <a class="admin-card__action" href="{{ model.admin_url }}">Otvori</a>
+                    {% endif %}
+                  {% endif %}
+                  {% if model.add_url %}
+                    <a class="admin-card__action admin-card__action--add" href="{{ model.add_url }}">
+                      <span aria-hidden="true">+</span> {% translate 'Add' %}
+                    </a>
+                  {% endif %}
+                </div>
+              </article>
+            {% endfor %}
+          </div>
+        </section>
+      {% endfor %}
+      {% endif %}
+
+    {% else %}
+
+      <div class="app-{{ app.app_label }} module{% if app.app_url in request.path|urlencode %} current-app{% endif %}">
+        <table>
+          <caption>
+            <a href="{{ app.app_url }}" class="section">{{ app.name }}</a>
+          </caption>
+          <thead class="visually-hidden">
+            <tr>
+              <th scope="col">{% translate 'Model name' %}</th>
+              <th scope="col">{% translate 'Add link' %}</th>
+              <th scope="col">{% translate 'Change or view list link' %}</th>
             </tr>
-          {% endwith %}
-        {% endfor %}
-      </table>
-    </div>
+          </thead>
+          {% for model in app.models %}
+            {% with model_name=model.object_name|lower %}
+              <tr class="model-{{ model_name }}{% if model.admin_url in request.path|urlencode %} current-model{% endif %}">
+                <th scope="row" id="{{ app.app_label }}-{{ model_name }}">
+                  {% if model.admin_url %}
+                    <a href="{{ model.admin_url }}"{% if model.admin_url in request.path|urlencode %} aria-current="page"{% endif %}>{{ model.name }}</a>
+                  {% else %}
+                    {{ model.name }}
+                  {% endif %}
+                  {% if model.badge %}
+                    <span class="model-badge">{{ model.badge }}</span>
+                  {% endif %}
+                  {% if model.description and show_changelinks %}
+                    <span class="model-description">{{ model.description }}</span>
+                  {% endif %}
+                </th>
+
+                {% if model.add_url %}
+                  <td><a href="{{ model.add_url }}" class="addlink" aria-describedby="{{ app.app_label }}-{{ model_name }}">{% translate 'Add' %}</a></td>
+                {% else %}
+                  <td></td>
+                {% endif %}
+
+                {% if model.admin_url and show_changelinks %}
+                  {% if model.view_only %}
+                    <td><a href="{{ model.admin_url }}" class="viewlink" aria-describedby="{{ app.app_label }}-{{ model_name }}">{% translate 'View' %}</a></td>
+                  {% else %}
+                    <td><a href="{{ model.admin_url }}" class="changelink" aria-describedby="{{ app.app_label }}-{{ model_name }}">{% translate 'Change' %}</a></td>
+                  {% endif %}
+                {% elif show_changelinks %}
+                  <td></td>
+                {% endif %}
+              </tr>
+            {% endwith %}
+          {% endfor %}
+        </table>
+      </div>
+
+    {% endif %}
   {% endfor %}
 {% else %}
   <p>{% translate 'You don’t have permission to view or edit anything.' %}</p>

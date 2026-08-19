@@ -13,6 +13,10 @@ version runs on change forms, not only on the lists that save via reorder/.
 Warns before leaving a change form with edits that were never saved.
 {% endcomment %}
 <script src="{% static 'admin/js/unsaved.js' %}" defer></script>
+{% comment %}
+Remembers whether the orientation panel on the home page is folded away.
+{% endcomment %}
+<script src="{% static 'admin/js/guide.js' %}" defer></script>
 {% endblock %}
 
 {% block branding %}
@@ -22,4 +26,53 @@ Warns before leaving a change form with edits that were never saved.
     {{ site_header|default:_('Django administration') }}
   </a>
 </h1>
+{% endblock %}
+
+{% block usertools %}
+{% comment %}
+Django's own user tools are a run of links separated by slashes, in small caps:
+"WELCOME, ADMIN. VIEW SITE / CHANGE PASSWORD / LOG OUT". This keeps every one of
+those actions but gives them shapes instead of punctuation -- "Pogledaj sajt" as
+a button, since it is the one people actually use, and the account actions
+grouped after it.
+{% endcomment %}
+{% if has_permission %}
+<div id="user-tools" class="uznr-usertools">
+  <span class="uznr-usertools__who">
+    {% firstof user.get_short_name user.get_username %}
+  </span>
+
+  {% comment %}
+  The inbox lives here rather than in the list of content types, because it is
+  the one thing on this site that arrives on its own schedule -- it should be
+  visible from whatever page you happen to be on, not only from the home page.
+  {% endcomment %}
+  <a class="uznr-usertools__btn uznr-inbox{% if uznr_inbox_waiting %} uznr-inbox--waiting{% endif %}"
+     href="{% url 'admin:content_contactmessage_changelist' %}">
+    <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+      <rect x="3" y="5" width="18" height="14" rx="2.5" />
+      <path d="m4 7 8 6 8-6" stroke-linecap="round" stroke-linejoin="round" />
+    </svg>
+    Sanduče
+    {% if uznr_inbox_waiting %}<span class="uznr-inbox__count">{{ uznr_inbox_waiting }}</span>{% endif %}
+  </a>
+
+  {% if site_url %}
+    <a class="uznr-usertools__btn uznr-usertools__btn--primary" href="{{ site_url }}" target="_blank" rel="noopener">
+      Pogledaj sajt
+    </a>
+  {% endif %}
+
+  {% if user.has_usable_password %}
+    <a class="uznr-usertools__btn" href="{% url 'admin:password_change' %}">Promjena lozinke</a>
+  {% endif %}
+
+  <form id="logout-form" method="post" action="{% url 'admin:logout' %}">
+    {% csrf_token %}
+    <button type="submit" class="uznr-usertools__btn">Odjava</button>
+  </form>
+
+  {% include "admin/color_theme_toggle.html" %}
+</div>
+{% endif %}
 {% endblock %}

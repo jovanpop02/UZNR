@@ -1,4 +1,5 @@
 {% extends "admin/change_list.html" %}
+{% load admin_urls %}
 {% comment %}
 Applies to every list in the `content` app.
 
@@ -10,12 +11,25 @@ Two changes from stock Django:
   * The ModelAdmin's `description` is printed above the table, so the sentence
     explaining what this is and where it appears on the site stays on screen
     after you leave the home page.
+  * The add button. Django labels it "Dodaj objekat klase Oglas" -- again the
+    database wording. "Novi oglas" says the same thing in the language the rest
+    of this admin uses.
 {% endcomment %}
 
 {% block title %}{{ cl.opts.verbose_name_plural|capfirst }} | {{ site_title|default:_('Django site admin') }}{% endblock %}
 
 {% block content_title %}
   <h1>{{ cl.opts.verbose_name_plural|capfirst }}</h1>
+{% endblock %}
+
+{% block object-tools-items %}
+  {% if has_add_permission %}
+    <li>
+      <a href="{% url cl.opts|admin_urlname:'add' %}{% if is_popup %}?{{ is_popup_var }}=1{% endif %}" class="addlink">
+        Novo: {{ cl.opts.verbose_name }}
+      </a>
+    </li>
+  {% endif %}
 {% endblock %}
 
 {% block content %}
