@@ -1,0 +1,32 @@
+export default {
+  nav: {
+    home: 'Početna',
+    about: 'O nama',
+    regulations: 'Regulativa',
+    projects: 'Projekti',
+    ads: 'Oglasi',
+    publications: 'Publikacije',
+    library: 'Biblioteka',
+    libraryExam: 'Stručni ispit',
+    press: 'Press/Media',
+    qa: 'Pitanja & Odgovori',
+    archive: 'Arhiva',
+  },
+  header: {
+    openMenu: 'Otvori meni',
+    closeMenu: 'Zatvori meni',
+    openSubmenu: 'Otvori podmeni',
+    mainNav: 'Glavna navigacija',
+    searchPlaceholder: 'Pretraga sajta…',
+    searchResults: 'Rezultati pretrage',
+    searchNoResults: 'Nema rezultata za „{q}“',
+    searchTypeNews: 'Vijest',
+    searchSeeAll: 'Prikaži sve rezultate',
+    switchLanguage: 'Promijeni jezik / Switch language',
+    contact: 'Kontakt',
+  },
+  common: {
+    retry: 'Pokušaj ponovo',
+    wakingBackend: 'Server se pokreće — ovo može potrajati do minut.',
+  },
+}

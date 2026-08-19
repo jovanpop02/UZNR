@@ -1,0 +1,305 @@
+:root {
+  --color-primary: #42b758;
+  --color-primary-dark: #2f8f45;
+  --color-primary-light: #e9f7ec;
+  --color-accent: #2f8f45;
+  --color-accent-dark: #256e37;
+
+  /* Form validation only — the rest of the site is green, so an invalid field
+     has to fall outside the brand palette to read as an error at a glance. */
+  --color-danger: #c33a30;
+  --color-danger-light: #fdeceb;
+
+  --color-ink: #17211c;
+  --color-text: #45524c;
+  --color-text-muted: #6b7a72;
+  --color-bg: #ffffff;
+  --color-bg-alt: #f6f8f6;
+  --color-border: #e1e7e2;
+  --color-card-bg: #ffffff;
+
+  --shadow-sm: 0 1px 2px rgba(23, 33, 28, 0.06), 0 1px 3px rgba(23, 33, 28, 0.08);
+  --shadow-md: 0 4px 10px rgba(23, 33, 28, 0.08), 0 2px 4px rgba(23, 33, 28, 0.06);
+
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 22px;
+
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 16px;
+  --space-4: 24px;
+  --space-5: 32px;
+  --space-6: 48px;
+  --space-7: 64px;
+  --space-8: 96px;
+
+  --font-sans: system-ui, 'Segoe UI', Roboto, sans-serif;
+  --container-width: 1180px;
+
+  /* Scrollbars. One design everywhere: a slim brand-green pill on no track at
+     all. The thumb sits inside a transparent border so it floats clear of the
+     container edge instead of filling the full gutter. Deliberately not
+     overridable per-container — every scrollbar on the site is this one. */
+  --scrollbar-size: 10px;
+  --scrollbar-inset: 2px;
+  --scrollbar-thumb: var(--color-primary);
+  --scrollbar-thumb-hover: var(--color-primary-dark);
+
+  color-scheme: light;
+  font-family: var(--font-sans);
+  font-size: 17px;
+  line-height: 1.55;
+  letter-spacing: 0.1px;
+  color: var(--color-text);
+  background: var(--color-bg);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* ---------------------------------------------------------------
+   Scrollbars
+   --------------------------------------------------------------- */
+
+/* Firefox only. This must NOT be declared unconditionally: `scrollbar-width` /
+   `scrollbar-color` inherit, and Chromium ignores every ::-webkit-scrollbar
+   rule on any element that has them set — which silently throws away the pill
+   design below.
+
+   The gate has to be an engine test, not a feature test. `not
+   selector(::-webkit-scrollbar)` looks right but isn't: Firefox parses several
+   -webkit- pseudo-elements for site compatibility, so the check can report
+   support, the `not` flips to false, and Firefox ends up with neither the
+   standard properties nor the webkit rules — a default grey scrollbar with
+   square ends. `-moz-appearance` only ever parses in Gecko, so it selects the
+   one engine that needs this branch and can never leak into Chromium. */
+@supports (-moz-appearance: none) {
+  :root {
+    scrollbar-width: thin;
+    scrollbar-color: var(--scrollbar-thumb) transparent;
+  }
+}
+
+/* WebKit/Blink. These pseudo-elements don't inherit, so they're declared
+   unscoped and apply to the page and every scroll container alike. */
+::-webkit-scrollbar {
+  width: var(--scrollbar-size);
+  height: var(--scrollbar-size);
+}
+
+/* No trough: the pill floats on the page rather than sitting in a channel. */
+::-webkit-scrollbar-track,
+::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb);
+  border-radius: 999px;
+  /* Transparent border + padding-box clip is what slims the pill and keeps it
+     off the container edge. Colour must be reapplied on hover alongside the
+     clip, or the border area repaints opaque. */
+  border: var(--scrollbar-inset) solid transparent;
+  background-clip: padding-box;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--scrollbar-thumb-hover);
+  background-clip: padding-box;
+}
+
+body {
+  margin: 0;
+  background-image:
+    radial-gradient(circle at 1px 1px, rgba(23, 33, 28, 0.045) 1px, transparent 0);
+  background-size: 22px 22px;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-sans);
+  color: var(--color-ink);
+  margin: 0;
+  line-height: 1.2;
+}
+
+h1 {
+  font-size: clamp(2.25rem, 1.7rem + 2vw, 3.25rem);
+  letter-spacing: -0.5px;
+  font-weight: 700;
+}
+
+h2 {
+  font-size: clamp(1.5rem, 1.3rem + 0.8vw, 2rem);
+  letter-spacing: -0.3px;
+  font-weight: 700;
+}
+
+h3 {
+  font-size: 1.15rem;
+  font-weight: 600;
+}
+
+p {
+  margin: 0;
+}
+
+a {
+  color: inherit;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+.container {
+  width: 100%;
+  max-width: var(--container-width);
+  margin-inline: auto;
+  padding-inline: var(--space-4);
+}
+
+.section {
+  padding-block: var(--space-7);
+}
+
+.section--alt {
+  background: var(--color-bg-alt);
+}
+
+.section-label {
+  display: inline-block;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+  color: var(--color-primary);
+  margin-bottom: var(--space-2);
+}
+
+.section-title {
+  margin-bottom: var(--space-5);
+}
+
+.state-message {
+  color: var(--color-text-muted);
+  padding: var(--space-4) 0;
+}
+
+.state-message--error {
+  color: var(--color-accent-dark);
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: 12px 24px;
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-decoration: none;
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+}
+
+.btn--primary {
+  background: var(--color-primary);
+  color: #fff;
+}
+
+.btn--primary:hover {
+  background: var(--color-primary-dark);
+  box-shadow: var(--shadow-md);
+}
+
+@media (max-width: 900px) {
+  :root {
+    font-size: 16px;
+  }
+
+  .section {
+    padding-block: var(--space-6);
+  }
+}
+
+/* ---------------------------------------------------------------
+   Motion
+   --------------------------------------------------------------- */
+
+/* Scroll-reveal — applied by the v-reveal directive (src/reveal.js). */
+.reveal {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal.is-revealed {
+  opacity: 1;
+  transform: none;
+}
+
+/* Route change — quick cross-fade between pages. */
+.page-fade-enter-active {
+  transition: opacity 0.22s ease, transform 0.22s ease;
+}
+
+.page-fade-leave-active {
+  transition: opacity 0.14s ease;
+}
+
+.page-fade-enter-from {
+  opacity: 0;
+  transform: translateY(8px);
+}
+
+.page-fade-leave-to {
+  opacity: 0;
+}
+
+/* Language switch — cross-fade the swapped text so it doesn't snap. */
+.lang-fade-enter-active,
+.lang-fade-leave-active {
+  transition: opacity 0.18s ease;
+}
+
+.lang-fade-enter-from,
+.lang-fade-leave-to {
+  opacity: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal,
+  .reveal.is-revealed {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .page-fade-enter-active,
+  .page-fade-leave-active,
+  .lang-fade-enter-active,
+  .lang-fade-leave-active {
+    transition: none;
+  }
+
+  .btn,
+  .news-card,
+  .document-card,
+  .member-card,
+  .announcement-card {
+    transition: none;
+  }
+}
