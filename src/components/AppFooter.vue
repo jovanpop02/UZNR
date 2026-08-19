@@ -69,6 +69,11 @@ const year = new Date().getFullYear()
     <div class="site-footer__bottom">
       <div class="container site-footer__bottom-inner">
         <p class="site-footer__copyright">© {{ year }} Udruženje zaštite na radu Crne Gore. {{ t('footer.copyrightSuffix') }}</p>
+        <!-- Storyset's free licence requires a visible credit wherever their
+             illustrations are used. Remove this only if the licence is bought. -->
+        <p class="site-footer__credit">
+          <a href="https://storyset.com/" target="_blank" rel="noopener">Ilustracije: Storyset</a>
+        </p>
       </div>
     </div>
   </footer>
@@ -210,9 +215,29 @@ const year = new Date().getFullYear()
   padding-block: var(--space-3);
 }
 
-.site-footer__copyright {
+.site-footer__bottom-inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2) var(--space-4);
+}
+
+.site-footer__copyright,
+.site-footer__credit {
   font-size: 0.8rem;
   color: rgba(255, 255, 255, 0.5);
+  margin: 0;
+}
+
+.site-footer__credit a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.site-footer__credit a:hover {
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: underline;
 }
 
 @media (max-width: 1100px) {

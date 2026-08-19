@@ -4,6 +4,7 @@ import { useI18n } from 'vue-i18n'
 import { publications as bundledPublications } from '../data/publikacije'
 import { toDocument, usePageSections, withFallback } from '../cms'
 import { isIOS } from '../platform'
+import documentsIllustration from '../assets/illustrations/documents.svg'
 
 const { t, locale } = useI18n()
 const previewDoc = ref(null)
@@ -18,6 +19,31 @@ const publications = withFallback(sections, bundledPublications, (cmsSections) =
 function formatSize(sizeKb) {
   if (sizeKb >= 1024) return `${(sizeKb / 1024).toFixed(1)} MB`
   return `${sizeKb} KB`
+}
+
+// The publications are all PDFs, so an identical file icon on every row told a
+// reader nothing. Each title already announces what the document is ("Vodic
+// za...", "Studija...", "Prirucnik..."), so the kind is taken from the title's
+// own opening words: it needs no new CMS field, and it stays in whichever
+// language the title is written in. Anything unrecognised falls back to a
+// neutral document tone rather than being mislabelled.
+const KINDS = [
+  { tone: 'guide', icon: 'guide', match: /^(vodič|guide)/i },
+  { tone: 'study', icon: 'study', match: /^(studija|study)/i },
+  { tone: 'manual', icon: 'manual', match: /^(priručnik|manual|handbook)/i },
+  { tone: 'report', icon: 'report', match: /^(izvještaj|report)/i },
+  { tone: 'profile', icon: 'profile', match: /^(nacionalni profil|national profile)/i },
+]
+
+function kindOf(title) {
+  const clean = (title ?? '').trim()
+  const hit = KINDS.find((k) => k.match.test(clean))
+  if (!hit) return { tone: 'doc', icon: 'doc', label: null }
+  // Label the chip with the exact words that matched, so multi-word kinds stay
+  // whole ("Nacionalni profil", not "Nacionalni") and the chip reads in the
+  // same language as the title itself.
+  const label = clean.match(hit.match)[0]
+  return { ...hit, label }
 }
 
 function openPreview(pub) {
@@ -36,28 +62,70 @@ function closePreview() {
 <template>
   <div>
   <section class="section publikacije-hero">
-    <div class="container">
-      <h1>{{ t('publications.title') }}</h1>
-      <p class="publikacije-hero__lead">
-        {{ t('publications.lead') }}
-      </p>
+    <div class="container publikacije-hero__inner">
+      <div class="publikacije-hero__text">
+        <h1>{{ t('publications.title') }}</h1>
+        <p class="publikacije-hero__lead">
+          {{ t('publications.lead') }}
+        </p>
+      </div>
+      <img
+        class="publikacije-hero__illustration"
+        :src="documentsIllustration"
+        alt=""
+        aria-hidden="true"
+        loading="lazy"
+      />
     </div>
   </section>
 
   <section class="section section--alt publikacije-list">
     <div class="container">
       <div class="publikacije-grid">
-        <div v-for="pub in publications" :key="pub.title" class="publication-card">
+        <div
+          v-for="pub in publications"
+          :key="pub.title"
+          class="publication-card"
+          :class="`publication-card--${kindOf(pub.title).tone}`"
+        >
           <span class="publication-card__icon" aria-hidden="true">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
-              <path d="M6 3h9l3 3v15a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1Z" />
-              <path d="M15 3v3a1 1 0 0 0 1 1h3" />
-              <line x1="8" y1="12" x2="16" y2="12" />
-              <line x1="8" y1="16" x2="16" y2="16" />
-              <line x1="8" y1="8" x2="11" y2="8" />
+              <template v-if="kindOf(pub.title).icon === 'guide'">
+                <path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H19v15H6.5A2.5 2.5 0 0 0 4 20.5V5.5Z" />
+                <path d="M4 20.5A2.5 2.5 0 0 1 6.5 18H19v3H6.5A2.5 2.5 0 0 1 4 20.5Z" />
+                <line x1="8" y1="8" x2="15" y2="8" stroke-linecap="round" />
+              </template>
+              <template v-else-if="kindOf(pub.title).icon === 'study'">
+                <circle cx="11" cy="11" r="6.5" />
+                <line x1="20" y1="20" x2="15.8" y2="15.8" stroke-linecap="round" />
+                <path d="M8.5 11.5l1.8 1.8 3.3-3.6" stroke-linecap="round" stroke-linejoin="round" />
+              </template>
+              <template v-else-if="kindOf(pub.title).icon === 'manual'">
+                <rect x="4" y="3" width="16" height="18" rx="2" />
+                <line x1="8" y1="8" x2="16" y2="8" stroke-linecap="round" />
+                <line x1="8" y1="12" x2="16" y2="12" stroke-linecap="round" />
+                <line x1="8" y1="16" x2="13" y2="16" stroke-linecap="round" />
+              </template>
+              <template v-else-if="kindOf(pub.title).icon === 'report'">
+                <path d="M6 3h9l3 3v15a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1Z" />
+                <path d="M15 3v3a1 1 0 0 0 1 1h3" />
+                <path d="M8.5 17v-3M12 17v-6M15.5 17v-4" stroke-linecap="round" />
+              </template>
+              <template v-else-if="kindOf(pub.title).icon === 'profile'">
+                <circle cx="12" cy="12" r="8.5" />
+                <ellipse cx="12" cy="12" rx="4" ry="8.5" />
+                <line x1="3.5" y1="12" x2="20.5" y2="12" />
+              </template>
+              <template v-else>
+                <path d="M6 3h9l3 3v15a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1Z" />
+                <path d="M15 3v3a1 1 0 0 0 1 1h3" />
+                <line x1="8" y1="12" x2="16" y2="12" />
+                <line x1="8" y1="16" x2="16" y2="16" />
+              </template>
             </svg>
           </span>
           <div class="publication-card__body">
+            <span v-if="kindOf(pub.title).label" class="publication-card__kind">{{ kindOf(pub.title).label }}</span>
             <h3>{{ pub.title }}</h3>
             <p class="publication-card__meta">
               <span v-if="pub.dateLabel">{{ pub.dateLabel }} · </span>{{ formatSize(pub.sizeKb) }}
@@ -104,6 +172,30 @@ function closePreview() {
   padding-bottom: var(--space-4);
 }
 
+.publikacije-hero__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-5);
+}
+
+.publikacije-hero__text {
+  min-width: 0;
+}
+
+.publikacije-hero__illustration {
+  flex-shrink: 0;
+  width: min(300px, 32vw);
+  height: auto;
+}
+
+/* The drawing is decoration; below the breakpoint the words need the room. */
+@media (max-width: 820px) {
+  .publikacije-hero__illustration {
+    display: none;
+  }
+}
+
 .publikacije-hero__lead {
   color: var(--color-text-muted);
   font-size: 1.05rem;
@@ -114,6 +206,35 @@ function closePreview() {
 .publikacije-grid {
   display: grid;
   gap: var(--space-4);
+}
+
+/* Two columns once there is room; eight full-width bands made the page feel
+   longer and emptier than it is. Each card turns into a vertical stack at the
+   same breakpoint -- kept horizontal, the title had only a third of the card's
+   width left and wrapped to seven lines. Actions are pushed to the bottom so
+   the buttons line up across a row whatever the title length. */
+@media (min-width: 1100px) {
+  .publikacije-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: stretch;
+  }
+
+  .publikacije-grid .publication-card {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-3);
+    height: 100%;
+  }
+
+  .publikacije-grid .publication-card__actions {
+    width: 100%;
+    margin-top: auto;
+  }
+
+  .publikacije-grid .publication-card__actions .btn {
+    flex: 1;
+    justify-content: center;
+  }
 }
 
 .publication-card {
@@ -141,8 +262,35 @@ function closePreview() {
   width: 56px;
   height: 56px;
   border-radius: var(--radius-md);
-  background: var(--color-primary-light);
-  color: var(--color-primary);
+  background: var(--kind-bg, var(--color-primary-light));
+  color: var(--kind-fg, var(--color-primary));
+}
+
+/* One hue per document kind. They stay inside the site's green-forward family
+   -- these are accents on a card, not a second brand palette. */
+.publication-card--guide { --kind-bg: #e9f7ec; --kind-fg: #2f8f45; --kind-rule: #42b758; }
+.publication-card--study { --kind-bg: #e6f2f6; --kind-fg: #24707f; --kind-rule: #3596a8; }
+.publication-card--manual { --kind-bg: #edf0fb; --kind-fg: #45539c; --kind-rule: #6675c4; }
+.publication-card--report { --kind-bg: #fbf1e4; --kind-fg: #94682a; --kind-rule: #c08a37; }
+.publication-card--profile { --kind-bg: #f2ecf7; --kind-fg: #6a4a8c; --kind-rule: #8b66b0; }
+.publication-card--doc { --kind-bg: var(--color-bg-alt); --kind-fg: var(--color-text-muted); --kind-rule: var(--color-border); }
+
+/* A thin coloured edge repeats the kind at a glance down the column. */
+.publication-card {
+  border-left: 3px solid var(--kind-rule, var(--color-border));
+}
+
+.publication-card__kind {
+  display: inline-block;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--kind-fg, var(--color-text-muted));
+  background: var(--kind-bg, var(--color-bg-alt));
+  border-radius: 999px;
+  padding: 3px 9px;
+  margin-bottom: 6px;
 }
 
 .publication-card__icon svg {

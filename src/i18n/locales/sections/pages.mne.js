@@ -1,6 +1,5 @@
 export default {
   archive: {
-    label: 'UZNR',
     title: 'Arhiva',
     searchPlaceholder: 'Pretraga sajta…',
     searchAriaLabel: 'Pretraga sajta',
@@ -86,7 +85,6 @@ export default {
   },
 
   contact: {
-    label: 'UZNR',
     title: 'Kontakt',
     lead: 'Za sva pitanja, prijave i saradnju slobodno nas kontaktirajte putem mejla, telefona ili na adresi Udruženja.',
     addressTitle: 'Adresa',
@@ -188,6 +186,14 @@ export default {
     ctaText:
       'Pošaljite nam svoje pitanje — odgovaramo u najkraćem mogućem roku.',
     askBtn: 'Postavite pitanje',
+  },
+
+  notFound: {
+    label: 'Greška 404',
+    title: 'Stranica nije pronađena',
+    text: 'Adresa koju ste otvorili ne postoji ili je stranica premještena. Provjerite adresu ili se vratite na početnu.',
+    backHome: 'Nazad na početnu',
+    searchArchive: 'Pretraži arhivu',
   },
 
   placeholder: {

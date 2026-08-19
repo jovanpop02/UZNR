@@ -2,6 +2,7 @@
 import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 import ContactForm from '../components/ContactForm.vue'
+import contactIllustration from '../assets/illustrations/contact.svg'
 
 const { t } = useI18n()
 
@@ -37,12 +38,19 @@ const socials = [
 <template>
   <div>
   <section class="section kontakt-hero">
-    <div class="container">
-      <p class="section-label">{{ t('contact.label') }}</p>
-      <h1>{{ t('contact.title') }}</h1>
-      <p class="kontakt-hero__lead">
-        {{ t('contact.lead') }}
-      </p>
+    <div class="container kontakt-hero__inner">
+      <div class="kontakt-hero__text">
+        <h1>{{ t('contact.title') }}</h1>
+        <p class="kontakt-hero__lead">
+          {{ t('contact.lead') }}
+        </p>
+      </div>
+      <img
+        class="kontakt-hero__illustration"
+        :src="contactIllustration"
+        alt=""
+        aria-hidden="true"
+      />
     </div>
   </section>
 
@@ -105,6 +113,30 @@ const socials = [
 </template>
 
 <style scoped>
+.kontakt-hero__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-5);
+}
+
+.kontakt-hero__text {
+  min-width: 0;
+}
+
+.kontakt-hero__illustration {
+  flex-shrink: 0;
+  width: min(320px, 34vw);
+  height: auto;
+}
+
+/* Decoration only -- at narrow widths the heading and lead take the room. */
+@media (max-width: 820px) {
+  .kontakt-hero__illustration {
+    display: none;
+  }
+}
+
 .kontakt-hero {
   padding-bottom: var(--space-4);
 }

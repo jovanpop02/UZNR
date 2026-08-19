@@ -1,6 +1,5 @@
 export default {
   archive: {
-    label: 'UZNR',
     title: 'Archive',
     searchPlaceholder: 'Search the site…',
     searchAriaLabel: 'Search the site',
@@ -86,7 +85,6 @@ export default {
   },
 
   contact: {
-    label: 'UZNR',
     title: 'Contact',
     lead: 'For any questions, applications or cooperation, feel free to contact us by email, phone or at the Association’s address.',
     addressTitle: 'Address',
@@ -187,6 +185,14 @@ export default {
     ctaTitle: "Didn't find your answer?",
     ctaText: 'Send us your question — we respond as soon as possible.',
     askBtn: 'Ask a question',
+  },
+
+  notFound: {
+    label: 'Error 404',
+    title: 'Page not found',
+    text: 'The address you opened does not exist, or the page has moved. Check the address or head back to the homepage.',
+    backHome: 'Back to homepage',
+    searchArchive: 'Search the archive',
   },
 
   placeholder: {

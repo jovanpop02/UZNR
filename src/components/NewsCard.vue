@@ -1,6 +1,7 @@
 <script setup>
 import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
+import { normalizeTitle } from '../text'
 
 const { t } = useI18n()
 
@@ -10,6 +11,7 @@ const props = defineProps({
 })
 
 const linkTo = computed(() => `/vijesti/${props.item.slug}`)
+const title = computed(() => normalizeTitle(props.item.title))
 
 function formatDate(dateStr) {
   return new Date(dateStr).toLocaleDateString('sr-Latn-ME', {
@@ -23,12 +25,12 @@ function formatDate(dateStr) {
 <template>
   <router-link :to="linkTo" class="news-card" :class="{ 'news-card--featured': featured }">
     <div class="news-card__thumb" :class="{ 'news-card__thumb--empty': !item.thumbnail }">
-      <img v-if="item.thumbnail" :src="item.thumbnail" :alt="item.title" loading="lazy" />
+      <img v-if="item.thumbnail" :src="item.thumbnail" :alt="title" loading="lazy" />
     </div>
     <div class="news-card__body">
       <span v-if="featured" class="news-card__badge">{{ t('newsCard.latest') }}</span>
       <time class="news-card__date" :datetime="item.date">{{ formatDate(item.date) }}</time>
-      <h3 class="news-card__title">{{ item.title }}</h3>
+      <h3 class="news-card__title">{{ title }}</h3>
       <p class="news-card__excerpt">{{ item.excerpt }}</p>
     </div>
   </router-link>

@@ -4,6 +4,7 @@ import { useRoute } from 'vue-router'
 import { useI18n } from 'vue-i18n'
 import { fetchNewsItem } from '../api'
 import { localizeItem } from '../cms'
+import { normalizeTitle } from '../text'
 import SafetyIllustration from '../components/SafetyIllustration.vue'
 import SkeletonBlock from '../components/SkeletonBlock.vue'
 import WakingNotice from '../components/WakingNotice.vue'
@@ -17,6 +18,7 @@ const rawItem = ref(null)
 const item = computed(() =>
   rawItem.value ? localizeItem(rawItem.value, locale.value) : null
 )
+const title = computed(() => normalizeTitle(item.value?.title))
 const loading = ref(true)
 const notFound = ref(false)
 const error = ref(null)
@@ -153,7 +155,7 @@ onUnmounted(() => window.removeEventListener('keydown', onKeydown))
           <time class="news-detail__date" :datetime="item.date">{{ formatDate(item.date) }}</time>
           <span v-if="isLongForm" class="news-detail__reading-time">{{ readingTime }} {{ t('newsDetail.readingTime') }}</span>
         </div>
-        <h1 class="news-detail__title">{{ item.title }}</h1>
+        <h1 class="news-detail__title">{{ title }}</h1>
 
         <button
           v-if="item.thumbnail"

@@ -445,6 +445,34 @@ function submitSearch(q) {
   }
 }
 
+/* Between the burger breakpoint and roughly 1700px the full nav did not fit,
+   so it wrapped onto a second row inside a bar sized for one -- which is most
+   laptop widths (1366, 1440, 1536, 1600). Tightening the tracking and the gaps
+   buys back the few dozen pixels it needs to stay on one line. */
+@media (min-width: 1301px) and (max-width: 1699px) {
+  .site-header__nav {
+    flex-wrap: nowrap;
+    gap: 0 11px;
+  }
+
+  .site-header__nav-link {
+    font-size: 0.69rem;
+    letter-spacing: 0.1px;
+  }
+
+  .site-header__inner {
+    gap: var(--space-3);
+  }
+
+  .site-header__search {
+    width: 132px;
+  }
+
+  .site-header__search:focus-within {
+    width: 150px;
+  }
+}
+
 @media (max-width: 1300px) {
   .site-header__toggle {
     display: flex;

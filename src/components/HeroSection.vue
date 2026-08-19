@@ -45,7 +45,14 @@ const { t } = useI18n()
 .hero__overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(100deg, rgba(15, 46, 26, 0.85) 0%, rgba(47, 143, 69, 0.6) 45%, rgba(66, 183, 88, 0.18) 100%);
+  /* Two stacked scrims. The brand gradient carries the green identity across
+     the photo; the vertical one sits under it and darkens the top and bottom
+     bands, which is where the title and the lead/button actually land. Without
+     it the lead paragraph fell over the brightest clutter of the workshop
+     photo and dropped under a readable contrast ratio. */
+  background:
+    linear-gradient(180deg, rgba(9, 30, 17, 0.34) 0%, rgba(9, 30, 17, 0.06) 48%, rgba(9, 30, 17, 0.42) 100%),
+    linear-gradient(100deg, rgba(15, 46, 26, 0.92) 0%, rgba(30, 88, 46, 0.74) 45%, rgba(66, 183, 88, 0.28) 100%);
 }
 
 @media (min-width: 1200px) {

@@ -16,6 +16,10 @@ const router = createRouter({
     { path: '/arhiva', component: () => import('../pages/ArhivaPage.vue') },
     { path: '/vijesti/:slug', component: () => import('../pages/NewsDetailPage.vue') },
     { path: '/kontakt', component: () => import('../pages/KontaktPage.vue') },
+    // Catch-all. Without it an unknown address rendered the header and footer
+    // around an empty router-view, which is what every mistyped or stale link
+    // landed on once Netlify rewrote it to index.html.
+    { path: '/:pathMatch(.*)*', component: () => import('../pages/NotFoundPage.vue') },
   ],
   scrollBehavior(to) {
     if (to.hash) {

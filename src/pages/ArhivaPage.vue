@@ -4,7 +4,7 @@ import { useRoute } from 'vue-router'
 import { useI18n } from 'vue-i18n'
 import { fetchAnnouncements, fetchNews } from '../api'
 import { localizeList } from '../cms'
-import { announcementsToSearchIndex, buildStaticSearchIndex } from '../search'
+import { announcementsToSearchIndex, buildStaticSearchIndex, foldSearchText } from '../search'
 import NewsCard from '../components/NewsCard.vue'
 import SafetyIllustration from '../components/SafetyIllustration.vue'
 import SkeletonBlock from '../components/SkeletonBlock.vue'
@@ -31,19 +31,19 @@ const filteredNews = computed(() => {
   if (selectedYear.value !== 'all') {
     result = result.filter((item) => new Date(item.date).getFullYear() === Number(selectedYear.value))
   }
-  const q = searchText.value.trim().toLowerCase()
+  const q = foldSearchText(searchText.value.trim())
   if (q) {
     result = result.filter((item) =>
-      item.title?.toLowerCase().includes(q) || item.excerpt?.toLowerCase().includes(q)
+      foldSearchText(item.title).includes(q) || foldSearchText(item.excerpt).includes(q)
     )
   }
   return result
 })
 
 const otherResults = computed(() => {
-  const q = searchText.value.trim().toLowerCase()
+  const q = foldSearchText(searchText.value.trim())
   if (!q) return []
-  return otherIndex.value.filter((item) => item.title.toLowerCase().includes(q))
+  return otherIndex.value.filter((item) => foldSearchText(item.title).includes(q))
 })
 
 function formatSize(sizeKb) {
@@ -78,7 +78,6 @@ onMounted(load)
 <template>
   <section class="section arhiva">
     <div class="container">
-      <p class="section-label">{{ t('archive.label') }}</p>
       <h1>{{ t('archive.title') }}</h1>
 
       <div v-if="!loading && news.length" class="arhiva__toolbar">

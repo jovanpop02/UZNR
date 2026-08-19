@@ -3,6 +3,7 @@ import { computed, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { faqs as bundledFaqs } from '../data/pitanja'
 import { text, usePageSections, withFallback } from '../cms'
+import questionsIllustration from '../assets/illustrations/questions.svg'
 
 const { t, locale } = useI18n()
 
@@ -132,11 +133,18 @@ function toggle(id) {
       </ul>
 
       <aside class="qa__cta">
-        <div>
+        <img
+          class="qa__cta-illustration"
+          :src="questionsIllustration"
+          alt=""
+          aria-hidden="true"
+          loading="lazy"
+        />
+        <div class="qa__cta-copy">
           <h2 class="qa__cta-title">{{ t('qa.ctaTitle') }}</h2>
           <p class="qa__cta-text">{{ t('qa.ctaText') }}</p>
         </div>
-        <a class="btn btn--primary" href="mailto:info@uznr.me">{{ t('qa.askBtn') }}</a>
+        <router-link class="btn btn--primary" to="/kontakt">{{ t('qa.askBtn') }}</router-link>
       </aside>
     </div>
   </section>
@@ -291,6 +299,23 @@ function toggle(id) {
   padding: var(--space-5);
   border-radius: var(--radius-md);
   background: var(--color-primary-light);
+}
+
+.qa__cta-copy {
+  flex: 1;
+  min-width: 220px;
+}
+
+.qa__cta-illustration {
+  flex-shrink: 0;
+  width: 132px;
+  height: auto;
+}
+
+@media (max-width: 640px) {
+  .qa__cta-illustration {
+    display: none;
+  }
 }
 
 .qa__cta-title {
